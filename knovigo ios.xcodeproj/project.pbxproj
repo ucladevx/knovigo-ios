@@ -3,66 +3,75 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7534F49E2557D326005244B0 /* knovigo_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534F49D2557D326005244B0 /* knovigo_iosApp.swift */; };
-		7534F4A02557D326005244B0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534F49F2557D326005244B0 /* ContentView.swift */; };
-		7534F4A22557D326005244B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7534F4A12557D326005244B0 /* Assets.xcassets */; };
-		7534F4A52557D326005244B0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7534F4A42557D326005244B0 /* Preview Assets.xcassets */; };
-		7534F4B02557D327005244B0 /* knovigo_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534F4AF2557D327005244B0 /* knovigo_iosTests.swift */; };
-		7534F4BB2557D327005244B0 /* knovigo_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7534F4BA2557D327005244B0 /* knovigo_iosUITests.swift */; };
+		0A84508A2561754E0036589F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8450892561754E0036589F /* AppDelegate.swift */; };
+		0A84508C2561754E0036589F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84508B2561754E0036589F /* SceneDelegate.swift */; };
+		0A84508E2561754E0036589F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84508D2561754E0036589F /* ViewController.swift */; };
+		0A8450912561754E0036589F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A84508F2561754E0036589F /* Main.storyboard */; };
+		0A845093256175520036589F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A845092256175520036589F /* Assets.xcassets */; };
+		0A845096256175520036589F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A845094256175520036589F /* LaunchScreen.storyboard */; };
+		0A8450A1256175530036589F /* knovigo_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8450A0256175530036589F /* knovigo_iosTests.swift */; };
+		0A8450AC256175530036589F /* knovigo_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8450AB256175530036589F /* knovigo_iosUITests.swift */; };
+		922759826C21706CC7D55C28 /* libPods-knovigo ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2409AF8A524EB449240FCED /* libPods-knovigo ios.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7534F4AC2557D327005244B0 /* PBXContainerItemProxy */ = {
+		0A84509D256175530036589F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7534F4922557D326005244B0 /* Project object */;
+			containerPortal = 0A84507E2561754E0036589F /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 7534F4992557D326005244B0;
+			remoteGlobalIDString = 0A8450852561754E0036589F;
 			remoteInfo = "knovigo ios";
 		};
-		7534F4B72557D327005244B0 /* PBXContainerItemProxy */ = {
+		0A8450A8256175530036589F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7534F4922557D326005244B0 /* Project object */;
+			containerPortal = 0A84507E2561754E0036589F /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 7534F4992557D326005244B0;
+			remoteGlobalIDString = 0A8450852561754E0036589F;
 			remoteInfo = "knovigo ios";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7534F49A2557D326005244B0 /* knovigo ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "knovigo ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7534F49D2557D326005244B0 /* knovigo_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = knovigo_iosApp.swift; sourceTree = "<group>"; };
-		7534F49F2557D326005244B0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		7534F4A12557D326005244B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7534F4A42557D326005244B0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		7534F4A62557D326005244B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7534F4AB2557D327005244B0 /* knovigo iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "knovigo iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7534F4AF2557D327005244B0 /* knovigo_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = knovigo_iosTests.swift; sourceTree = "<group>"; };
-		7534F4B12557D327005244B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7534F4B62557D327005244B0 /* knovigo iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "knovigo iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7534F4BA2557D327005244B0 /* knovigo_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = knovigo_iosUITests.swift; sourceTree = "<group>"; };
-		7534F4BC2557D327005244B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00AACCBD9DFEC22CF9FF2FA3 /* Pods-knovigo ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-knovigo ios.release.xcconfig"; path = "Target Support Files/Pods-knovigo ios/Pods-knovigo ios.release.xcconfig"; sourceTree = "<group>"; };
+		0A8450862561754E0036589F /* knovigo ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "knovigo ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A8450892561754E0036589F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0A84508B2561754E0036589F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		0A84508D2561754E0036589F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0A8450902561754E0036589F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0A845092256175520036589F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0A845095256175520036589F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0A845097256175520036589F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A84509C256175530036589F /* knovigo iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "knovigo iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A8450A0256175530036589F /* knovigo_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = knovigo_iosTests.swift; sourceTree = "<group>"; };
+		0A8450A2256175530036589F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A8450A7256175530036589F /* knovigo iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "knovigo iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A8450AB256175530036589F /* knovigo_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = knovigo_iosUITests.swift; sourceTree = "<group>"; };
+		0A8450AD256175530036589F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DB54B563B0E9CB59BBACA4D /* Pods-knovigo ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-knovigo ios.debug.xcconfig"; path = "Target Support Files/Pods-knovigo ios/Pods-knovigo ios.debug.xcconfig"; sourceTree = "<group>"; };
+		D2409AF8A524EB449240FCED /* libPods-knovigo ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-knovigo ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7534F4972557D326005244B0 /* Frameworks */ = {
+		0A8450832561754E0036589F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				922759826C21706CC7D55C28 /* libPods-knovigo ios.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A845099256175530036589F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7534F4A82557D327005244B0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7534F4B32557D327005244B0 /* Frameworks */ = {
+		0A8450A4256175530036589F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -72,74 +81,89 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7534F4912557D326005244B0 = {
+		0A84507D2561754E0036589F = {
 			isa = PBXGroup;
 			children = (
-				7534F49C2557D326005244B0 /* knovigo ios */,
-				7534F4AE2557D327005244B0 /* knovigo iosTests */,
-				7534F4B92557D327005244B0 /* knovigo iosUITests */,
-				7534F49B2557D326005244B0 /* Products */,
+				0A8450882561754E0036589F /* knovigo ios */,
+				0A84509F256175530036589F /* knovigo iosTests */,
+				0A8450AA256175530036589F /* knovigo iosUITests */,
+				0A8450872561754E0036589F /* Products */,
+				5EDF35990524CE9C09AFAD4D /* Pods */,
+				28C4D7E3B6E91F1A351FD40B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		7534F49B2557D326005244B0 /* Products */ = {
+		0A8450872561754E0036589F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7534F49A2557D326005244B0 /* knovigo ios.app */,
-				7534F4AB2557D327005244B0 /* knovigo iosTests.xctest */,
-				7534F4B62557D327005244B0 /* knovigo iosUITests.xctest */,
+				0A8450862561754E0036589F /* knovigo ios.app */,
+				0A84509C256175530036589F /* knovigo iosTests.xctest */,
+				0A8450A7256175530036589F /* knovigo iosUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7534F49C2557D326005244B0 /* knovigo ios */ = {
+		0A8450882561754E0036589F /* knovigo ios */ = {
 			isa = PBXGroup;
 			children = (
-				7534F49D2557D326005244B0 /* knovigo_iosApp.swift */,
-				7534F49F2557D326005244B0 /* ContentView.swift */,
-				7534F4A12557D326005244B0 /* Assets.xcassets */,
-				7534F4A62557D326005244B0 /* Info.plist */,
-				7534F4A32557D326005244B0 /* Preview Content */,
+				0A8450892561754E0036589F /* AppDelegate.swift */,
+				0A84508B2561754E0036589F /* SceneDelegate.swift */,
+				0A84508D2561754E0036589F /* ViewController.swift */,
+				0A84508F2561754E0036589F /* Main.storyboard */,
+				0A845092256175520036589F /* Assets.xcassets */,
+				0A845094256175520036589F /* LaunchScreen.storyboard */,
+				0A845097256175520036589F /* Info.plist */,
 			);
 			path = "knovigo ios";
 			sourceTree = "<group>";
 		};
-		7534F4A32557D326005244B0 /* Preview Content */ = {
+		0A84509F256175530036589F /* knovigo iosTests */ = {
 			isa = PBXGroup;
 			children = (
-				7534F4A42557D326005244B0 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		7534F4AE2557D327005244B0 /* knovigo iosTests */ = {
-			isa = PBXGroup;
-			children = (
-				7534F4AF2557D327005244B0 /* knovigo_iosTests.swift */,
-				7534F4B12557D327005244B0 /* Info.plist */,
+				0A8450A0256175530036589F /* knovigo_iosTests.swift */,
+				0A8450A2256175530036589F /* Info.plist */,
 			);
 			path = "knovigo iosTests";
 			sourceTree = "<group>";
 		};
-		7534F4B92557D327005244B0 /* knovigo iosUITests */ = {
+		0A8450AA256175530036589F /* knovigo iosUITests */ = {
 			isa = PBXGroup;
 			children = (
-				7534F4BA2557D327005244B0 /* knovigo_iosUITests.swift */,
-				7534F4BC2557D327005244B0 /* Info.plist */,
+				0A8450AB256175530036589F /* knovigo_iosUITests.swift */,
+				0A8450AD256175530036589F /* Info.plist */,
 			);
 			path = "knovigo iosUITests";
+			sourceTree = "<group>";
+		};
+		28C4D7E3B6E91F1A351FD40B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D2409AF8A524EB449240FCED /* libPods-knovigo ios.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5EDF35990524CE9C09AFAD4D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4DB54B563B0E9CB59BBACA4D /* Pods-knovigo ios.debug.xcconfig */,
+				00AACCBD9DFEC22CF9FF2FA3 /* Pods-knovigo ios.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7534F4992557D326005244B0 /* knovigo ios */ = {
+		0A8450852561754E0036589F /* knovigo ios */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7534F4BF2557D327005244B0 /* Build configuration list for PBXNativeTarget "knovigo ios" */;
+			buildConfigurationList = 0A8450B0256175530036589F /* Build configuration list for PBXNativeTarget "knovigo ios" */;
 			buildPhases = (
-				7534F4962557D326005244B0 /* Sources */,
-				7534F4972557D326005244B0 /* Frameworks */,
-				7534F4982557D326005244B0 /* Resources */,
+				E9E70F86407992F6FA25D157 /* [CP] Check Pods Manifest.lock */,
+				0A8450822561754E0036589F /* Sources */,
+				0A8450832561754E0036589F /* Frameworks */,
+				0A8450842561754E0036589F /* Resources */,
+				2D2D2445AD26FDC3B3BCA4FA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -147,68 +171,69 @@
 			);
 			name = "knovigo ios";
 			productName = "knovigo ios";
-			productReference = 7534F49A2557D326005244B0 /* knovigo ios.app */;
+			productReference = 0A8450862561754E0036589F /* knovigo ios.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7534F4AA2557D327005244B0 /* knovigo iosTests */ = {
+		0A84509B256175530036589F /* knovigo iosTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7534F4C22557D327005244B0 /* Build configuration list for PBXNativeTarget "knovigo iosTests" */;
+			buildConfigurationList = 0A8450B3256175530036589F /* Build configuration list for PBXNativeTarget "knovigo iosTests" */;
 			buildPhases = (
-				7534F4A72557D327005244B0 /* Sources */,
-				7534F4A82557D327005244B0 /* Frameworks */,
-				7534F4A92557D327005244B0 /* Resources */,
+				0A845098256175530036589F /* Sources */,
+				0A845099256175530036589F /* Frameworks */,
+				0A84509A256175530036589F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7534F4AD2557D327005244B0 /* PBXTargetDependency */,
+				0A84509E256175530036589F /* PBXTargetDependency */,
 			);
 			name = "knovigo iosTests";
 			productName = "knovigo iosTests";
-			productReference = 7534F4AB2557D327005244B0 /* knovigo iosTests.xctest */;
+			productReference = 0A84509C256175530036589F /* knovigo iosTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7534F4B52557D327005244B0 /* knovigo iosUITests */ = {
+		0A8450A6256175530036589F /* knovigo iosUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7534F4C52557D327005244B0 /* Build configuration list for PBXNativeTarget "knovigo iosUITests" */;
+			buildConfigurationList = 0A8450B6256175530036589F /* Build configuration list for PBXNativeTarget "knovigo iosUITests" */;
 			buildPhases = (
-				7534F4B22557D327005244B0 /* Sources */,
-				7534F4B32557D327005244B0 /* Frameworks */,
-				7534F4B42557D327005244B0 /* Resources */,
+				0A8450A3256175530036589F /* Sources */,
+				0A8450A4256175530036589F /* Frameworks */,
+				0A8450A5256175530036589F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7534F4B82557D327005244B0 /* PBXTargetDependency */,
+				0A8450A9256175530036589F /* PBXTargetDependency */,
 			);
 			name = "knovigo iosUITests";
 			productName = "knovigo iosUITests";
-			productReference = 7534F4B62557D327005244B0 /* knovigo iosUITests.xctest */;
+			productReference = 0A8450A7256175530036589F /* knovigo iosUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		7534F4922557D326005244B0 /* Project object */ = {
+		0A84507E2561754E0036589F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1210;
-				LastUpgradeCheck = 1210;
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = "Katie Chang";
 				TargetAttributes = {
-					7534F4992557D326005244B0 = {
-						CreatedOnToolsVersion = 12.1;
+					0A8450852561754E0036589F = {
+						CreatedOnToolsVersion = 11.5;
 					};
-					7534F4AA2557D327005244B0 = {
-						CreatedOnToolsVersion = 12.1;
-						TestTargetID = 7534F4992557D326005244B0;
+					0A84509B256175530036589F = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 0A8450852561754E0036589F;
 					};
-					7534F4B52557D327005244B0 = {
-						CreatedOnToolsVersion = 12.1;
-						TestTargetID = 7534F4992557D326005244B0;
+					0A8450A6256175530036589F = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 0A8450852561754E0036589F;
 					};
 				};
 			};
-			buildConfigurationList = 7534F4952557D326005244B0 /* Build configuration list for PBXProject "knovigo ios" */;
+			buildConfigurationList = 0A8450812561754E0036589F /* Build configuration list for PBXProject "knovigo ios" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -216,36 +241,37 @@
 				en,
 				Base,
 			);
-			mainGroup = 7534F4912557D326005244B0;
-			productRefGroup = 7534F49B2557D326005244B0 /* Products */;
+			mainGroup = 0A84507D2561754E0036589F;
+			productRefGroup = 0A8450872561754E0036589F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7534F4992557D326005244B0 /* knovigo ios */,
-				7534F4AA2557D327005244B0 /* knovigo iosTests */,
-				7534F4B52557D327005244B0 /* knovigo iosUITests */,
+				0A8450852561754E0036589F /* knovigo ios */,
+				0A84509B256175530036589F /* knovigo iosTests */,
+				0A8450A6256175530036589F /* knovigo iosUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		7534F4982557D326005244B0 /* Resources */ = {
+		0A8450842561754E0036589F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7534F4A52557D326005244B0 /* Preview Assets.xcassets in Resources */,
-				7534F4A22557D326005244B0 /* Assets.xcassets in Resources */,
+				0A845096256175520036589F /* LaunchScreen.storyboard in Resources */,
+				0A845093256175520036589F /* Assets.xcassets in Resources */,
+				0A8450912561754E0036589F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7534F4A92557D327005244B0 /* Resources */ = {
+		0A84509A256175530036589F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7534F4B42557D327005244B0 /* Resources */ = {
+		0A8450A5256175530036589F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -254,49 +280,111 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2D2D2445AD26FDC3B3BCA4FA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-knovigo ios/Pods-knovigo ios-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-knovigo ios/Pods-knovigo ios-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-knovigo ios/Pods-knovigo ios-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E9E70F86407992F6FA25D157 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-knovigo ios-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		7534F4962557D326005244B0 /* Sources */ = {
+		0A8450822561754E0036589F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7534F4A02557D326005244B0 /* ContentView.swift in Sources */,
-				7534F49E2557D326005244B0 /* knovigo_iosApp.swift in Sources */,
+				0A84508E2561754E0036589F /* ViewController.swift in Sources */,
+				0A84508A2561754E0036589F /* AppDelegate.swift in Sources */,
+				0A84508C2561754E0036589F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7534F4A72557D327005244B0 /* Sources */ = {
+		0A845098256175530036589F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7534F4B02557D327005244B0 /* knovigo_iosTests.swift in Sources */,
+				0A8450A1256175530036589F /* knovigo_iosTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7534F4B22557D327005244B0 /* Sources */ = {
+		0A8450A3256175530036589F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7534F4BB2557D327005244B0 /* knovigo_iosUITests.swift in Sources */,
+				0A8450AC256175530036589F /* knovigo_iosUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7534F4AD2557D327005244B0 /* PBXTargetDependency */ = {
+		0A84509E256175530036589F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7534F4992557D326005244B0 /* knovigo ios */;
-			targetProxy = 7534F4AC2557D327005244B0 /* PBXContainerItemProxy */;
+			target = 0A8450852561754E0036589F /* knovigo ios */;
+			targetProxy = 0A84509D256175530036589F /* PBXContainerItemProxy */;
 		};
-		7534F4B82557D327005244B0 /* PBXTargetDependency */ = {
+		0A8450A9256175530036589F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7534F4992557D326005244B0 /* knovigo ios */;
-			targetProxy = 7534F4B72557D327005244B0 /* PBXContainerItemProxy */;
+			target = 0A8450852561754E0036589F /* knovigo ios */;
+			targetProxy = 0A8450A8256175530036589F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		0A84508F2561754E0036589F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A8450902561754E0036589F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0A845094256175520036589F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A845095256175520036589F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		7534F4BD2557D327005244B0 /* Debug */ = {
+		0A8450AE256175530036589F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -322,7 +410,6 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -347,7 +434,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -357,7 +444,7 @@
 			};
 			name = Debug;
 		};
-		7534F4BE2557D327005244B0 /* Release */ = {
+		0A8450AF256175530036589F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -383,7 +470,6 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -402,7 +488,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -412,62 +498,59 @@
 			};
 			name = Release;
 		};
-		7534F4C02557D327005244B0 /* Debug */ = {
+		0A8450B1256175530036589F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DB54B563B0E9CB59BBACA4D /* Pods-knovigo ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"knovigo ios/Preview Content\"";
-				ENABLE_PREVIEWS = YES;
+				DEVELOPMENT_TEAM = 87747Z7832;
 				INFOPLIST_FILE = "knovigo ios/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "mk.knovigo-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "kt.knovigo-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		7534F4C12557D327005244B0 /* Release */ = {
+		0A8450B2256175530036589F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00AACCBD9DFEC22CF9FF2FA3 /* Pods-knovigo ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"knovigo ios/Preview Content\"";
-				ENABLE_PREVIEWS = YES;
+				DEVELOPMENT_TEAM = 87747Z7832;
 				INFOPLIST_FILE = "knovigo ios/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "mk.knovigo-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "kt.knovigo-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		7534F4C32557D327005244B0 /* Debug */ = {
+		0A8450B4256175530036589F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 87747Z7832;
 				INFOPLIST_FILE = "knovigo iosTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "mk.knovigo-iosTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "kt.knovigo-iosTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -475,20 +558,21 @@
 			};
 			name = Debug;
 		};
-		7534F4C42557D327005244B0 /* Release */ = {
+		0A8450B5256175530036589F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 87747Z7832;
 				INFOPLIST_FILE = "knovigo iosTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "mk.knovigo-iosTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "kt.knovigo-iosTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -496,18 +580,19 @@
 			};
 			name = Release;
 		};
-		7534F4C62557D327005244B0 /* Debug */ = {
+		0A8450B7256175530036589F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 87747Z7832;
 				INFOPLIST_FILE = "knovigo iosUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "mk.knovigo-iosUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "kt.knovigo-iosUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -515,18 +600,19 @@
 			};
 			name = Debug;
 		};
-		7534F4C72557D327005244B0 /* Release */ = {
+		0A8450B8256175530036589F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 87747Z7832;
 				INFOPLIST_FILE = "knovigo iosUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "mk.knovigo-iosUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "kt.knovigo-iosUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -537,43 +623,43 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7534F4952557D326005244B0 /* Build configuration list for PBXProject "knovigo ios" */ = {
+		0A8450812561754E0036589F /* Build configuration list for PBXProject "knovigo ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7534F4BD2557D327005244B0 /* Debug */,
-				7534F4BE2557D327005244B0 /* Release */,
+				0A8450AE256175530036589F /* Debug */,
+				0A8450AF256175530036589F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7534F4BF2557D327005244B0 /* Build configuration list for PBXNativeTarget "knovigo ios" */ = {
+		0A8450B0256175530036589F /* Build configuration list for PBXNativeTarget "knovigo ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7534F4C02557D327005244B0 /* Debug */,
-				7534F4C12557D327005244B0 /* Release */,
+				0A8450B1256175530036589F /* Debug */,
+				0A8450B2256175530036589F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7534F4C22557D327005244B0 /* Build configuration list for PBXNativeTarget "knovigo iosTests" */ = {
+		0A8450B3256175530036589F /* Build configuration list for PBXNativeTarget "knovigo iosTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7534F4C32557D327005244B0 /* Debug */,
-				7534F4C42557D327005244B0 /* Release */,
+				0A8450B4256175530036589F /* Debug */,
+				0A8450B5256175530036589F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7534F4C52557D327005244B0 /* Build configuration list for PBXNativeTarget "knovigo iosUITests" */ = {
+		0A8450B6256175530036589F /* Build configuration list for PBXNativeTarget "knovigo iosUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7534F4C62557D327005244B0 /* Debug */,
-				7534F4C72557D327005244B0 /* Release */,
+				0A8450B7256175530036589F /* Debug */,
+				0A8450B8256175530036589F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 7534F4922557D326005244B0 /* Project object */;
+	rootObject = 0A84507E2561754E0036589F /* Project object */;
 }

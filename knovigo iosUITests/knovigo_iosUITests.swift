@@ -2,7 +2,8 @@
 //  knovigo_iosUITests.swift
 //  knovigo iosUITests
 //
-//  Created by Medha Kini on 11/7/20.
+//  Created by Katie Chang on 2020/11/15.
+//  Copyright © 2020 Katie Chang. All rights reserved.
 //
 
 import XCTest
@@ -34,7 +35,7 @@ class knovigo_iosUITests: XCTestCase {
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
             // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
+            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
                 XCUIApplication().launch()
             }
         }

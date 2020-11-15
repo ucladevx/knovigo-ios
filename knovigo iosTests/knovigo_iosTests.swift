@@ -2,7 +2,8 @@
 //  knovigo_iosTests.swift
 //  knovigo iosTests
 //
-//  Created by Medha Kini on 11/7/20.
+//  Created by Katie Chang on 2020/11/15.
+//  Copyright © 2020 Katie Chang. All rights reserved.
 //
 
 import XCTest
