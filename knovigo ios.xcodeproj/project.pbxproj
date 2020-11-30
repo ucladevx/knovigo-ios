@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A3DEA402573F1FD0079B25B /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3DEA3F2573F1FD0079B25B /* LocationViewController.swift */; };
 		0A84508A2561754E0036589F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8450892561754E0036589F /* AppDelegate.swift */; };
 		0A84508C2561754E0036589F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84508B2561754E0036589F /* SceneDelegate.swift */; };
 		0A84508E2561754E0036589F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84508D2561754E0036589F /* ViewController.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		00AACCBD9DFEC22CF9FF2FA3 /* Pods-knovigo ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-knovigo ios.release.xcconfig"; path = "Target Support Files/Pods-knovigo ios/Pods-knovigo ios.release.xcconfig"; sourceTree = "<group>"; };
+		0A3DEA3F2573F1FD0079B25B /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		0A8450862561754E0036589F /* knovigo ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "knovigo ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A8450892561754E0036589F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A84508B2561754E0036589F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				0A8450892561754E0036589F /* AppDelegate.swift */,
 				0A84508B2561754E0036589F /* SceneDelegate.swift */,
 				0A84508D2561754E0036589F /* ViewController.swift */,
+				0A3DEA3F2573F1FD0079B25B /* LocationViewController.swift */,
 				0A84508F2561754E0036589F /* Main.storyboard */,
 				0A845092256175520036589F /* Assets.xcassets */,
 				0A845094256175520036589F /* LaunchScreen.storyboard */,
@@ -330,6 +333,7 @@
 				0A84508E2561754E0036589F /* ViewController.swift in Sources */,
 				0A84508A2561754E0036589F /* AppDelegate.swift in Sources */,
 				0A84508C2561754E0036589F /* SceneDelegate.swift in Sources */,
+				0A3DEA402573F1FD0079B25B /* LocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
