@@ -96,20 +96,22 @@ class ViewController: UIViewController {
      }
 
     //add user report button
+    @IBOutlet weak var ReportButton: UIButton!
     func userReportButton() {
-        let reportBtn = UIButton(type: .custom)
-            reportBtn.frame = CGRect(x: 250, y: 500, width: 40, height: 40)
-            reportBtn.layer.cornerRadius = 0.5 * reportBtn.bounds.size.width
-            reportBtn.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
-            reportBtn.clipsToBounds = true
-            reportBtn.setImage(UIImage(named:"thumbsUp.png"), for: .normal)
-            reportBtn.addTarget(self, action: #selector(userReportButtonPressed), for: .touchUpInside)
-            view.addSubview(reportBtn)
+//        let reportBtn = UIButton(type: .custom)
+            ReportButton.frame = CGRect(x: 250, y: 500, width: 40, height: 40)
+            ReportButton.layer.cornerRadius = 0.5 * ReportButton.bounds.size.width
+            ReportButton.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0) /* #afd19a */
+
+            ReportButton.clipsToBounds = true
+            ReportButton.setImage(UIImage(named:"reportIcon"), for: .normal)
+            ReportButton.addTarget(self, action: #selector(userReportButtonPressed), for: .touchUpInside)
+            view.addSubview(ReportButton)
 
     }
 
     @objc func userReportButtonPressed() {
-        print("thumbs up button pressed")
+        self.performSegue(withIdentifier: "Report", sender: self)
     }
 
    }
