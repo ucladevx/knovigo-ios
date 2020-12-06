@@ -119,49 +119,110 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         setSliderInvert(slider: q6slider);
         setSlider(slider: q7slider);
         
-//        let borderColor : UIColor = UIColor(red: 12/255, green: 0/255, blue: 9/255, alpha: 1.0)
-//                q9tv.layer.borderWidth = 0.5
-//                q9tv.layer.borderColor = borderColor.cgColor
-//                q9tv.layer.cornerRadius = 5.0
+        let borderColor : UIColor = UIColor(red: 12/255, green: 0/255, blue: 9/255, alpha: 1.0)
+                q9tv.layer.borderWidth = 0.5
+                q9tv.layer.borderColor = borderColor.cgColor
+                q9tv.layer.cornerRadius = 5.0
        
         self.locationPicker.delegate = self
         self.locationPicker.dataSource = self
         pickerData = ["Target", "Trader Joe's", "CVS", "Whole Foods", "Ralph's", "Barney's Beanery", "Tongva Steps Area", "Diddy Riese", "BJs Restaurant"]
 
-       // submitButton()
         self.q4img.image = UIImage(named: "q4_50")
         self.q5img.image = UIImage(named: "q5_50")
         self.q6img.image = UIImage(named: "q6_50")
         
         self.locationImg.image = UIImage(named: "locationPic")
+        
+        submitBtn.layer.cornerRadius = 3.0
+        submitBtn.frame = CGRect(x: 151, y: 1702, width: 150, height: 40)
+        submitBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0) /* #afd19a */
+        submitBtn.setTitle("Submit", for: .normal)
+        submitBtn.setTitleColor(UIColor.white, for: .normal)
+
+        masksReq.backgroundColor = UIColor.white
+        masksReq.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
+        masksReq.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
+        masksReq.layer.borderWidth = 1.0
+        masksReq.layer.cornerRadius = 5.0
+        masksReq.addTarget(self, action: #selector(changeBtnColor), for: .touchUpInside)
+        
+        staffMask.backgroundColor = UIColor.white
+        staffMask.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
+        staffMask.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
+        staffMask.layer.borderWidth = 1.0
+        staffMask.layer.cornerRadius = 5.0
+
+        plexiGlass.backgroundColor = UIColor.white
+        plexiGlass.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
+        plexiGlass.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha:1.0).cgColor
+        plexiGlass.layer.borderWidth = 1.0
+        plexiGlass.layer.cornerRadius = 5.0
+
+        bathroom.backgroundColor = UIColor.white
+        bathroom.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
+        bathroom.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
+        bathroom.layer.borderWidth = 1.0
+        bathroom.layer.cornerRadius = 5.0
+
+        lineOutside.backgroundColor = UIColor.white
+        lineOutside.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
+        lineOutside.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
+        lineOutside.layer.borderWidth = 1.0
+        lineOutside.layer.cornerRadius = 5.0
+
+        outlets.backgroundColor = UIColor.white
+        outlets.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
+        outlets.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
+        outlets.layer.borderWidth = 1.0
+        outlets.layer.cornerRadius = 5.0
+
+        takeout.backgroundColor = UIColor.white
+        takeout.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
+        takeout.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
+        takeout.layer.borderWidth = 1.0
+        takeout.layer.cornerRadius = 5.0
+
+        dineIn.backgroundColor = UIColor.white
+        dineIn.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
+        dineIn.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
+        dineIn.layer.borderWidth = 1.0
+        dineIn.layer.cornerRadius = 5.0
+
+        wifiProv.backgroundColor = UIColor.white
+        wifiProv.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
+        wifiProv.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
+        wifiProv.layer.borderWidth = 1.0
+        wifiProv.layer.cornerRadius = 5.0
+
+        outdoor.backgroundColor = UIColor.white
+        outdoor.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
+        outdoor.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
+        outdoor.layer.borderWidth = 1.0
+        outdoor.layer.cornerRadius = 5.0
+
+        limitedCap.backgroundColor = UIColor.white
+        limitedCap.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
+        limitedCap.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
+        limitedCap.layer.borderWidth = 1.0
+        limitedCap.layer.cornerRadius = 5.0
+
 
 //        q4ValChanged(q4slider)
     }
     
-//    @IBOutlet weak var submitBtn: UIButton!
-//    func submitButton() {
-////        let reportBtn = UIButton(type: .custom)
-//            submitBtn.frame = CGRect(x: 100, y: 1170, width: 200, height: 75)
-//            submitBtn.layer.cornerRadius = 3.0
-//            submitBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0) /* #afd19a */
-//
-//            submitBtn.clipsToBounds = true
-//        submitBtn.setTitle("Submit", for: .normal)
-//        submitBtn.setTitleColor(UIColor.white, for: .normal)
-////            submitBtn.addTarget(self, action: #selector(userReportButtonPressed), for: .touchUpInside)
-//            view.addSubview(submitBtn)
-//
-//    }
-    @IBOutlet weak var q9tv: UITextView!
     @IBOutlet weak var locationPicker: UIPickerView!
     @IBOutlet weak var sliderlabel1: UILabel!
     @IBOutlet weak var sliderNums: UILabel!
     
     @IBOutlet weak var locationImg: UIImageView!
     
+    @IBOutlet weak var submitBtn: UIButton!
+    
     @IBOutlet weak var q4img: UIImageView!
     @IBOutlet weak var q5img: UIImageView!
     @IBOutlet weak var q6img: UIImageView!
+    @IBOutlet weak var q9tv: UITextView!
     
     @IBAction func q4ValChanged(_ sender: UISlider) {
         let sliderValue = sender.value
@@ -247,6 +308,32 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var q8: UILabel!
     
     @IBOutlet weak var q9: UILabel!
+    
+    
+    @IBOutlet weak var masksReq: UIButton!
+    @IBOutlet weak var staffMask: UIButton!
+    @IBOutlet weak var plexiGlass: UIButton!
+    @IBOutlet weak var limitedCap: UIButton!
+    @IBOutlet weak var bathroom: UIButton!
+    @IBOutlet weak var lineOutside: UIButton!
+    @IBOutlet weak var outlets: UIButton!
+    @IBOutlet weak var takeout: UIButton!
+    @IBOutlet weak var dineIn: UIButton!
+    @IBOutlet weak var wifiProv: UIButton!
+    @IBOutlet weak var outdoor: UIButton!
+    
+    @IBAction func changeBtnColor(sender:UIButton) {
+        print("hello")
+        if (sender.backgroundColor == UIColor.white) {
+            sender.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
+            sender.setTitleColor(UIColor.white, for: UIControl.State.highlighted);
+            print("Yes!!")
+        } else {
+            sender.backgroundColor = UIColor.white
+            sender.setTitleColor(UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0), for: UIControl.State.highlighted);
+        }
+    }
+    
     //    func showBackButton() {
 ////        let reportBtn = UIButton(type: .custom)
 //            backButton.frame = CGRect(x: 5, y: 50, width: 40, height: 40)
