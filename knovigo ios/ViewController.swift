@@ -9,31 +9,40 @@
 import UIKit
 import GoogleMaps
 
-class location: NSObject {
-    let name: String
-    let location: CLLocationCoordinate2D
-    let zoom: Float
-    
-    init(name: String, location: CLLocationCoordinate2D, zoom: Float) {
-        self.name = name
-        self.location = location
-        self.zoom =  zoom
-    }
-}
-
-class ViewController: UIViewController {
+class ViewController: UIViewController, GMSMapViewDelegate {
     
     var mapView: GMSMapView?
-//    var currentLocation: currentLocation?
     
+    //view load function
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let camera = GMSCameraPosition.camera(withLatitude: 34.0522, longitude: -118.2437, zoom: 8.0)
+        // set map @UCLA
+        //TODO: Map is HARD CODED for now :(; set view to person's location later
+        let camera = GMSCameraPosition.camera(withLatitude: 34.0700, longitude: -118.4398, zoom: 20.0)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         view = mapView
+        
+        //set markers
+        //TODO: Markers are HARD CODED for now :(; change later
+        setMarker(markerGeoCoords: markerCoords)
+
     }
-
-
+    
+    // function that takes in an array of location objects and marker them on the map
+    func setMarker(markerGeoCoords: [location]){
+        var marker: GMSMarker
+        for i in markerGeoCoords{
+            marker =  GMSMarker(position: i.coordinates)
+            marker.title = i.name
+            marker.map = self.mapView
+        }
+    }
+    
+    //function that manages tapped markers
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        print("\n\n\ntippity tap\n\n\n")
+        return true
+    }
+    
 }
-

@@ -16,6 +16,7 @@
 		0A845096256175520036589F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A845094256175520036589F /* LaunchScreen.storyboard */; };
 		0A8450A1256175530036589F /* knovigo_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8450A0256175530036589F /* knovigo_iosTests.swift */; };
 		0A8450AC256175530036589F /* knovigo_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8450AB256175530036589F /* knovigo_iosUITests.swift */; };
+		0A86C68B2588893E0061295D /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86C68A2588893D0061295D /* util.swift */; };
 		922759826C21706CC7D55C28 /* libPods-knovigo ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2409AF8A524EB449240FCED /* libPods-knovigo ios.a */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		0A8450A7256175530036589F /* knovigo iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "knovigo iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A8450AB256175530036589F /* knovigo_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = knovigo_iosUITests.swift; sourceTree = "<group>"; };
 		0A8450AD256175530036589F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A86C68A2588893D0061295D /* util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
 		4DB54B563B0E9CB59BBACA4D /* Pods-knovigo ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-knovigo ios.debug.xcconfig"; path = "Target Support Files/Pods-knovigo ios/Pods-knovigo ios.debug.xcconfig"; sourceTree = "<group>"; };
 		D2409AF8A524EB449240FCED /* libPods-knovigo ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-knovigo ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -111,6 +113,7 @@
 				0A8450892561754E0036589F /* AppDelegate.swift */,
 				0A84508B2561754E0036589F /* SceneDelegate.swift */,
 				0A84508D2561754E0036589F /* ViewController.swift */,
+				0A86C68A2588893D0061295D /* util.swift */,
 				0A3DEA3F2573F1FD0079B25B /* LocationViewController.swift */,
 				0A84508F2561754E0036589F /* Main.storyboard */,
 				0A845092256175520036589F /* Assets.xcassets */,
@@ -333,6 +336,7 @@
 				0A84508E2561754E0036589F /* ViewController.swift in Sources */,
 				0A84508A2561754E0036589F /* AppDelegate.swift in Sources */,
 				0A84508C2561754E0036589F /* SceneDelegate.swift in Sources */,
+				0A86C68B2588893E0061295D /* util.swift in Sources */,
 				0A3DEA402573F1FD0079B25B /* LocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
