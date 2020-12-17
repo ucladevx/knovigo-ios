@@ -64,8 +64,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZx-xY-yEc">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vpr-9J-21K">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1400"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vpr-9J-21K">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1600"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Location Report " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xED-hZ-4LM">
                                                 <rect key="frame" x="50" y="50" width="290" height="22"/>
@@ -73,8 +73,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZq-C5-peb">
-                                                <rect key="frame" x="15" y="111" width="374" height="51"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZq-C5-peb">
+                                                <rect key="frame" x="20" y="122" width="374" height="41"/>
                                                 <string key="text">Help us provide updates on how crowded &amp; safe different places are by reporting your experiences at a location after your visit.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -275,6 +275,14 @@
                                                     <action selector="changeBtnColor:" destination="WeO-Ya-lbu" eventType="touchUpInside" id="oCt-4Z-5LU"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAG-xA-AbG">
+                                                <rect key="frame" x="142" y="1397" width="52" height="27"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <state key="normal" title="Takeout"/>
+                                                <connections>
+                                                    <action selector="changeBtnColor:" destination="WeO-Ya-lbu" eventType="touchUpInside" id="Bg3-92-wTO"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1zV-I7-qv0">
                                                 <rect key="frame" x="202" y="1398" width="60" height="27"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -325,12 +333,12 @@
                                                 <rect key="frame" x="131" y="1702" width="150" height="40"/>
                                                 <state key="normal" title="Submit"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAG-xA-AbG">
-                                                <rect key="frame" x="142" y="1397" width="52" height="27"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <state key="normal" title="Takeout"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v1n-pC-uIL">
+                                                <rect key="frame" x="33" y="45" width="75" height="22"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button" image="arrowshape.turn.up.left" catalog="system"/>
                                                 <connections>
-                                                    <action selector="changeBtnColor:" destination="WeO-Ya-lbu" eventType="touchUpInside" id="Bg3-92-wTO"/>
+                                                    <action selector="goBack:" destination="WeO-Ya-lbu" eventType="touchUpInside" id="d89-33-RWx"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -362,6 +370,7 @@
                                             <constraint firstItem="QXh-pn-Qhi" firstAttribute="leading" secondItem="gOQ-7a-eN3" secondAttribute="trailing" constant="5" id="DxV-n6-CNz"/>
                                             <constraint firstItem="xED-hZ-4LM" firstAttribute="leading" secondItem="Vpr-9J-21K" secondAttribute="leading" constant="50" id="E2n-sP-21g"/>
                                             <constraint firstItem="Otp-jd-IL8" firstAttribute="leading" secondItem="Vpr-9J-21K" secondAttribute="leading" constant="15" id="EZS-ae-ytj"/>
+                                            <constraint firstItem="v1n-pC-uIL" firstAttribute="top" secondItem="Vpr-9J-21K" secondAttribute="top" constant="45" id="Egg-4z-Bqa"/>
                                             <constraint firstAttribute="trailing" secondItem="X44-yb-im2" secondAttribute="trailing" constant="120" id="FBc-ms-DtS"/>
                                             <constraint firstAttribute="trailing" secondItem="3TB-eB-qK3" secondAttribute="trailing" constant="35" id="Ffo-eF-7yE"/>
                                             <constraint firstItem="J2L-6Y-C3h" firstAttribute="top" secondItem="ZF8-zg-lLX" secondAttribute="bottom" constant="10" id="FhM-re-BFq"/>
@@ -471,6 +480,7 @@
                                             <constraint firstAttribute="trailing" secondItem="UFh-Vr-PnY" secondAttribute="trailing" constant="41" id="xXk-g5-dr6"/>
                                             <constraint firstItem="J2L-6Y-C3h" firstAttribute="top" secondItem="8eZ-jN-rcr" secondAttribute="bottom" constant="200" id="xcr-6S-fiz"/>
                                             <constraint firstItem="NVH-Kc-x8p" firstAttribute="leading" secondItem="Vpr-9J-21K" secondAttribute="leading" constant="13" id="y3l-b5-Mmd"/>
+                                            <constraint firstItem="v1n-pC-uIL" firstAttribute="leading" secondItem="Vpr-9J-21K" secondAttribute="leading" constant="33" id="y8C-ZQ-tL3"/>
                                             <constraint firstItem="8eZ-jN-rcr" firstAttribute="top" secondItem="5Vw-Xv-pLJ" secondAttribute="bottom" constant="200" id="zEC-LW-hdo"/>
                                             <constraint firstItem="q7T-J2-BTF" firstAttribute="leading" secondItem="Vpr-9J-21K" secondAttribute="leading" constant="50" id="zde-d1-82G"/>
                                             <constraint firstItem="5Vw-Xv-pLJ" firstAttribute="top" secondItem="sWK-Rb-nQV" secondAttribute="bottom" constant="200" id="zjE-Hh-L0p"/>
@@ -503,6 +513,7 @@
                         <outlet property="LocationReport" destination="xED-hZ-4LM" id="ccQ-rk-dcE"/>
                         <outlet property="ScrollView" destination="HZx-xY-yEc" id="jOH-Yk-u3u"/>
                         <outlet property="SurveyView" destination="Vpr-9J-21K" id="MZg-jw-bml"/>
+                        <outlet property="backBtn" destination="v1n-pC-uIL" id="iJs-ka-0H4"/>
                         <outlet property="bathroom" destination="Cwa-ow-ijB" id="ffn-r3-b8f"/>
                         <outlet property="curPlaceLabel" destination="QXh-pn-Qhi" id="yWp-To-emr"/>
                         <outlet property="dineIn" destination="1zV-I7-qv0" id="JGO-1o-QjK"/>
@@ -552,6 +563,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrowshape.turn.up.left" catalog="system" width="128" height="106"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

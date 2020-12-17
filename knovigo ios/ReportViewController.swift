@@ -331,6 +331,11 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
     }
     
+    @IBOutlet weak var backBtn: UIButton!
+    @IBAction func goBack(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     //    func showBackButton() {
 ////        let reportBtn = UIButton(type: .custom)
 //            backButton.frame = CGRect(x: 5, y: 50, width: 40, height: 40)
