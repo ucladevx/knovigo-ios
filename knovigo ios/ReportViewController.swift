@@ -145,7 +145,6 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         masksReq.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
         masksReq.layer.borderWidth = 1.0
         masksReq.layer.cornerRadius = 5.0
-        masksReq.addTarget(self, action: #selector(changeBtnColor), for: .touchUpInside)
         
         staffMask.backgroundColor = UIColor.white
         staffMask.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
@@ -322,15 +321,13 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var wifiProv: UIButton!
     @IBOutlet weak var outdoor: UIButton!
     
-    @IBAction func changeBtnColor(sender:UIButton) {
-        print("hello")
+    @IBAction func changeBtnColor(_ sender: UIButton) {
         if (sender.backgroundColor == UIColor.white) {
             sender.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
-            sender.setTitleColor(UIColor.white, for: UIControl.State.highlighted);
-            print("Yes!!")
+            sender.setTitleColor(UIColor.white, for: UIControl.State.normal);
         } else {
             sender.backgroundColor = UIColor.white
-            sender.setTitleColor(UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0), for: UIControl.State.highlighted);
+            sender.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0), for: UIControl.State.normal);
         }
     }
     

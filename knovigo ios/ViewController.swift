@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let camera = GMSCameraPosition.camera(withLatitude: 34.0522, longitude: -118.2437, zoom: 8.0)
+        let camera = GMSCameraPosition.camera(withLatitude: 34.0522, longitude: -118.2437, zoom: 5.0)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         view = mapView
                 
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         marker.snippet = "California"
         marker.map = mapView
         
-        makeBackground();
+    //    makeBackground();
         makeSearchButton();
         userReportButton();
     }
@@ -88,7 +88,7 @@ class ViewController: UIViewController {
     }
      // Add a button to the view.
      func makeSearchButton() {
-        let btnLaunchAc = UIButton(frame: CGRect(x: 20, y: 500, width: 200, height: 35))
+        let btnLaunchAc = UIButton(frame: CGRect(x: 50, y: 800, width: 200, height: 35))
        btnLaunchAc.backgroundColor = #colorLiteral(red: 0.809851794, green: 0.809851794, blue: 0.809851794, alpha: 1)
        btnLaunchAc.setTitle("Search", for: .normal)
        btnLaunchAc.addTarget(self, action: #selector(autocompleteClicked), for: .touchUpInside)
@@ -99,7 +99,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var ReportButton: UIButton!
     func userReportButton() {
 //        let reportBtn = UIButton(type: .custom)
-            ReportButton.frame = CGRect(x: 250, y: 500, width: 40, height: 40)
+            ReportButton.frame = CGRect(x: 250, y: 800, width: 40, height: 40)
             ReportButton.layer.cornerRadius = 0.5 * ReportButton.bounds.size.width
             ReportButton.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0) /* #afd19a */
 
