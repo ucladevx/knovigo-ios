@@ -82,6 +82,10 @@ class LocationViewController: UIViewController, ChartViewDelegate {
         dropDown.dataSource = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
         dropDown.anchorView = dropDownBtn
         dropDown.backgroundColor = UIColor(red: 215/255, green: 231/255, blue: 236/255, alpha: 1)
+        dropDown.selectionAction = {
+            [weak self] (index, item) in
+            self?.dropDownBtn.setTitle(item, for: .normal)
+        }
     }
     
     //record % obtained from sliders
