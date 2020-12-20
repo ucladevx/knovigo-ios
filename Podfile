@@ -3,4 +3,5 @@ target 'knovigo ios' do
 	pod 'GoogleMaps', '4.0.0'
 	pod 'GooglePlaces', '4.0.0'
   pod 'Charts'
+  pod 'DropDown'
 end

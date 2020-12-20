@@ -206,11 +206,24 @@
                                                 <color key="textColor" red="0.66659259800000004" green="0.66670936349999999" blue="0.66658520700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Fl-F1-rJL">
+                                                <rect key="frame" x="303" y="474.5" width="110" height="30"/>
+                                                <color key="backgroundColor" red="0.84236913920000001" green="0.90498065949999995" blue="0.92478448150000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Thursday">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="showDropDown:" destination="7tV-eC-06u" eventType="touchUpInside" id="zOV-63-TdR"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="8zc-vm-BtZ" firstAttribute="top" secondItem="TWG-lf-95s" secondAttribute="bottom" constant="5" id="1to-wb-ee2"/>
+                                            <constraint firstItem="2Fl-F1-rJL" firstAttribute="top" secondItem="8zc-vm-BtZ" secondAttribute="bottom" constant="10" id="22x-Rv-V93"/>
                                             <constraint firstItem="5w8-NH-GnY" firstAttribute="top" secondItem="6wI-Ux-1oQ" secondAttribute="bottom" constant="10" id="3Wc-9a-Od9"/>
+                                            <constraint firstAttribute="trailing" secondItem="2Fl-F1-rJL" secondAttribute="trailing" constant="20" id="4G5-uB-ctD"/>
+                                            <constraint firstItem="2Fl-F1-rJL" firstAttribute="leading" secondItem="joR-U4-MF0" secondAttribute="trailing" constant="20" id="4Hg-XO-YEq"/>
                                             <constraint firstItem="kHa-9D-Bsb" firstAttribute="top" secondItem="5w8-NH-GnY" secondAttribute="bottom" constant="10" id="4bO-d6-Xk5"/>
                                             <constraint firstItem="IqG-bd-1ud" firstAttribute="centerY" secondItem="qkR-rI-3eq" secondAttribute="centerY" id="4hn-7Q-Omp"/>
                                             <constraint firstItem="oUD-aO-uYo" firstAttribute="leading" secondItem="l5g-fn-bFl" secondAttribute="leading" constant="20" id="5Db-6y-tgu"/>
@@ -287,6 +300,7 @@
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
                         <outlet property="barChart" destination="joR-U4-MF0" id="679-IJ-YBL"/>
+                        <outlet property="dropDownBtn" destination="2Fl-F1-rJL" id="v56-0F-lNC"/>
                         <outlet property="estiDensity" destination="LUE-5S-Mih" id="AzN-v8-cr4"/>
                         <outlet property="estiDistancing" destination="ISb-kZ-a5b" id="zke-pE-onH"/>
                         <outlet property="estiMWearing" destination="IqG-bd-1ud" id="pdI-gA-Hvl"/>

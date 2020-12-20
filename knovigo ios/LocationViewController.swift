@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import DropDown
 
 class LocationViewController: UIViewController, ChartViewDelegate {
     
@@ -15,16 +16,20 @@ class LocationViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var estiDensity: UISlider!
     @IBOutlet weak var estiDistancing: UISlider!
     @IBOutlet weak var estiMWearing: UISlider!
+    @IBOutlet weak var dropDownBtn: UIButton!
     
     var density: Float = -1
     var distancing: Float = -1
     var mwearing: Float = -1
     
+    let dropDown = DropDown()
     override func viewDidLoad() {
         super.viewDidLoad()
-        charInit()
         
-        putTags(tagList: &protocolTags)
+        charInit()
+        dropDownInit()
+        
+//        putTags(tagList: &protocolTags)
         // Do any additional setup after loading the view.
     }
     
@@ -47,7 +52,7 @@ class LocationViewController: UIViewController, ChartViewDelegate {
         //for formatting purpose
         set.drawValuesEnabled = false
         set.colors = [UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)]
-        set.highlightColor = UIColor(red: 25/255, green: 121/255, blue: 169/255, alpha: 1)
+        set.highlightColor = UIColor(red: 68/255, green: 150/255, blue: 176/255, alpha: 1)
         
         //store data in an array
         let data = BarChartData(dataSet: set)
@@ -71,16 +76,24 @@ class LocationViewController: UIViewController, ChartViewDelegate {
         barChart.notifyDataSetChanged()
     }
     
+    func dropDownInit(){
+        dropDownBtn.clipsToBounds = true
+        dropDownBtn.layer.cornerRadius = 0.3 * dropDownBtn.bounds.size.height
+        dropDown.dataSource = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+        dropDown.anchorView = dropDownBtn
+        dropDown.backgroundColor = UIColor(red: 215/255, green: 231/255, blue: 236/255, alpha: 1)
+    }
+    
     //record % obtained from sliders
     @IBAction func putDensity(slider: UISlider){ density = slider.value }
     @IBAction func putDistancing(slider: UISlider) { distancing = slider.value }
     @IBAction func putMWearing(slider: UISlider) { mwearing = slider.value }
+    @IBAction func showDropDown(_ sender: Any) { dropDown.show() }
     
     func putTags(tagList: inout [tag]){
         tagList.sort{ $0.isImplemented && !$1.isImplemented }
         for i in tagList{
             print(i)
         }
-
     }
 }
