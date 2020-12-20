@@ -12,16 +12,24 @@ import Charts
 class LocationViewController: UIViewController, ChartViewDelegate {
     
     @IBOutlet weak var barChart: BarChartView!
+    @IBOutlet weak var estiDensity: UISlider!
+    @IBOutlet weak var estiDistancing: UISlider!
+    @IBOutlet weak var estiMWearing: UISlider!
+    
+    var density: Float = -1
+    var distancing: Float = -1
+    var mwearing: Float = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         charInit()
+        
+        putTags(tagList: &protocolTags)
         // Do any additional setup after loading the view.
     }
     
     func charInit(){
-        //hard coding data for chart
+        //TODO: hard coding data for chart
         let set = BarChartDataSet(entries: [
             BarChartDataEntry(x: 0, y: 3),
             BarChartDataEntry(x: 10, y: 5),
@@ -63,15 +71,16 @@ class LocationViewController: UIViewController, ChartViewDelegate {
         barChart.notifyDataSetChanged()
     }
     
+    //record % obtained from sliders
+    @IBAction func putDensity(slider: UISlider){ density = slider.value }
+    @IBAction func putDistancing(slider: UISlider) { distancing = slider.value }
+    @IBAction func putMWearing(slider: UISlider) { mwearing = slider.value }
     
-    /*
-    // MARK: - Navigation
+    func putTags(tagList: inout [tag]){
+        tagList.sort{ $0.isImplemented && !$1.isImplemented }
+        for i in tagList{
+            print(i)
+        }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
-
 }

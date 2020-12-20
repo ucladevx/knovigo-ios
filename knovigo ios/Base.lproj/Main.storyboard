@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7tV-eC-06u">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -129,6 +129,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="d4W-KE-0ae"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="putDensityWithSlider:" destination="7tV-eC-06u" eventType="touchDragInside" id="zIC-0a-D0O"/>
+                                                </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distancing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3BS-MA-ywT">
                                                 <rect key="frame" x="20" y="282.5" width="60" height="14"/>
@@ -141,6 +144,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="uk0-fH-o6L"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="putDistancingWithSlider:" destination="7tV-eC-06u" eventType="touchDragInside" id="zh5-7s-PpO"/>
+                                                </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mask Wearing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkR-rI-3eq">
                                                 <rect key="frame" x="20" y="326.5" width="80" height="15"/>
@@ -148,6 +154,15 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="IqG-bd-1ud">
+                                                <rect key="frame" x="211" y="319" width="204" height="31"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="BtO-mk-OjB"/>
+                                                </constraints>
+                                                <connections>
+                                                    <action selector="putMWearingWithSlider:" destination="7tV-eC-06u" eventType="touchDragInside" id="QSZ-Ci-ByW"/>
+                                                </connections>
+                                            </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_____________________________________________" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66q-yI-6sl">
                                                 <rect key="frame" x="20" y="361.5" width="393" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -191,18 +206,6 @@
                                                 <color key="textColor" red="0.66659259800000004" green="0.66670936349999999" blue="0.66658520700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COVID-19 Protocol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JmQ-fi-5t8">
-                                                <rect key="frame" x="20" y="691.5" width="150.5" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="IqG-bd-1ud">
-                                                <rect key="frame" x="211" y="319" width="204" height="31"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="200" id="BtO-mk-OjB"/>
-                                                </constraints>
-                                            </slider>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -245,13 +248,11 @@
                                             <constraint firstItem="6wI-Ux-1oQ" firstAttribute="leading" secondItem="4ch-73-5b6" secondAttribute="trailing" constant="15" id="kYe-CD-lhO"/>
                                             <constraint firstAttribute="trailing" secondItem="ISb-kZ-a5b" secondAttribute="trailing" constant="20" id="l4N-XV-pMs"/>
                                             <constraint firstItem="9n8-iO-Uss" firstAttribute="leading" secondItem="Kge-W2-DFk" secondAttribute="trailing" constant="15" id="mcR-Vp-sKB"/>
-                                            <constraint firstItem="JmQ-fi-5t8" firstAttribute="top" secondItem="q0A-Zg-88g" secondAttribute="bottom" constant="10" id="nMh-Ma-pjp"/>
                                             <constraint firstItem="Pfe-Yd-hId" firstAttribute="top" secondItem="Jwz-nz-TAQ" secondAttribute="bottom" constant="10" id="oO7-2C-DKJ"/>
                                             <constraint firstItem="q0A-Zg-88g" firstAttribute="leading" secondItem="l5g-fn-bFl" secondAttribute="leading" constant="20" id="oQL-lY-BcG"/>
                                             <constraint firstItem="TWG-lf-95s" firstAttribute="leading" secondItem="l5g-fn-bFl" secondAttribute="leading" constant="20" id="pGJ-9Y-JxD"/>
                                             <constraint firstItem="qkR-rI-3eq" firstAttribute="leading" secondItem="l5g-fn-bFl" secondAttribute="leading" constant="20" id="qCa-Gq-q4h"/>
                                             <constraint firstAttribute="trailing" secondItem="LUE-5S-Mih" secondAttribute="trailing" constant="20" id="sCL-tu-Mu1"/>
-                                            <constraint firstItem="JmQ-fi-5t8" firstAttribute="leading" secondItem="l5g-fn-bFl" secondAttribute="leading" constant="20" id="t83-QW-ePF"/>
                                             <constraint firstAttribute="height" constant="1200" id="v4Y-bS-vO0"/>
                                             <constraint firstItem="Jwz-nz-TAQ" firstAttribute="top" secondItem="jRT-cn-oue" secondAttribute="bottom" constant="10" id="vCG-bb-lus"/>
                                             <constraint firstItem="yII-cM-CGL" firstAttribute="top" secondItem="8zc-vm-BtZ" secondAttribute="bottom" constant="10" id="vFa-4G-Avg"/>
@@ -286,6 +287,9 @@
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
                         <outlet property="barChart" destination="joR-U4-MF0" id="679-IJ-YBL"/>
+                        <outlet property="estiDensity" destination="LUE-5S-Mih" id="AzN-v8-cr4"/>
+                        <outlet property="estiDistancing" destination="ISb-kZ-a5b" id="zke-pE-onH"/>
+                        <outlet property="estiMWearing" destination="IqG-bd-1ud" id="pdI-gA-Hvl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZY6-Ix-BbY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

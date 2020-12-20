@@ -19,7 +19,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         
         // set map @UCLA
         //TODO: Map is HARD CODED for now :(; set view to person's location later
-        let camera = GMSCameraPosition.camera(withLatitude: 34.0700, longitude: -118.4398, zoom: 20.0)
+        let camera = GMSCameraPosition.camera(withLatitude: mapLocation.coordinates.latitude, longitude: mapLocation.coordinates.longitude, zoom: 14.5)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         view = mapView
         
@@ -35,14 +35,27 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         for i in markerGeoCoords{
             marker =  GMSMarker(position: i.coordinates)
             marker.title = i.name
+            marker.isFlat = true //make sure the orientation of marker depends on phone
+            
+            //stylying the marker
+            marker.icon = GMSMarker.markerImage(with: .blue)
+            
             marker.map = self.mapView
         }
     }
     
     //function that manages tapped markers
+    //FIXME: function does not react at all; supposedly would if Google pin/marker is tapped
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         print("\n\n\ntippity tap\n\n\n")
+        print(marker)
+//        markerTappedHandler?(marker)
         return true
     }
+ 
+    //FIXME: make a working connection from location pg to landing pg
+//    @IBAction func unwindToLandingPG(unwindSegue: UIStoryboardSegue){
+//        print("function called")
+//    }
     
 }
