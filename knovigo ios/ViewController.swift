@@ -10,41 +10,64 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class location: NSObject {
-    let name: String
-    let location: CLLocationCoordinate2D
-    let zoom: Float
-    
-    init(name: String, location: CLLocationCoordinate2D, zoom: Float) {
-        self.name = name
-        self.location = location
-        self.zoom =  zoom
-    }
-}
-
-class ViewController: UIViewController {
+class ViewController: UIViewController, GMSMapViewDelegate {
     
     var mapView: GMSMapView?
-//    var currentLocation: currentLocation?
     
+    //view load function
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let camera = GMSCameraPosition.camera(withLatitude: 34.0522, longitude: -118.2437, zoom: 5.0)
+        // set map @UCLA
+        //TODO: Map is HARD CODED for now :(; set view to person's location later
+        let camera = GMSCameraPosition.camera(withLatitude: mapLocation.coordinates.latitude, longitude: mapLocation.coordinates.longitude, zoom: 14.5)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         view = mapView
-                
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: 34.0522, longitude: -118.2437)
-        marker.title = "Los Angeles"
-        marker.snippet = "California"
-        marker.map = mapView
         
-    //    makeBackground();
+        //set markers
+        //TODO: Markers are HARD CODED for now :(; change later
+        setMarker(markerGeoCoords: markerCoords)
+      
+//         let marker = GMSMarker()
+//         marker.position = CLLocationCoordinate2D(latitude: 34.0522, longitude: -118.2437)
+//         marker.title = "Los Angeles"
+//         marker.snippet = "California"
+//         marker.map = mapView  
+//         makeBackground();
+      
         makeSearchButton();
         userReportButton();
+
     }
     
+    // function that takes in an array of location objects and marker them on the map
+    func setMarker(markerGeoCoords: [location]){
+        var marker: GMSMarker
+        for i in markerGeoCoords{
+            marker =  GMSMarker(position: i.coordinates)
+            marker.title = i.name
+            marker.isFlat = true //make sure the orientation of marker depends on phone
+            
+            //stylying the marker
+            marker.icon = GMSMarker.markerImage(with: .blue)
+            
+            marker.map = self.mapView
+        }
+    }
+    
+    //function that manages tapped markers
+    //FIXME: function does not react at all; supposedly would if Google pin/marker is tapped
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        print("\n\n\ntippity tap\n\n\n")
+        print(marker)
+//        markerTappedHandler?(marker)
+        return true
+    }
+ 
+    //FIXME: make a working connection from location pg to landing pg
+//    @IBAction func unwindToLandingPG(unwindSegue: UIStoryboardSegue){
+//        print("function called")
+//    }   
    
      // Present the Autocomplete view controller when the button is pressed.
     @objc func autocompleteClicked(_ sender: UIButton) {
@@ -145,5 +168,3 @@ class ViewController: UIViewController {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
       }
    }
-
-
