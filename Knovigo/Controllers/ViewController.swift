@@ -32,7 +32,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
 //         marker.position = CLLocationCoordinate2D(latitude: 34.0522, longitude: -118.2437)
 //         marker.title = "Los Angeles"
 //         marker.snippet = "California"
-//         marker.map = mapView  
+//         marker.map = mapView
 //         makeBackground();
       
         makeSearchButton();
@@ -67,7 +67,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
     //FIXME: make a working connection from location pg to landing pg
 //    @IBAction func unwindToLandingPG(unwindSegue: UIStoryboardSegue){
 //        print("function called")
-//    }   
+//    }
    
      // Present the Autocomplete view controller when the button is pressed.
     @objc func autocompleteClicked(_ sender: UIButton) {
