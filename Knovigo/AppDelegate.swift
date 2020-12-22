@@ -1,9 +1,8 @@
 //
 //  AppDelegate.swift
-//  knovigo ios
+//  Knovigo
 //
-//  Created by Katie Chang on 2020/11/15.
-//  Copyright © 2020 Katie Chang. All rights reserved.
+//  Created by Abhishek Marda on 12/21/20.
 //
 
 import UIKit
@@ -11,12 +10,11 @@ import DropDown
 import GoogleMaps
 import GooglePlaces
 
-
-@UIApplicationMain
+@main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    var window: UIWindow?
-    
+
+
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         GMSServices.provideAPIKey(GoogleMapsAPIKey)

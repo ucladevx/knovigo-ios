@@ -12,7 +12,7 @@ struct location {
     var coordinates: CLLocationCoordinate2D
 }
 
-let GoogleMapsAPIKey = "AIzaSyB8Z707IXOFZf1USVpNIMTUGJDAekZZl4A"
+let GoogleMapsAPIKey = "AIzaSyDdpsQ_OSZrVjRIeGoXcCXHbuG2pk1rlKI"
 let mapLocation = location(name: "UCLA", coordinates: CLLocationCoordinate2D(latitude: 34.0700, longitude: -118.4398))
 let markerCoords = [
     location(name: "Target", coordinates: CLLocationCoordinate2D(latitude: 34.062653, longitude: -118.443939)),
