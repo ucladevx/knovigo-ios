@@ -74,8 +74,6 @@
 				8F6F37112590DC0900B6BF72 /* AppDelegate.swift */,
 				8F6F37132590DC0900B6BF72 /* SceneDelegate.swift */,
 				8F6F373F2590E08E00B6BF72 /* util.swift */,
-				8F6F374A2590E1EB00B6BF72 /* Models */,
-				8F6F374B2590E1F300B6BF72 /* Views */,
 				8F6F37482590E1DF00B6BF72 /* Controllers */,
 				8F6F371A2590DC0A00B6BF72 /* Assets.xcassets */,
 				8F6F371F2590DC0A00B6BF72 /* Info.plist */,
@@ -91,20 +89,6 @@
 				8F6F37452590E18D00B6BF72 /* LocationViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		8F6F374A2590E1EB00B6BF72 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		8F6F374B2590E1F300B6BF72 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		B5437C30D1E7C45ADE2B456E /* Pods */ = {
@@ -416,7 +400,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Knovigo;
+				PRODUCT_BUNDLE_IDENTIFIER = "kt.knovigo-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -436,7 +420,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.abhishek.Knovigo;
+				PRODUCT_BUNDLE_IDENTIFIER = "kt.knovigo-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
