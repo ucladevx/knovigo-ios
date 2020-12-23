@@ -37,6 +37,8 @@ class ViewController: UIViewController, GMSMapViewDelegate {
       
         makeSearchButton();
         userReportButton();
+        
+        mapView?.delegate = self
 
     }
     
@@ -46,22 +48,31 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         for i in markerGeoCoords{
             marker =  GMSMarker(position: i.coordinates)
             marker.title = i.name
+            marker.snippet = i.address
             marker.isFlat = true //make sure the orientation of marker depends on phone
-            
             //stylying the marker
             marker.icon = GMSMarker.markerImage(with: .blue)
-            
             marker.map = self.mapView
         }
     }
     
     //function that manages tapped markers
     //FIXME: function does not react at all; supposedly would if Google pin/marker is tapped
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        print("\n\n\ntippity tap\n\n\n")
-        print(marker)
-//        markerTappedHandler?(marker)
-        return true
+//    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+//        print("\n\n\ntippity tap\n\n\n")
+//        print(marker)
+////        markerTappedHandler?(marker)
+//        return true
+//    }
+    
+    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+        let view = Bundle.main.loadNibNamed("CustomPopUp", owner: self, options: nil)![0] as! CustomPopUp
+        let frame = CGRect(x: 10, y: 10, width: 250, height: 150)
+        view.frame = frame
+        view.layer.cornerRadius = 9.0
+        view.locTitle.text = marker.title
+        view.locAddress.text = marker.snippet
+        return view
     }
  
     //FIXME: make a working connection from location pg to landing pg
