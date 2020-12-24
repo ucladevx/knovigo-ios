@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -271,10 +272,10 @@
             </objects>
             <point key="canvasLocation" x="1961" y="228"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="uBx-WK-Z3F">
             <objects>
-                <viewController id="kBB-2X-M2c" customClass="ViewController" customModule="Knovigo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kBB-2X-M2c" customClass="HomeViewController" customModule="Knovigo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cfF-4a-G80">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -289,9 +290,6 @@
                                         <state key="normal">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <segue destination="guB-is-CtR" kind="show" identifier="Report" id="q0c-xL-jfb"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -309,11 +307,57 @@
                     <navigationItem key="navigationItem" id="RCM-wv-53I"/>
                     <connections>
                         <outlet property="ReportButton" destination="xoM-dQ-wOW" id="rnD-qE-1Gd"/>
+                        <segue destination="jOZ-O2-jSA" kind="presentation" identifier="homeToSearch" id="a2X-Ew-fB5"/>
+                        <segue destination="guB-is-CtR" kind="presentation" identifier="Report" id="EMw-UY-BOx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3r3-CC-UQ6" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="126.5625"/>
+        </scene>
+        <!--Recommendations View Controller-->
+        <scene sceneID="2Zd-Yb-Ky6">
+            <objects>
+                <viewController id="jOZ-O2-jSA" customClass="RecommendationsViewController" customModule="Knovigo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" alpha="0.80000000000000004" contentMode="scaleToFill" id="KkG-Je-pLu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1146"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q42-Rk-OUh">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="1146"/>
+                                <subviews>
+                                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B43-cW-0aC" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1200" id="xFN-5l-FnE"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="B43-cW-0aC" secondAttribute="trailing" id="5AM-W1-QzV"/>
+                                    <constraint firstAttribute="bottom" secondItem="B43-cW-0aC" secondAttribute="bottom" id="LpH-FB-Xjt"/>
+                                    <constraint firstItem="B43-cW-0aC" firstAttribute="top" secondItem="q42-Rk-OUh" secondAttribute="top" id="Tsx-pl-i1f"/>
+                                    <constraint firstItem="B43-cW-0aC" firstAttribute="leading" secondItem="q42-Rk-OUh" secondAttribute="leading" id="oUF-hG-KP2"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kce-9O-6CB"/>
+                        <color key="backgroundColor" name="color-light-blue"/>
+                        <constraints>
+                            <constraint firstItem="q42-Rk-OUh" firstAttribute="leading" secondItem="kce-9O-6CB" secondAttribute="leading" id="5af-Gc-Nl6"/>
+                            <constraint firstItem="B43-cW-0aC" firstAttribute="width" secondItem="KkG-Je-pLu" secondAttribute="width" id="gn0-qi-0rv"/>
+                            <constraint firstItem="q42-Rk-OUh" firstAttribute="trailing" secondItem="kce-9O-6CB" secondAttribute="trailing" id="ihn-Nh-20V"/>
+                            <constraint firstAttribute="bottom" secondItem="q42-Rk-OUh" secondAttribute="bottom" id="uj7-2K-5J8"/>
+                            <constraint firstItem="q42-Rk-OUh" firstAttribute="top" secondItem="kce-9O-6CB" secondAttribute="top" id="y78-eF-sPG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="EjH-e0-6BC"/>
+                    <size key="freeformSize" width="414" height="1200"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PV3-YL-al9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138" y="1041"/>
         </scene>
         <!--Report View Controller-->
         <scene sceneID="4aK-fD-DgH">
@@ -819,6 +863,9 @@
     <resources>
         <image name="arrowshape.turn.up.left" catalog="system" width="128" height="106"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="color-light-blue">
+            <color red="0.81960784313725488" green="0.89803921568627454" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

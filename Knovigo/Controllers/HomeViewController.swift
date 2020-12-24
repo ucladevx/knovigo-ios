@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  knovigo ios
 //
 //  Created by Katie Chang on 2020/11/15.
@@ -10,7 +10,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class ViewController: UIViewController, GMSMapViewDelegate {
+class HomeViewController: UIViewController, GMSMapViewDelegate {
     
     var mapView: GMSMapView?
     
@@ -37,8 +37,10 @@ class ViewController: UIViewController, GMSMapViewDelegate {
       
         makeSearchButton();
         userReportButton();
-
+        
     }
+    
+    
     
     // function that takes in an array of location objects and marker them on the map
     func setMarker(markerGeoCoords: [location]){
@@ -134,12 +136,12 @@ class ViewController: UIViewController, GMSMapViewDelegate {
     }
 
     @objc func userReportButtonPressed() {
-        self.performSegue(withIdentifier: "Report", sender: self)
+        self.performSegue(withIdentifier: "homeToSearch", sender: self)
     }
 
    }
 
-   extension ViewController: GMSAutocompleteViewControllerDelegate {
+extension HomeViewController: GMSAutocompleteViewControllerDelegate {
 
      // Handle the user's selection.
      func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
@@ -167,4 +169,6 @@ class ViewController: UIViewController, GMSMapViewDelegate {
       func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
       }
-   }
+}
+
+
