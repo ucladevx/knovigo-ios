@@ -50,9 +50,10 @@ class ViewController: UIViewController, GMSMapViewDelegate {
             marker.title = i.name
             marker.snippet = i.address
             marker.isFlat = true //make sure the orientation of marker depends on phone
-            //stylying the marker
+            //styling the marker
             marker.icon = GMSMarker.markerImage(with: .blue)
             marker.map = self.mapView
+            marker.userData = i.image
         }
     }
     
@@ -67,11 +68,15 @@ class ViewController: UIViewController, GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         let view = Bundle.main.loadNibNamed("CustomPopUp", owner: self, options: nil)![0] as! CustomPopUp
-        let frame = CGRect(x: 10, y: 10, width: 250, height: 150)
+        let frame = CGRect(x: 10, y: 10, width: 350, height: 200)
         view.frame = frame
         view.layer.cornerRadius = 9.0
         view.locTitle.text = marker.title
         view.locAddress.text = marker.snippet
+        view.locImg.image = marker.userData as? UIImage
+        setSliderInvert(slider: view.densitySlider)
+        setSlider(slider: view.distanceSlider)
+        setSlider(slider: view.maskSlider)
         return view
     }
  
@@ -178,4 +183,94 @@ class ViewController: UIViewController, GMSMapViewDelegate {
       func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
       }
+    
+    //slider styling functions
+    func setSlider(slider:UISlider) {
+       let tgl = CAGradientLayer()
+       let frame = CGRect(x: 0.0, y: 0.0, width: slider.bounds.width, height: 9.0 )
+       tgl.frame = frame
+
+        tgl.colors = [UIColor(red: 196/255, green: 13/255, blue: 0/255, alpha: 1.0).cgColor /* #c40d00 */, UIColor(red: 255/255, green: 231/255, blue: 81/255, alpha: 1.0).cgColor /* #ffec21 */, UIColor(red: 80/255, green: 175/255, blue: 114/255, alpha: 1.0).cgColor /* #50af72 */
+
+       ]
+
+       tgl.borderWidth = 1.0
+       tgl.borderColor = UIColor.white.cgColor
+       tgl.cornerRadius = 9.0
+
+       tgl.endPoint = CGPoint(x: 1.0, y:  1.0)
+       tgl.startPoint = CGPoint(x: 0.0, y:  1.0)
+
+       UIGraphicsBeginImageContextWithOptions(tgl.frame.size, false, 0.0)
+       tgl.render(in: UIGraphicsGetCurrentContext()!)
+       let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
+       UIGraphicsEndImageContext()
+
+       slider.setMaximumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+       slider.setMinimumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+
+       let layerFrame = CGRect(x: 0, y: 0, width: 10.0, height: 10.0)
+
+       let shapeLayer = CAShapeLayer()
+       shapeLayer.path = CGPath(ellipseIn: layerFrame, transform: nil)
+       shapeLayer.fillColor = UIColor.white.cgColor
+        shapeLayer.strokeColor = UIColor.black.cgColor
+        
+       let thumb = CALayer.init()
+       thumb.frame = layerFrame
+       thumb.addSublayer(shapeLayer)
+
+       UIGraphicsBeginImageContextWithOptions(thumb.frame.size, false, 0.0)
+
+       thumb.render(in: UIGraphicsGetCurrentContext()!)
+       let thumbImage = UIGraphicsGetImageFromCurrentImageContext()
+       UIGraphicsEndImageContext()
+
+       slider.setThumbImage(thumbImage, for: .normal)
+       slider.setThumbImage(thumbImage, for: .highlighted)
+   }
+    
+    func setSliderInvert(slider:UISlider) {
+       let tgl = CAGradientLayer()
+       let frame = CGRect(x: 0.0, y: 0.0, width: slider.bounds.width, height: 9.0 )
+       tgl.frame = frame
+
+        tgl.colors = [UIColor(red: 80/255, green: 175/255, blue: 114/255, alpha: 1.0).cgColor /* #50af72 */, UIColor(red: 255/255, green: 231/255, blue: 81/255, alpha: 1.0).cgColor /* #ffec21 */,  UIColor(red: 196/255, green: 13/255, blue: 0/255, alpha: 1.0).cgColor /* #c40d00 */
+       ]
+
+       tgl.borderWidth = 1.0
+       tgl.borderColor = UIColor.white.cgColor
+       tgl.cornerRadius = 9.0
+
+       tgl.endPoint = CGPoint(x: 1.0, y:  1.0)
+       tgl.startPoint = CGPoint(x: 0.0, y:  1.0)
+
+       UIGraphicsBeginImageContextWithOptions(tgl.frame.size, false, 0.0)
+       tgl.render(in: UIGraphicsGetCurrentContext()!)
+       let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
+       UIGraphicsEndImageContext()
+
+       slider.setMaximumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+       slider.setMinimumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+
+       let layerFrame = CGRect(x: 0, y: 0, width: 10.0, height: 10.0)
+
+       let shapeLayer = CAShapeLayer()
+       shapeLayer.path = CGPath(ellipseIn: layerFrame, transform: nil)
+       shapeLayer.fillColor = UIColor.white.cgColor
+        shapeLayer.strokeColor = UIColor.black.cgColor
+        
+       let thumb = CALayer.init()
+       thumb.frame = layerFrame
+       thumb.addSublayer(shapeLayer)
+
+       UIGraphicsBeginImageContextWithOptions(thumb.frame.size, false, 0.0)
+
+       thumb.render(in: UIGraphicsGetCurrentContext()!)
+       let thumbImage = UIGraphicsGetImageFromCurrentImageContext()
+       UIGraphicsEndImageContext()
+
+       slider.setThumbImage(thumbImage, for: .normal)
+       slider.setThumbImage(thumbImage, for: .highlighted)
+   }
    }
