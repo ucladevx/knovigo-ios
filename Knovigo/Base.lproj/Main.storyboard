@@ -346,6 +346,9 @@
                                                                     <imageReference key="image" image="xmark" catalog="system" symbolScale="large"/>
                                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="cancelButtonPressed:" destination="jOZ-O2-jSA" eventType="touchUpInside" id="4kR-zy-xjH"/>
+                                                                </connections>
                                                             </button>
                                                             <searchBar opaque="NO" contentMode="redraw" placeholder="Search (Eg Target)" translatesAutoresizingMaskIntoConstraints="NO" id="kRs-5Z-rJI">
                                                                 <rect key="frame" x="43" y="0.0" width="371" height="73"/>
@@ -376,6 +379,9 @@
                                                                 <state key="normal" title="View More">
                                                                     <color key="titleColor" systemColor="linkColor"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="viewMorePressed:" destination="jOZ-O2-jSA" eventType="touchUpInside" id="axy-n4-4pS"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
