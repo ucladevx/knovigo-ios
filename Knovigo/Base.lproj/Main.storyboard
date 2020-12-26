@@ -316,10 +316,10 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="126.5625"/>
         </scene>
-        <!--Recommendations View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="2Zd-Yb-Ky6">
             <objects>
-                <viewController id="jOZ-O2-jSA" customClass="RecommendationsViewController" customModule="Knovigo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jOZ-O2-jSA" customClass="SearchViewController" customModule="Knovigo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KkG-Je-pLu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1049"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -370,31 +370,18 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Yg-PT-tJ4">
                                                         <rect key="frame" x="0.0" y="80" width="414" height="60"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    Recommendations" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="42O-x4-8jW">
-                                                                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="320" id="0SD-AG-E9P"/>
-                                                                </constraints>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Search Results" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="42O-x4-8jW">
+                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4F-eR-NIw">
-                                                                <rect key="frame" x="320" y="0.0" width="94" height="60"/>
-                                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
-                                                                <state key="normal" title="View More">
-                                                                    <color key="titleColor" systemColor="linkColor"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="viewMorePressed:" destination="jOZ-O2-jSA" eventType="touchUpInside" id="axy-n4-4pS"/>
-                                                                </connections>
-                                                            </button>
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="Op0-qB-ixp"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="2" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5mj-nD-k9L">
+                                                    <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="2" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5mj-nD-k9L">
                                                         <rect key="frame" x="0.0" y="140" width="414" height="435"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
@@ -410,12 +397,25 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HG1-xi-Poe">
                                                         <rect key="frame" x="0.0" y="595" width="414" height="60"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    Search Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vto-5C-TtI" userLabel="Search Results">
-                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    Recommendations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vto-5C-TtI" userLabel="Search Results">
+                                                                <rect key="frame" x="0.0" y="0.0" width="290" height="60"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="290" id="mFy-kI-JVD"/>
+                                                                </constraints>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4F-eR-NIw">
+                                                                <rect key="frame" x="290" y="0.0" width="124" height="60"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                                                <state key="normal" title="View More">
+                                                                    <color key="titleColor" systemColor="linkColor"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="viewMorePressed:" destination="jOZ-O2-jSA" eventType="touchUpInside" id="axy-n4-4pS"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="iYX-Tt-bLV"/>
@@ -446,7 +446,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kce-9O-6CB"/>
-                        <color key="backgroundColor" name="color-light-blue"/>
+                        <color key="backgroundColor" red="0.81960784313725488" green="0.89803921568627454" blue="0.92156862745098034" alpha="0.90135182765935429" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="q42-Rk-OUh" firstAttribute="leading" secondItem="kce-9O-6CB" secondAttribute="leading" id="5af-Gc-Nl6"/>
                             <constraint firstItem="B43-cW-0aC" firstAttribute="width" secondItem="KkG-Je-pLu" secondAttribute="width" id="gn0-qi-0rv"/>
@@ -458,9 +458,9 @@
                     <navigationItem key="navigationItem" id="EjH-e0-6BC"/>
                     <size key="freeformSize" width="414" height="1103"/>
                     <connections>
-                        <outlet property="recommendationsTable" destination="5mj-nD-k9L" id="DSG-zt-qXA"/>
-                        <outlet property="searchBar" destination="kRs-5Z-rJI" id="M4I-YY-xSc"/>
-                        <outlet property="searchResultsTable" destination="H0U-e0-G9c" id="nP8-eQ-dno"/>
+                        <outlet property="recommendationsTable" destination="H0U-e0-G9c" id="iES-Jf-Dyt"/>
+                        <outlet property="searchBar" destination="kRs-5Z-rJI" id="6g8-If-9qL"/>
+                        <outlet property="searchResultsTable" destination="5mj-nD-k9L" id="Zic-a0-9wm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PV3-YL-al9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

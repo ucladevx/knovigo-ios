@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -150,7 +149,6 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" name="color-light-blue"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="q6f-OW-VaY" secondAttribute="bottom" constant="5" id="1Kf-2p-h5s"/>
                     <constraint firstItem="q6f-OW-VaY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="QwT-qZ-9mR"/>
@@ -177,9 +175,6 @@
     </objects>
     <resources>
         <image name="knovigo-icon" width="75" height="72"/>
-        <namedColor name="color-light-blue">
-            <color red="0.81960784313725488" green="0.89803921568627454" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

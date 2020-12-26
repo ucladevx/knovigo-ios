@@ -10,7 +10,7 @@
 		88554668EE52383ACEB61F56 /* Pods_Knovigo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DE5AEA8BAF17EC8145DD41 /* Pods_Knovigo.framework */; };
 		8F23B74C259598BA00FCD942 /* LocationInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F23B74B259598BA00FCD942 /* LocationInfoModel.swift */; };
 		8F23B74F25959AD400FCD942 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F23B74E25959AD400FCD942 /* constants.swift */; };
-		8F63713C25941F350032CA88 /* RecommendationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F63713B25941F350032CA88 /* RecommendationsViewController.swift */; };
+		8F63713C25941F350032CA88 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F63713B25941F350032CA88 /* SearchViewController.swift */; };
 		8F6371422594F5900032CA88 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6371402594F5900032CA88 /* LocationTableViewCell.swift */; };
 		8F6371432594F5900032CA88 /* LocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F6371412594F5900032CA88 /* LocationTableViewCell.xib */; };
 		8F6F37122590DC0900B6BF72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F37112590DC0900B6BF72 /* AppDelegate.swift */; };
@@ -28,7 +28,7 @@
 		4342D6774D639C5B20C8F23F /* Pods-Knovigo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knovigo.release.xcconfig"; path = "Target Support Files/Pods-Knovigo/Pods-Knovigo.release.xcconfig"; sourceTree = "<group>"; };
 		8F23B74B259598BA00FCD942 /* LocationInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoModel.swift; sourceTree = "<group>"; };
 		8F23B74E25959AD400FCD942 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
-		8F63713B25941F350032CA88 /* RecommendationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsViewController.swift; sourceTree = "<group>"; };
+		8F63713B25941F350032CA88 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8F6371402594F5900032CA88 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		8F6371412594F5900032CA88 /* LocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationTableViewCell.xib; sourceTree = "<group>"; };
 		8F6F370E2590DC0900B6BF72 /* Knovigo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Knovigo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,7 +117,7 @@
 				8F6F37152590DC0900B6BF72 /* HomeViewController.swift */,
 				8F6F37422590E16A00B6BF72 /* ReportViewController.swift */,
 				8F6F37452590E18D00B6BF72 /* LocationViewController.swift */,
-				8F63713B25941F350032CA88 /* RecommendationsViewController.swift */,
+				8F63713B25941F350032CA88 /* SearchViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -279,7 +279,7 @@
 				8F6F37142590DC0900B6BF72 /* SceneDelegate.swift in Sources */,
 				8F23B74C259598BA00FCD942 /* LocationInfoModel.swift in Sources */,
 				8F6F37462590E18D00B6BF72 /* LocationViewController.swift in Sources */,
-				8F63713C25941F350032CA88 /* RecommendationsViewController.swift in Sources */,
+				8F63713C25941F350032CA88 /* SearchViewController.swift in Sources */,
 				8F6F37432590E16A00B6BF72 /* ReportViewController.swift in Sources */,
 				8F6F37402590E08E00B6BF72 /* util.swift in Sources */,
 			);

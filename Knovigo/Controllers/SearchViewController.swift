@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RecommendationsViewController: UIViewController {
+class SearchViewController: UIViewController {
 
     @IBOutlet weak var recommendationsTable: UITableView!
     @IBOutlet weak var searchResultsTable: UITableView!
@@ -23,6 +23,10 @@ class RecommendationsViewController: UIViewController {
         super.viewDidLoad()
         recommendationsTable.dataSource = self
         searchResultsTable.dataSource = self
+        recommendationsTable.layer.backgroundColor = UIColor.clear.cgColor
+        recommendationsTable.backgroundColor = .clear
+        searchResultsTable.layer.backgroundColor = UIColor.clear.cgColor
+        searchResultsTable.backgroundColor = .clear
         
         recommendationsTable.register(UINib(nibName: "LocationTableViewCell", bundle: nil), forCellReuseIdentifier: "LocationCellIdentifier")
         searchResultsTable.register(UINib(nibName: "LocationTableViewCell", bundle: nil), forCellReuseIdentifier: "LocationCellIdentifier")
@@ -69,13 +73,13 @@ class RecommendationsViewController: UIViewController {
 
 //MARK:- TableView Delegate functions
 
-extension RecommendationsViewController : UITableViewDelegate {
+extension SearchViewController : UITableViewDelegate {
     
 }
 
 //MARK:- TableView Data Source functions
 
-extension RecommendationsViewController : UITableViewDataSource{
+extension SearchViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == recommendationsTable {
             return min(recommendations!.count, numRecommendations)
@@ -126,6 +130,9 @@ extension RecommendationsViewController : UITableViewDataSource{
         _ = tagsLine.popLast()
         cell.tagsLabel.text = tagsLine
         cell.locationImage.image = locationInfo.profileImage
+        
+        cell.layer.backgroundColor = UIColor.clear.cgColor
+        cell.backgroundColor = .clear
         
         return cell
     }
