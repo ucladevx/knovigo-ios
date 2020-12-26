@@ -321,23 +321,29 @@
             <objects>
                 <viewController id="jOZ-O2-jSA" customClass="RecommendationsViewController" customModule="Knovigo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KkG-Je-pLu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1146"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1049"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q42-Rk-OUh">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="1146"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="1049"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B43-cW-0aC" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1103"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="A28-jK-vtB">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="1103"/>
                                                 <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYz-ze-UKH" userLabel="Buffer View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="cC2-9L-oYj"/>
+                                                        </constraints>
+                                                    </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="jdH-Me-hb8">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="73"/>
+                                                        <rect key="frame" x="0.0" y="20" width="414" height="60"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UkG-dG-hdT">
-                                                                <rect key="frame" x="0.0" y="0.0" width="40" height="73"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="40" height="60"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="40" id="Er4-0P-Zid"/>
                                                                 </constraints>
@@ -350,22 +356,22 @@
                                                                     <action selector="cancelButtonPressed:" destination="jOZ-O2-jSA" eventType="touchUpInside" id="4kR-zy-xjH"/>
                                                                 </connections>
                                                             </button>
-                                                            <searchBar opaque="NO" contentMode="redraw" placeholder="Search (Eg Target)" translatesAutoresizingMaskIntoConstraints="NO" id="kRs-5Z-rJI">
-                                                                <rect key="frame" x="43" y="0.0" width="371" height="73"/>
+                                                            <searchBar opaque="NO" contentMode="redraw" searchBarStyle="minimal" placeholder="Search (Eg Target)" translatesAutoresizingMaskIntoConstraints="NO" id="kRs-5Z-rJI">
+                                                                <rect key="frame" x="43" y="0.0" width="371" height="60"/>
                                                                 <color key="tintColor" name="color-light-blue"/>
                                                                 <color key="barTintColor" name="color-light-blue"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </searchBar>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="73" id="6Ty-tp-f83"/>
+                                                            <constraint firstAttribute="height" constant="60" id="6Ty-tp-f83"/>
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Yg-PT-tJ4">
-                                                        <rect key="frame" x="0.0" y="73" width="414" height="80"/>
+                                                        <rect key="frame" x="0.0" y="80" width="414" height="60"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Recommendations" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="42O-x4-8jW">
-                                                                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    Recommendations" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="42O-x4-8jW">
+                                                                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="320" id="0SD-AG-E9P"/>
                                                                 </constraints>
@@ -374,7 +380,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4F-eR-NIw">
-                                                                <rect key="frame" x="320" y="0.0" width="94" height="80"/>
+                                                                <rect key="frame" x="320" y="0.0" width="94" height="60"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                                                 <state key="normal" title="View More">
                                                                     <color key="titleColor" systemColor="linkColor"/>
@@ -385,32 +391,38 @@
                                                             </button>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="80" id="Op0-qB-ixp"/>
+                                                            <constraint firstAttribute="height" constant="60" id="Op0-qB-ixp"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5mj-nD-k9L">
-                                                        <rect key="frame" x="0.0" y="153" width="414" height="450"/>
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="2" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5mj-nD-k9L">
+                                                        <rect key="frame" x="0.0" y="140" width="414" height="435"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="450" id="b8F-H0-GMo"/>
+                                                            <constraint firstAttribute="height" constant="435" id="b8F-H0-GMo"/>
                                                         </constraints>
                                                     </tableView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQK-bq-Yqt" userLabel="Buffer View">
+                                                        <rect key="frame" x="0.0" y="575" width="414" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="0Yi-P8-4ev"/>
+                                                        </constraints>
+                                                    </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HG1-xi-Poe">
-                                                        <rect key="frame" x="0.0" y="603" width="414" height="80"/>
+                                                        <rect key="frame" x="0.0" y="595" width="414" height="60"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Search Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vto-5C-TtI">
-                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    Search Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vto-5C-TtI" userLabel="Search Results">
+                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="80" id="iYX-Tt-bLV"/>
+                                                            <constraint firstAttribute="height" constant="60" id="iYX-Tt-bLV"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H0U-e0-G9c">
-                                                        <rect key="frame" x="0.0" y="683" width="414" height="517"/>
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H0U-e0-G9c">
+                                                        <rect key="frame" x="0.0" y="655" width="414" height="448"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </tableView>
                                                 </subviews>
@@ -421,7 +433,7 @@
                                             <constraint firstItem="A28-jK-vtB" firstAttribute="leading" secondItem="B43-cW-0aC" secondAttribute="leading" id="Mm4-K9-1lk"/>
                                             <constraint firstAttribute="bottom" secondItem="A28-jK-vtB" secondAttribute="bottom" id="fdd-XS-bzk"/>
                                             <constraint firstAttribute="trailing" secondItem="A28-jK-vtB" secondAttribute="trailing" id="nck-aq-q8q"/>
-                                            <constraint firstAttribute="height" constant="1200" id="xFN-5l-FnE"/>
+                                            <constraint firstAttribute="height" constant="1103" id="xFN-5l-FnE"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -444,11 +456,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="EjH-e0-6BC"/>
-                    <size key="freeformSize" width="414" height="1200"/>
+                    <size key="freeformSize" width="414" height="1103"/>
+                    <connections>
+                        <outlet property="recommendationsTable" destination="5mj-nD-k9L" id="DSG-zt-qXA"/>
+                        <outlet property="searchBar" destination="kRs-5Z-rJI" id="M4I-YY-xSc"/>
+                        <outlet property="searchResultsTable" destination="H0U-e0-G9c" id="nP8-eQ-dno"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PV3-YL-al9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="1040.625"/>
+            <point key="canvasLocation" x="139" y="943"/>
         </scene>
         <!--Report View Controller-->
         <scene sceneID="4aK-fD-DgH">
@@ -948,7 +965,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FL9-pN-7N8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1008.6956521739131" y="138.61607142857142"/>
+            <point key="canvasLocation" x="1010" y="127"/>
         </scene>
     </scenes>
     <resources>
