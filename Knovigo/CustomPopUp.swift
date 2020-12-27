@@ -20,4 +20,6 @@ class CustomPopUp: UIView {
     @IBOutlet weak var current: UILabel!
     @IBOutlet weak var viewInfoBtn: UIButton!
     @IBOutlet weak var milesAway: UILabel!
+    @IBOutlet weak var openClosed: UILabel!
+    @IBOutlet weak var price: UILabel!
 }

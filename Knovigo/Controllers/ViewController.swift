@@ -45,6 +45,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
     struct data {
         var image : UIImage
         var distance : Double
+        var isOpen : Bool
     }
     // function that takes in an array of location objects and marker them on the map
     func setMarker(markerGeoCoords: [location]){
@@ -57,7 +58,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
             //styling the marker
             marker.icon = GMSMarker.markerImage(with: .blue)
             marker.map = self.mapView
-            marker.userData = data(image: i.image, distance: i.distance);
+            marker.userData = data(image: i.image, distance: i.distance, isOpen: i.isOpen);
         }
     }
     
@@ -79,6 +80,13 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         view.locAddress.text = marker.snippet
         view.locImg.image = (marker.userData as! data).image
         view.milesAway.text = "\((marker.userData as! data).distance)" + " miles away"
+        if (!(marker.userData as! data).isOpen) {
+            view.openClosed.text = "Closed"
+            view.openClosed.textColor = UIColor.red
+        } else {
+            view.openClosed.text = "Open"
+            view.openClosed.textColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0)
+        }
         setSliderInvert(slider: view.densitySlider)
         setSlider(slider: view.distanceSlider)
         setSlider(slider: view.maskSlider)
