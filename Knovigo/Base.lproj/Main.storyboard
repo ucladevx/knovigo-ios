@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Location View Controller-->
+        <!--LocationPage-->
         <scene sceneID="EYV-p1-6HR">
             <objects>
-                <viewController id="yPV-8i-Ndh" customClass="LocationViewController" customModule="Knovigo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="LocationPage" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yPV-8i-Ndh" customClass="LocationViewController" customModule="Knovigo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n7Z-tY-I91">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

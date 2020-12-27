@@ -42,6 +42,10 @@ class ViewController: UIViewController, GMSMapViewDelegate {
 
     }
     
+    struct data {
+        var image : UIImage
+        var distance : Double
+    }
     // function that takes in an array of location objects and marker them on the map
     func setMarker(markerGeoCoords: [location]){
         var marker: GMSMarker
@@ -53,7 +57,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
             //styling the marker
             marker.icon = GMSMarker.markerImage(with: .blue)
             marker.map = self.mapView
-            marker.userData = i.image
+            marker.userData = data(image: i.image, distance: i.distance);
         }
     }
     
@@ -73,13 +77,20 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         view.layer.cornerRadius = 9.0
         view.locTitle.text = marker.title
         view.locAddress.text = marker.snippet
-        view.locImg.image = marker.userData as? UIImage
+        view.locImg.image = (marker.userData as! data).image
+        view.milesAway.text = "\((marker.userData as! data).distance)" + " miles away"
         setSliderInvert(slider: view.densitySlider)
         setSlider(slider: view.distanceSlider)
         setSlider(slider: view.maskSlider)
         return view
     }
- 
+    
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker)
+    {
+//        let viewController = LocationViewController()
+//        self.present(viewController, animated: true, completion: nil)
+        print("pressed!")
+    }
     //FIXME: make a working connection from location pg to landing pg
 //    @IBAction func unwindToLandingPG(unwindSegue: UIStoryboardSegue){
 //        print("function called")

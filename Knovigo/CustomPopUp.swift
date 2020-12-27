@@ -18,4 +18,6 @@ class CustomPopUp: UIView {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var maskLabel: UILabel!
     @IBOutlet weak var current: UILabel!
+    @IBOutlet weak var viewInfoBtn: UIButton!
+    @IBOutlet weak var milesAway: UILabel!
 }
