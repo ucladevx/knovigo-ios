@@ -38,34 +38,70 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         makeSearchButton();
         userReportButton();
         
+        mapView?.delegate = self
+
     }
     
-    
-    
+    struct data {
+        var image : UIImage
+        var distance : Double
+        var isOpen : Bool
+        var label: String
+    }
     // function that takes in an array of location objects and marker them on the map
     func setMarker(markerGeoCoords: [location]){
         var marker: GMSMarker
         for i in markerGeoCoords{
             marker =  GMSMarker(position: i.coordinates)
             marker.title = i.name
+            marker.snippet = i.address
             marker.isFlat = true //make sure the orientation of marker depends on phone
-            
-            //stylying the marker
+            //styling the marker
             marker.icon = GMSMarker.markerImage(with: .blue)
-            
             marker.map = self.mapView
+            marker.userData = data(image: i.image, distance: i.distance, isOpen: i.isOpen, label: i.label);
         }
     }
     
     //function that manages tapped markers
     //FIXME: function does not react at all; supposedly would if Google pin/marker is tapped
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        print("\n\n\ntippity tap\n\n\n")
-        print(marker)
-//        markerTappedHandler?(marker)
-        return true
+//    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+//        print("\n\n\ntippity tap\n\n\n")
+//        print(marker)
+////        markerTappedHandler?(marker)
+//        return true
+//    }
+    
+    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+        let view = Bundle.main.loadNibNamed("CustomPopUp", owner: self, options: nil)![0] as! CustomPopUp
+        let frame = CGRect(x: 10, y: 10, width: 350, height: 230)
+        view.frame = frame
+        view.layer.cornerRadius = 9.0
+        view.locTitle.text = marker.title
+        view.locAddress.text = marker.snippet
+        view.locImg.image = (marker.userData as! data).image
+        view.milesAway.text = "\((marker.userData as! data).distance)" + " miles away"
+        view.label.text = (marker.userData as! data).label
+        if (!(marker.userData as! data).isOpen) {
+            view.openClosed.text = "Closed"
+            view.openClosed.textColor = UIColor.red
+        } else {
+            view.openClosed.text = "Open"
+            view.openClosed.textColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0)
+        }
+        setSliderInvert(slider: view.densitySlider)
+        setSlider(slider: view.distanceSlider)
+        setSlider(slider: view.maskSlider)
+        return view
     }
- 
+    
+    //will transition to location view controller once code is finished for that
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker)
+    {
+      //  let viewController = LocationViewController()
+       // self.present(viewController, animated: true, completion: nil)
+        print("pressed!")
+    }
     //FIXME: make a working connection from location pg to landing pg
 //    @IBAction func unwindToLandingPG(unwindSegue: UIStoryboardSegue){
 //        print("function called")
@@ -126,10 +162,9 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
 //        let reportBtn = UIButton(type: .custom)
             ReportButton.frame = CGRect(x: 250, y: 800, width: 40, height: 40)
             ReportButton.layer.cornerRadius = 0.5 * ReportButton.bounds.size.width
-            ReportButton.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0) /* #afd19a */
-
+            ReportButton.backgroundColor = UIColor(red: 68/255, green: 150/255, blue: 176/255, alpha: 1.0) /* #4496b0 */
             ReportButton.clipsToBounds = true
-            ReportButton.setImage(UIImage(named:"reportIcon"), for: .normal)
+            ReportButton.setImage(UIImage(named:"reportBtn"), for: .normal)
             ReportButton.addTarget(self, action: #selector(userReportButtonPressed), for: .touchUpInside)
             view.addSubview(ReportButton)
 
@@ -169,6 +204,94 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
       func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
       }
-}
+    
+    //slider styling functions
+    func setSlider(slider:UISlider) {
+       let tgl = CAGradientLayer()
+       let frame = CGRect(x: 0.0, y: 0.0, width: slider.bounds.width, height: 9.0 )
+       tgl.frame = frame
 
+        tgl.colors = [UIColor(red: 196/255, green: 13/255, blue: 0/255, alpha: 1.0).cgColor /* #c40d00 */, UIColor(red: 255/255, green: 231/255, blue: 81/255, alpha: 1.0).cgColor /* #ffec21 */, UIColor(red: 80/255, green: 175/255, blue: 114/255, alpha: 1.0).cgColor /* #50af72 */
 
+       ]
+
+       tgl.borderWidth = 1.0
+       tgl.borderColor = UIColor.white.cgColor
+       tgl.cornerRadius = 9.0
+
+       tgl.endPoint = CGPoint(x: 1.0, y:  1.0)
+       tgl.startPoint = CGPoint(x: 0.0, y:  1.0)
+
+       UIGraphicsBeginImageContextWithOptions(tgl.frame.size, false, 0.0)
+       tgl.render(in: UIGraphicsGetCurrentContext()!)
+       let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
+       UIGraphicsEndImageContext()
+
+       slider.setMaximumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+       slider.setMinimumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+
+       let layerFrame = CGRect(x: 0, y: 0, width: 10.0, height: 10.0)
+
+       let shapeLayer = CAShapeLayer()
+       shapeLayer.path = CGPath(ellipseIn: layerFrame, transform: nil)
+       shapeLayer.fillColor = UIColor.white.cgColor
+        shapeLayer.strokeColor = UIColor.black.cgColor
+        
+       let thumb = CALayer.init()
+       thumb.frame = layerFrame
+       thumb.addSublayer(shapeLayer)
+
+       UIGraphicsBeginImageContextWithOptions(thumb.frame.size, false, 0.0)
+
+       thumb.render(in: UIGraphicsGetCurrentContext()!)
+       let thumbImage = UIGraphicsGetImageFromCurrentImageContext()
+       UIGraphicsEndImageContext()
+
+       slider.setThumbImage(thumbImage, for: .normal)
+       slider.setThumbImage(thumbImage, for: .highlighted)
+   }
+    
+    func setSliderInvert(slider:UISlider) {
+       let tgl = CAGradientLayer()
+       let frame = CGRect(x: 0.0, y: 0.0, width: slider.bounds.width, height: 9.0 )
+       tgl.frame = frame
+
+        tgl.colors = [UIColor(red: 80/255, green: 175/255, blue: 114/255, alpha: 1.0).cgColor /* #50af72 */, UIColor(red: 255/255, green: 231/255, blue: 81/255, alpha: 1.0).cgColor /* #ffec21 */,  UIColor(red: 196/255, green: 13/255, blue: 0/255, alpha: 1.0).cgColor /* #c40d00 */
+       ]
+
+       tgl.borderWidth = 1.0
+       tgl.borderColor = UIColor.white.cgColor
+       tgl.cornerRadius = 9.0
+
+       tgl.endPoint = CGPoint(x: 1.0, y:  1.0)
+       tgl.startPoint = CGPoint(x: 0.0, y:  1.0)
+
+       UIGraphicsBeginImageContextWithOptions(tgl.frame.size, false, 0.0)
+       tgl.render(in: UIGraphicsGetCurrentContext()!)
+       let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
+       UIGraphicsEndImageContext()
+
+       slider.setMaximumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+       slider.setMinimumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+
+       let layerFrame = CGRect(x: 0, y: 0, width: 10.0, height: 10.0)
+
+       let shapeLayer = CAShapeLayer()
+       shapeLayer.path = CGPath(ellipseIn: layerFrame, transform: nil)
+       shapeLayer.fillColor = UIColor.white.cgColor
+        shapeLayer.strokeColor = UIColor.black.cgColor
+        
+       let thumb = CALayer.init()
+       thumb.frame = layerFrame
+       thumb.addSublayer(shapeLayer)
+
+       UIGraphicsBeginImageContextWithOptions(thumb.frame.size, false, 0.0)
+
+       thumb.render(in: UIGraphicsGetCurrentContext()!)
+       let thumbImage = UIGraphicsGetImageFromCurrentImageContext()
+       UIGraphicsEndImageContext()
+
+       slider.setThumbImage(thumbImage, for: .normal)
+       slider.setThumbImage(thumbImage, for: .highlighted)
+        }
+   }

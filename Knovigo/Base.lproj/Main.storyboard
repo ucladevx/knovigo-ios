@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kBB-2X-M2c">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kBB-2X-M2c">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -10,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Location View Controller-->
+        <!--LocationPage-->
         <scene sceneID="EYV-p1-6HR">
             <objects>
-                <viewController id="yPV-8i-Ndh" customClass="LocationViewController" customModule="Knovigo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="LocationPage" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yPV-8i-Ndh" customClass="LocationViewController" customModule="Knovigo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n7Z-tY-I91">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -478,8 +479,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="95L-8b-Dqx">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J0z-iy-Gev">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J0z-iy-Gev">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1600"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Location Report " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwq-rN-gVB">
                                                 <rect key="frame" x="50" y="50" width="290" height="22"/>
@@ -509,8 +510,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="D5z-38-MrO">
-                                                <rect key="frame" x="119" y="336" width="183" height="54"/>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="D5z-38-MrO">
+                                                <rect key="frame" x="120" y="341" width="174" height="49"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" red="0.27732962100000003" green="0.61649935229999997" blue="0.15942614099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <locale key="locale" localeIdentifier="en_US"/>
@@ -521,8 +522,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="EC7-ts-ZVh">
-                                                <rect key="frame" x="127" y="432" width="183" height="54"/>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="EC7-ts-ZVh">
+                                                <rect key="frame" x="120" y="436.5" width="174" height="49.5"/>
                                                 <color key="tintColor" red="0.29689565369999998" green="0.65999433289999998" blue="0.17067390130000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </datePicker>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4. How many people were socially distanced?" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJi-12-Man">
@@ -811,6 +812,7 @@
                                             <constraint firstItem="pMD-ON-BZ2" firstAttribute="top" secondItem="Niu-mq-Yc9" secondAttribute="bottom" constant="75" id="Roh-TD-9bB"/>
                                             <constraint firstItem="zCD-PL-X2R" firstAttribute="top" secondItem="t7O-eS-fyO" secondAttribute="bottom" constant="10" id="SFD-NL-DjK"/>
                                             <constraint firstAttribute="trailing" secondItem="fQM-kt-Qsi" secondAttribute="trailing" constant="150" id="SnW-JH-2EO"/>
+                                            <constraint firstItem="wJi-12-Man" firstAttribute="top" secondItem="EC7-ts-ZVh" secondAttribute="bottom" constant="13.5" id="TZg-KL-NlY"/>
                                             <constraint firstItem="5yN-Au-kR0" firstAttribute="leading" secondItem="J0z-iy-Gev" secondAttribute="leading" constant="47" id="Tvz-cN-G8Z"/>
                                             <constraint firstAttribute="trailing" secondItem="pMD-ON-BZ2" secondAttribute="trailing" constant="44" id="UBd-xY-s9w"/>
                                             <constraint firstItem="06y-Dz-I8x" firstAttribute="top" secondItem="meU-3q-rLg" secondAttribute="bottom" constant="150" id="UOu-qT-1LS"/>
@@ -835,6 +837,7 @@
                                             <constraint firstItem="D5z-38-MrO" firstAttribute="top" secondItem="pMD-ON-BZ2" secondAttribute="bottom" constant="12" id="cdI-kv-Nwf"/>
                                             <constraint firstItem="lpi-M7-WqY" firstAttribute="top" secondItem="wJi-12-Man" secondAttribute="bottom" constant="18" id="dNU-0X-SB4"/>
                                             <constraint firstItem="ceb-a6-zSy" firstAttribute="leading" secondItem="J0z-iy-Gev" secondAttribute="leading" constant="50" id="dUF-Du-lqF"/>
+                                            <constraint firstItem="mhr-1A-xoP" firstAttribute="top" secondItem="D5z-38-MrO" secondAttribute="bottom" constant="14" id="dyg-nl-35t"/>
                                             <constraint firstItem="lpi-M7-WqY" firstAttribute="leading" secondItem="J0z-iy-Gev" secondAttribute="leading" constant="47" id="e2l-xm-W1f"/>
                                             <constraint firstAttribute="trailing" secondItem="l5n-12-YKm" secondAttribute="trailing" constant="44" id="e7w-mJ-7Rb"/>
                                             <constraint firstItem="ehS-Rg-BRe" firstAttribute="leading" secondItem="RLR-qx-gUR" secondAttribute="trailing" constant="22" id="eph-GO-PkY"/>
