@@ -22,4 +22,5 @@ class CustomPopUp: UIView {
     @IBOutlet weak var milesAway: UILabel!
     @IBOutlet weak var openClosed: UILabel!
     @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var label: UILabel!
 }

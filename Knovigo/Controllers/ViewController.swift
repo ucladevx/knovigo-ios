@@ -46,6 +46,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         var image : UIImage
         var distance : Double
         var isOpen : Bool
+        var label: String
     }
     // function that takes in an array of location objects and marker them on the map
     func setMarker(markerGeoCoords: [location]){
@@ -58,7 +59,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
             //styling the marker
             marker.icon = GMSMarker.markerImage(with: .blue)
             marker.map = self.mapView
-            marker.userData = data(image: i.image, distance: i.distance, isOpen: i.isOpen);
+            marker.userData = data(image: i.image, distance: i.distance, isOpen: i.isOpen, label: i.label);
         }
     }
     
@@ -73,13 +74,14 @@ class ViewController: UIViewController, GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         let view = Bundle.main.loadNibNamed("CustomPopUp", owner: self, options: nil)![0] as! CustomPopUp
-        let frame = CGRect(x: 10, y: 10, width: 350, height: 200)
+        let frame = CGRect(x: 10, y: 10, width: 350, height: 230)
         view.frame = frame
         view.layer.cornerRadius = 9.0
         view.locTitle.text = marker.title
         view.locAddress.text = marker.snippet
         view.locImg.image = (marker.userData as! data).image
         view.milesAway.text = "\((marker.userData as! data).distance)" + " miles away"
+        view.label.text = (marker.userData as! data).label
         if (!(marker.userData as! data).isOpen) {
             view.openClosed.text = "Closed"
             view.openClosed.textColor = UIColor.red
@@ -93,10 +95,11 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         return view
     }
     
+    //will transition to location view controller once code is finished for that
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker)
     {
-//        let viewController = LocationViewController()
-//        self.present(viewController, animated: true, completion: nil)
+      //  let viewController = LocationViewController()
+       // self.present(viewController, animated: true, completion: nil)
         print("pressed!")
     }
     //FIXME: make a working connection from location pg to landing pg
@@ -159,10 +162,9 @@ class ViewController: UIViewController, GMSMapViewDelegate {
 //        let reportBtn = UIButton(type: .custom)
             ReportButton.frame = CGRect(x: 250, y: 800, width: 40, height: 40)
             ReportButton.layer.cornerRadius = 0.5 * ReportButton.bounds.size.width
-            ReportButton.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0) /* #afd19a */
-
+            ReportButton.backgroundColor = UIColor(red: 68/255, green: 150/255, blue: 176/255, alpha: 1.0) /* #4496b0 */
             ReportButton.clipsToBounds = true
-            ReportButton.setImage(UIImage(named:"reportIcon"), for: .normal)
+            ReportButton.setImage(UIImage(named:"reportBtn"), for: .normal)
             ReportButton.addTarget(self, action: #selector(userReportButtonPressed), for: .touchUpInside)
             view.addSubview(ReportButton)
 
