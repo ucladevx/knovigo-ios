@@ -6,6 +6,7 @@
 //
 
 import UIKit.UIImage
+
 struct LocationInfo
 {
     init(name nm : String, address add : String, distancing dist : Int, density dsty : Int, maskWearing msk : Int, image img : UIImage?, priceRange prc : PriceRange, tags tgs : [String]) {
@@ -26,4 +27,12 @@ struct LocationInfo
     let profileImage : UIImage?
     let price : PriceRange
     let tags : [String]
+    let distance : Double
+    let rating : Int
+//    var coordinates: CLLocationCoordinate2D
+    
+    // bools for checkboxes
+    // business hours
+    // popular times
+    
 }

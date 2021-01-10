@@ -26,6 +26,19 @@
 
 /* Begin PBXFileReference section */
 		4342D6774D639C5B20C8F23F /* Pods-Knovigo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knovigo.release.xcconfig"; path = "Target Support Files/Pods-Knovigo/Pods-Knovigo.release.xcconfig"; sourceTree = "<group>"; };
+		751215A22599304100405770 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
+		751215A32599304100405770 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
+		751215A42599304100405770 /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
+		751215A52599304100405770 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		751215A62599304100405770 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		751215A72599304100405770 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		751215A82599304100405770 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
+		751215A92599304100405770 /* OFL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		751215AA2599304100405770 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
+		751215AB2599304100405770 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		751215AC2599304100405770 /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
+		75AE69C72592C948009D0A25 /* CustomPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUp.swift; sourceTree = "<group>"; };
+		75AE69CA2592C963009D0A25 /* CustomPopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomPopUp.xib; sourceTree = "<group>"; };
 		8F23B74B259598BA00FCD942 /* LocationInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoModel.swift; sourceTree = "<group>"; };
 		8F23B74E25959AD400FCD942 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		8F63713B25941F350032CA88 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +71,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		751215AD2599304100405770 /* Lato 2 */ = {
+			isa = PBXGroup;
+			children = (
+				751215A22599304100405770 /* Lato-Italic.ttf */,
+				751215A32599304100405770 /* Lato-LightItalic.ttf */,
+				751215A42599304100405770 /* Lato-Thin.ttf */,
+				751215A52599304100405770 /* Lato-Bold.ttf */,
+				751215A62599304100405770 /* Lato-Black.ttf */,
+				751215A72599304100405770 /* Lato-Regular.ttf */,
+				751215A82599304100405770 /* Lato-BlackItalic.ttf */,
+				751215A92599304100405770 /* OFL.txt */,
+				751215AA2599304100405770 /* Lato-BoldItalic.ttf */,
+				751215AB2599304100405770 /* Lato-Light.ttf */,
+				751215AC2599304100405770 /* Lato-ThinItalic.ttf */,
+			);
+			name = "Lato 2";
+			path = "/Users/abhishekmarda/Documents/Academics/UCLA/Computer Science/Knovigo/knovigo-ios/Knovigo/Lato 2";
+			sourceTree = "<absolute>";
+		};
 		8F23B74A2595983700FCD942 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +304,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75AE69C82592C948009D0A25 /* CustomPopUp.swift in Sources */,
+				8F6F37162590DC0900B6BF72 /* HomeViewController.swift in Sources */,
+
 				8F6F37162590DC0900B6BF72 /* HomeViewController.swift in Sources */,
 				8F6371422594F5900032CA88 /* LocationTableViewCell.swift in Sources */,
 				8F6F37122590DC0900B6BF72 /* AppDelegate.swift in Sources */,
