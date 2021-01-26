@@ -51,7 +51,6 @@
 		751215AC2599304100405770 /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
 		75AE69C72592C948009D0A25 /* CustomPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUp.swift; sourceTree = "<group>"; };
 		75AE69CA2592C963009D0A25 /* CustomPopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomPopUp.xib; sourceTree = "<group>"; };
-
 		8F23B74B259598BA00FCD942 /* LocationInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoModel.swift; sourceTree = "<group>"; };
 		8F23B74E25959AD400FCD942 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		8F63713B25941F350032CA88 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -99,9 +98,8 @@
 				751215AB2599304100405770 /* Lato-Light.ttf */,
 				751215AC2599304100405770 /* Lato-ThinItalic.ttf */,
 			);
-			name = "Lato 2";
-			path = "/Users/medhakini/Desktop/knovigo-ios/Knovigo/Lato 2";
-			sourceTree = "<absolute>";
+			path = "Lato 2";
+			sourceTree = "<group>";
 		};
 		8F23B74A2595983700FCD942 /* Models */ = {
 			isa = PBXGroup;
@@ -333,7 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75AE69C82592C948009D0A25 /* CustomPopUp.swift in Sources */,
-				8F6F37162590DC0900B6BF72 /* ViewController.swift in Sources */,
+				8F6F37162590DC0900B6BF72 /* HomeViewController.swift in Sources */,
 				8F6F37162590DC0900B6BF72 /* HomeViewController.swift in Sources */,
 				8F6371422594F5900032CA88 /* LocationTableViewCell.swift in Sources */,
 				8F6F37122590DC0900B6BF72 /* AppDelegate.swift in Sources */,
