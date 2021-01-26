@@ -23,13 +23,13 @@
             <rect key="frame" x="0.0" y="0.0" width="350" height="230"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soO-qV-xPL">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soO-qV-xPL">
                     <rect key="frame" x="8" y="8" width="337" height="20.5"/>
                     <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejg-9q-bHx">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejg-9q-bHx">
                     <rect key="frame" x="8" y="55" width="337" height="11"/>
                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                     <nil key="textColor"/>
@@ -51,25 +51,25 @@
                 <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="eed-TR-ONu">
                     <rect key="frame" x="196" y="138" width="130" height="31"/>
                 </slider>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Density" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fu1-oT-ggH">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Density" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fu1-oT-ggH">
                     <rect key="frame" x="118" y="104" width="61" height="11"/>
                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="9"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Distancing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3a9-rI-q3a">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Distancing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3a9-rI-q3a">
                     <rect key="frame" x="118" y="132" width="43" height="11"/>
                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="9"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Mask Wearing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbF-GA-3dF">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Mask Wearing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbF-GA-3dF">
                     <rect key="frame" x="118" y="163" width="57.5" height="11"/>
                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="9"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Current:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YoY-fo-J7C">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Current:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YoY-fo-J7C">
                     <rect key="frame" x="118" y="74" width="50" height="14"/>
                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
                     <nil key="textColor"/>
@@ -80,47 +80,47 @@
                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="11"/>
                     <state key="normal" title="View More Location Info"/>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="miles away" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uE8-Rn-dok">
-                    <rect key="frame" x="192" y="36" width="55" height="13"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="miles away" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uE8-Rn-dok">
+                    <rect key="frame" x="279" y="35" width="55" height="13"/>
                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="11"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0%                 50%             100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfr-RF-aMC">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0%                 50%             100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfr-RF-aMC">
                     <rect key="frame" x="201" y="104" width="130" height="11"/>
                     <fontDescription key="fontDescription" type="system" pointSize="8"/>
                     <color key="textColor" systemColor="systemGrayColor"/>
                     <color key="highlightedColor" systemColor="systemGrayColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0%                 50%             100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYu-ne-A6V">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0%                 50%             100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYu-ne-A6V">
                     <rect key="frame" x="198" y="132" width="130" height="11"/>
                     <fontDescription key="fontDescription" type="system" pointSize="8"/>
                     <color key="textColor" systemColor="systemGrayColor"/>
                     <color key="highlightedColor" systemColor="systemGrayColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0%                 50%             100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Nc-Mb-dDZ">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0%                 50%             100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Nc-Mb-dDZ">
                     <rect key="frame" x="199" y="163" width="130" height="11"/>
                     <fontDescription key="fontDescription" type="system" pointSize="8"/>
                     <color key="textColor" systemColor="systemGrayColor"/>
                     <color key="highlightedColor" systemColor="systemGrayColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PS3-0m-v8Q">
-                    <rect key="frame" x="101.5" y="35.5" width="27" height="13.5"/>
-                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="11"/>
-                    <color key="textColor" red="0.31387127790000002" green="0.67007367230000003" blue="0.20718553300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grocery Store" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUc-pz-cxm">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grocery Store" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUc-pz-cxm">
                     <rect key="frame" x="8" y="35.5" width="73.5" height="13.5"/>
                     <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="highlightedColor" systemColor="systemGrayColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$$$$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCl-Gy-Xod">
-                    <rect key="frame" x="148" y="36" width="31" height="13"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$$$$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCl-Gy-Xod">
+                    <rect key="frame" x="230" y="36" width="31" height="13"/>
                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="11"/>
                     <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Open" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PS3-0m-v8Q">
+                    <rect key="frame" x="182" y="36" width="27" height="13.5"/>
+                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="11"/>
+                    <color key="textColor" red="0.31387127790000002" green="0.67007367230000003" blue="0.20718553300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -138,7 +138,6 @@
                 <constraint firstItem="OCl-Gy-Xod" firstAttribute="leading" secondItem="PS3-0m-v8Q" secondAttribute="trailing" constant="20" id="Beb-3e-vcy"/>
                 <constraint firstItem="ejg-9q-bHx" firstAttribute="top" secondItem="soO-qV-xPL" secondAttribute="bottom" constant="27" id="E0T-dI-9ME"/>
                 <constraint firstItem="mFM-Iw-qpn" firstAttribute="top" secondItem="7Q7-m3-X2l" secondAttribute="bottom" constant="18" id="Ee1-DN-Uaq"/>
-                <constraint firstItem="PS3-0m-v8Q" firstAttribute="leading" secondItem="gUc-pz-cxm" secondAttribute="trailing" constant="20" id="Gjt-4a-xL0"/>
                 <constraint firstItem="L6C-FB-Nwe" firstAttribute="top" secondItem="ejg-9q-bHx" secondAttribute="bottom" constant="10" id="HnD-Cx-uvn"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mFM-Iw-qpn" secondAttribute="trailing" constant="23" id="IH4-ua-ehf"/>
                 <constraint firstItem="OCl-Gy-Xod" firstAttribute="top" secondItem="soO-qV-xPL" secondAttribute="bottom" constant="7" id="LAW-lq-gyc"/>
@@ -169,6 +168,7 @@
                 <constraint firstItem="ejg-9q-bHx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="sAF-P7-RlY"/>
                 <constraint firstItem="gUc-pz-cxm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="sAc-V4-Koa"/>
                 <constraint firstAttribute="trailing" secondItem="soO-qV-xPL" secondAttribute="trailing" constant="5" id="wix-Fq-5zP"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="uE8-Rn-dok" secondAttribute="trailing" constant="15" id="xzS-aQ-UBn"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

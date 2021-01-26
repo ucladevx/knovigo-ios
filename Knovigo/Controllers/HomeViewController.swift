@@ -47,6 +47,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
         var distance : Double
         var isOpen : Bool
         var label: String
+        var pin: Double
     }
     // function that takes in an array of location objects and marker them on the map
     func setMarker(markerGeoCoords: [location]){
@@ -57,9 +58,19 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
             marker.snippet = i.address
             marker.isFlat = true //make sure the orientation of marker depends on phone
             //styling the marker
-            marker.icon = GMSMarker.markerImage(with: .blue)
             marker.map = self.mapView
-            marker.userData = data(image: i.image, distance: i.distance, isOpen: i.isOpen, label: i.label);
+            marker.userData = data(image: i.image, distance: i.distance, isOpen: i.isOpen, label: i.label, pin: i.pinLabel);
+            if (i.pinLabel <= 0.20) {
+                marker.icon = UIImage(named: "pin-dark-green");
+            } else if (i.pinLabel <= 0.40) {
+                marker.icon = UIImage(named: "pin-light-green");
+            } else if (i.pinLabel <= 0.60) {
+                marker.icon = UIImage(named: "pin-yellow");
+            } else if (i.pinLabel <= 0.80) {
+                marker.icon = UIImage(named: "pin-orange");
+            } else {
+                marker.icon = UIImage(named: "pin-red");
+            }
         }
     }
     
