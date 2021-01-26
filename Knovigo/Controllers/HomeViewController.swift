@@ -99,7 +99,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker)
     {
       //  let viewController = LocationViewController()
-       // self.present(viewController, animated: true, completion: nil)
+        present(LocationViewController(), animated: true, completion: nil)
         print("pressed!")
     }
     //FIXME: make a working connection from location pg to landing pg
@@ -171,7 +171,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     }
 
     @objc func userReportButtonPressed() {
-        self.performSegue(withIdentifier: "homeToSearch", sender: self)
+        self.performSegue(withIdentifier: "homeToLocation", sender: self)
     }
 
    }
