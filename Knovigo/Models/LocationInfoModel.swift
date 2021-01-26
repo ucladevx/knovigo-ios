@@ -27,8 +27,8 @@ struct LocationInfo
     let profileImage : UIImage?
     let price : PriceRange
     let tags : [String]
-    let distance : Double
-    let rating : Int
+    // let distance : Double
+    // let rating : Int
 //    var coordinates: CLLocationCoordinate2D
     
     // bools for checkboxes
