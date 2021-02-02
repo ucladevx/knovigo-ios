@@ -50,6 +50,30 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
     var density: Float = -1
     var distancing: Float = -1
     var mwearing: Float = -1
+    @IBOutlet weak var locImage: UIImageView!
+    
+    
+    @IBOutlet weak var masksReqBtn: UILabel!
+    
+    @IBOutlet weak var staffWearsBtn: UILabel!
+    
+    @IBOutlet weak var plexiglassBtn: UILabel!
+    
+    @IBOutlet weak var limitedCapacityBtn: UILabel!
+    
+    @IBOutlet weak var lineOutsideBtn: UILabel!
+    
+    @IBOutlet weak var bathroomBtn: UILabel!
+    
+    @IBOutlet weak var wifiBtn: UILabel!
+    
+    @IBOutlet weak var outdoorBtn: UILabel!
+    
+    @IBOutlet weak var outletBtn: UILabel!
+    
+    @IBOutlet weak var takeoutBtn: UILabel!
+    
+    @IBOutlet weak var dineInBtn: UILabel!
     
     let dropDown = DropDown()
     override func viewDidLoad() {
@@ -67,6 +91,16 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
         self.dayPicker.delegate = self
         self.dayPicker.dataSource = self
         pickerData = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+        
+        self.locImage.image = UIImage(named: "targetBig.jpeg");
+        
+        masksReqBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
+        plexiglassBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
+        staffWearsBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
+        limitedCapacityBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
+        lineOutsideBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
+        outdoorBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
+        wifiBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
 
     }
     
