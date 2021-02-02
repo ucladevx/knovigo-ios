@@ -7,10 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		751215B02599316600405770 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 751215A72599304100405770 /* Lato-Regular.ttf */; };
+		751215B22599316800405770 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 751215A52599304100405770 /* Lato-Bold.ttf */; };
+		751215B42599316D00405770 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 751215A22599304100405770 /* Lato-Italic.ttf */; };
+		751215B62599316F00405770 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 751215A32599304100405770 /* Lato-LightItalic.ttf */; };
+		751215B82599317100405770 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 751215A42599304100405770 /* Lato-Thin.ttf */; };
+		751215BA2599317400405770 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 751215A62599304100405770 /* Lato-Black.ttf */; };
+		751215BC2599317800405770 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 751215A82599304100405770 /* Lato-BlackItalic.ttf */; };
+		751215BE2599317C00405770 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 751215AA2599304100405770 /* Lato-BoldItalic.ttf */; };
+		751215C02599317E00405770 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 751215AB2599304100405770 /* Lato-Light.ttf */; };
+		751215C22599318100405770 /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 751215AC2599304100405770 /* Lato-ThinItalic.ttf */; };
+		75AE69C82592C948009D0A25 /* CustomPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AE69C72592C948009D0A25 /* CustomPopUp.swift */; };
+		75AE69CB2592C963009D0A25 /* CustomPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75AE69CA2592C963009D0A25 /* CustomPopUp.xib */; };
 		88554668EE52383ACEB61F56 /* Pods_Knovigo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7DE5AEA8BAF17EC8145DD41 /* Pods_Knovigo.framework */; };
+		8F23B74C259598BA00FCD942 /* LocationInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F23B74B259598BA00FCD942 /* LocationInfoModel.swift */; };
+		8F23B74F25959AD400FCD942 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F23B74E25959AD400FCD942 /* constants.swift */; };
+		8F63713C25941F350032CA88 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F63713B25941F350032CA88 /* SearchViewController.swift */; };
+		8F6371422594F5900032CA88 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6371402594F5900032CA88 /* LocationTableViewCell.swift */; };
+		8F6371432594F5900032CA88 /* LocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F6371412594F5900032CA88 /* LocationTableViewCell.xib */; };
 		8F6F37122590DC0900B6BF72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F37112590DC0900B6BF72 /* AppDelegate.swift */; };
 		8F6F37142590DC0900B6BF72 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F37132590DC0900B6BF72 /* SceneDelegate.swift */; };
-		8F6F37162590DC0900B6BF72 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F37152590DC0900B6BF72 /* ViewController.swift */; };
+		8F6F37162590DC0900B6BF72 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F37152590DC0900B6BF72 /* HomeViewController.swift */; };
 		8F6F37192590DC0900B6BF72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F6F37172590DC0900B6BF72 /* Main.storyboard */; };
 		8F6F371B2590DC0A00B6BF72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F6F371A2590DC0A00B6BF72 /* Assets.xcassets */; };
 		8F6F371E2590DC0A00B6BF72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F6F371C2590DC0A00B6BF72 /* LaunchScreen.storyboard */; };
@@ -21,10 +38,28 @@
 
 /* Begin PBXFileReference section */
 		4342D6774D639C5B20C8F23F /* Pods-Knovigo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knovigo.release.xcconfig"; path = "Target Support Files/Pods-Knovigo/Pods-Knovigo.release.xcconfig"; sourceTree = "<group>"; };
+		751215A22599304100405770 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
+		751215A32599304100405770 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
+		751215A42599304100405770 /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
+		751215A52599304100405770 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		751215A62599304100405770 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		751215A72599304100405770 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		751215A82599304100405770 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
+		751215A92599304100405770 /* OFL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		751215AA2599304100405770 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
+		751215AB2599304100405770 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		751215AC2599304100405770 /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
+		75AE69C72592C948009D0A25 /* CustomPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUp.swift; sourceTree = "<group>"; };
+		75AE69CA2592C963009D0A25 /* CustomPopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomPopUp.xib; sourceTree = "<group>"; };
+		8F23B74B259598BA00FCD942 /* LocationInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoModel.swift; sourceTree = "<group>"; };
+		8F23B74E25959AD400FCD942 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
+		8F63713B25941F350032CA88 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		8F6371402594F5900032CA88 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
+		8F6371412594F5900032CA88 /* LocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationTableViewCell.xib; sourceTree = "<group>"; };
 		8F6F370E2590DC0900B6BF72 /* Knovigo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Knovigo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F6F37112590DC0900B6BF72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F6F37132590DC0900B6BF72 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8F6F37152590DC0900B6BF72 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8F6F37152590DC0900B6BF72 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8F6F37182590DC0900B6BF72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8F6F371A2590DC0A00B6BF72 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8F6F371D2590DC0A00B6BF72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -48,6 +83,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		751215AD2599304100405770 /* Lato 2 */ = {
+			isa = PBXGroup;
+			children = (
+				751215A22599304100405770 /* Lato-Italic.ttf */,
+				751215A32599304100405770 /* Lato-LightItalic.ttf */,
+				751215A42599304100405770 /* Lato-Thin.ttf */,
+				751215A52599304100405770 /* Lato-Bold.ttf */,
+				751215A62599304100405770 /* Lato-Black.ttf */,
+				751215A72599304100405770 /* Lato-Regular.ttf */,
+				751215A82599304100405770 /* Lato-BlackItalic.ttf */,
+				751215A92599304100405770 /* OFL.txt */,
+				751215AA2599304100405770 /* Lato-BoldItalic.ttf */,
+				751215AB2599304100405770 /* Lato-Light.ttf */,
+				751215AC2599304100405770 /* Lato-ThinItalic.ttf */,
+			);
+			path = "Lato 2";
+			sourceTree = "<group>";
+		};
+		8F23B74A2595983700FCD942 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8F23B74B259598BA00FCD942 /* LocationInfoModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8F63713F2594F5710032CA88 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8F6371402594F5900032CA88 /* LocationTableViewCell.swift */,
+				8F6371412594F5900032CA88 /* LocationTableViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		8F6F37052590DC0900B6BF72 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +144,12 @@
 				8F6F37112590DC0900B6BF72 /* AppDelegate.swift */,
 				8F6F37132590DC0900B6BF72 /* SceneDelegate.swift */,
 				8F6F373F2590E08E00B6BF72 /* util.swift */,
+				75AE69C72592C948009D0A25 /* CustomPopUp.swift */,
+				75AE69CA2592C963009D0A25 /* CustomPopUp.xib */,
+				751215AD2599304100405770 /* Lato 2 */,
+				8F23B74E25959AD400FCD942 /* constants.swift */,
+				8F23B74A2595983700FCD942 /* Models */,
+				8F63713F2594F5710032CA88 /* Views */,
 				8F6F37482590E1DF00B6BF72 /* Controllers */,
 				8F6F371A2590DC0A00B6BF72 /* Assets.xcassets */,
 				8F6F371F2590DC0A00B6BF72 /* Info.plist */,
@@ -84,9 +160,10 @@
 		8F6F37482590E1DF00B6BF72 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8F6F37152590DC0900B6BF72 /* ViewController.swift */,
+				8F6F37152590DC0900B6BF72 /* HomeViewController.swift */,
 				8F6F37422590E16A00B6BF72 /* ReportViewController.swift */,
 				8F6F37452590E18D00B6BF72 /* LocationViewController.swift */,
+				8F63713B25941F350032CA88 /* SearchViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -142,6 +219,7 @@
 				TargetAttributes = {
 					8F6F370D2590DC0900B6BF72 = {
 						CreatedOnToolsVersion = 12.3;
+						LastSwiftMigration = 1210;
 					};
 				};
 			};
@@ -169,8 +247,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F6F371E2590DC0A00B6BF72 /* LaunchScreen.storyboard in Resources */,
+				751215C22599318100405770 /* Lato-ThinItalic.ttf in Resources */,
+				751215C02599317E00405770 /* Lato-Light.ttf in Resources */,
+				751215B82599317100405770 /* Lato-Thin.ttf in Resources */,
+				751215B42599316D00405770 /* Lato-Italic.ttf in Resources */,
+				751215BE2599317C00405770 /* Lato-BoldItalic.ttf in Resources */,
+				751215B22599316800405770 /* Lato-Bold.ttf in Resources */,
+				751215BC2599317800405770 /* Lato-BlackItalic.ttf in Resources */,
+				751215B62599316F00405770 /* Lato-LightItalic.ttf in Resources */,
+				8F6371432594F5900032CA88 /* LocationTableViewCell.xib in Resources */,
 				8F6F371B2590DC0A00B6BF72 /* Assets.xcassets in Resources */,
+				751215B02599316600405770 /* Lato-Regular.ttf in Resources */,
 				8F6F37192590DC0900B6BF72 /* Main.storyboard in Resources */,
+				751215BA2599317400405770 /* Lato-Black.ttf in Resources */,
+				75AE69CB2592C963009D0A25 /* CustomPopUp.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,10 +330,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F6F37162590DC0900B6BF72 /* ViewController.swift in Sources */,
+				75AE69C82592C948009D0A25 /* CustomPopUp.swift in Sources */,
+				8F6F37162590DC0900B6BF72 /* HomeViewController.swift in Sources */,
+				8F6F37162590DC0900B6BF72 /* HomeViewController.swift in Sources */,
+				8F6371422594F5900032CA88 /* LocationTableViewCell.swift in Sources */,
 				8F6F37122590DC0900B6BF72 /* AppDelegate.swift in Sources */,
+				8F23B74F25959AD400FCD942 /* constants.swift in Sources */,
 				8F6F37142590DC0900B6BF72 /* SceneDelegate.swift in Sources */,
+				8F23B74C259598BA00FCD942 /* LocationInfoModel.swift in Sources */,
 				8F6F37462590E18D00B6BF72 /* LocationViewController.swift in Sources */,
+				8F63713C25941F350032CA88 /* SearchViewController.swift in Sources */,
 				8F6F37432590E16A00B6BF72 /* ReportViewController.swift in Sources */,
 				8F6F37402590E08E00B6BF72 /* util.swift in Sources */,
 			);
@@ -393,15 +489,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 69YFZB2ZXG;
 				INFOPLIST_FILE = Knovigo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "kt.knovigo-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -413,9 +512,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 69YFZB2ZXG;
 				INFOPLIST_FILE = Knovigo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

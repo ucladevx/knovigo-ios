@@ -136,7 +136,7 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         submitBtn.layer.cornerRadius = 3.0
         submitBtn.frame = CGRect(x: 151, y: 1702, width: 150, height: 40)
-        submitBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0) /* #afd19a */
+        submitBtn.backgroundColor = UIColor(red: 68/255, green: 150/255, blue: 176/255, alpha: 1.0) /* #4496b0 */
         submitBtn.setTitle("Submit", for: .normal)
         submitBtn.setTitleColor(UIColor.white, for: .normal)
 
