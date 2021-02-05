@@ -31,7 +31,8 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         setSearchButton();
         setReportButton();
         
-        HeatMapView.layer.cornerRadius = 20
+        //style heat map box
+        HeatMapView.layer.cornerRadius = 30
         HeatMapView.layer.shadowColor = UIColor.black.cgColor
         HeatMapView.layer.shadowOpacity = 0.5
         HeatMapView.layer.shadowOffset = .zero

@@ -299,39 +299,39 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XbE-1W-Z1T" userLabel="HeatMap View">
-                                <rect key="frame" x="314" y="214" width="80" height="140"/>
+                                <rect key="frame" x="314" y="214" width="80" height="160"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COVID-19 Heat Map" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2W-1Y-KVj">
-                                        <rect key="frame" x="10" y="70" width="60" height="29"/>
+                                        <rect key="frame" x="10" y="75" width="60" height="29"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" preferredStyle="sliding" translatesAutoresizingMaskIntoConstraints="NO" id="rse-Ay-Qsd">
-                                        <rect key="frame" x="15.5" y="104.5" width="51" height="31"/>
+                                        <rect key="frame" x="15.5" y="114.5" width="51" height="31"/>
                                         <connections>
                                             <action selector="setState:" destination="kBB-2X-M2c" eventType="valueChanged" id="Gnz-3b-lxq"/>
                                         </connections>
                                     </switch>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heatMapLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Wch-Lx-nKv">
-                                        <rect key="frame" x="20" y="13" width="40" height="40"/>
+                                        <rect key="frame" x="17.5" y="15" width="45" height="45"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="78N-oh-Gw7"/>
-                                            <constraint firstAttribute="width" constant="40" id="PKM-9T-uyc"/>
+                                            <constraint firstAttribute="height" constant="45" id="78N-oh-Gw7"/>
+                                            <constraint firstAttribute="width" constant="45" id="PKM-9T-uyc"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="rse-Ay-Qsd" firstAttribute="centerX" secondItem="XbE-1W-Z1T" secondAttribute="centerX" id="1cp-be-pr2"/>
-                                    <constraint firstItem="K2W-1Y-KVj" firstAttribute="top" secondItem="XbE-1W-Z1T" secondAttribute="centerY" id="KfT-xK-mgn"/>
+                                    <constraint firstItem="K2W-1Y-KVj" firstAttribute="top" secondItem="XbE-1W-Z1T" secondAttribute="centerY" constant="-5" id="KfT-xK-mgn"/>
                                     <constraint firstItem="K2W-1Y-KVj" firstAttribute="centerX" secondItem="XbE-1W-Z1T" secondAttribute="centerX" id="Qpu-9A-yrH"/>
                                     <constraint firstAttribute="width" constant="80" id="Raz-xw-yD0"/>
-                                    <constraint firstItem="rse-Ay-Qsd" firstAttribute="centerY" secondItem="XbE-1W-Z1T" secondAttribute="bottom" constant="-20" id="TzD-Vg-64w"/>
+                                    <constraint firstItem="rse-Ay-Qsd" firstAttribute="centerY" secondItem="XbE-1W-Z1T" secondAttribute="bottom" constant="-30" id="TzD-Vg-64w"/>
                                     <constraint firstItem="K2W-1Y-KVj" firstAttribute="leading" secondItem="XbE-1W-Z1T" secondAttribute="leading" constant="10" id="aXj-JC-GeG"/>
                                     <constraint firstItem="Wch-Lx-nKv" firstAttribute="centerX" secondItem="XbE-1W-Z1T" secondAttribute="centerX" id="eE7-s0-a2k"/>
-                                    <constraint firstItem="Wch-Lx-nKv" firstAttribute="top" secondItem="XbE-1W-Z1T" secondAttribute="top" constant="13" id="lTi-fd-sW4"/>
-                                    <constraint firstAttribute="height" constant="140" id="vaG-ks-NiJ"/>
+                                    <constraint firstItem="Wch-Lx-nKv" firstAttribute="top" secondItem="XbE-1W-Z1T" secondAttribute="top" constant="15" id="lTi-fd-sW4"/>
+                                    <constraint firstAttribute="height" constant="160" id="vaG-ks-NiJ"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="densityLegend" translatesAutoresizingMaskIntoConstraints="NO" id="mKK-ih-lY2">
