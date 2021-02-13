@@ -42,13 +42,6 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
 
     }
     
-    struct data {
-        var image : UIImage
-        var distance : Double
-        var isOpen : Bool
-        var label: String
-        var pin: Double
-    }
     // function that takes in an array of location objects and marker them on the map
     func setMarker(markerGeoCoords: [location]){
         var marker: GMSMarker
@@ -59,6 +52,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
             marker.isFlat = true //make sure the orientation of marker depends on phone
             //styling the marker
             marker.map = self.mapView
+            marker.accessibilityLabel = i.name
             marker.userData = data(image: i.image, distance: i.distance, isOpen: i.isOpen, label: i.label, pin: i.pinLabel);
             if (i.pinLabel <= 0.20) {
                 marker.icon = UIImage(named: "pin-dark-green");
@@ -110,7 +104,10 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker)
     {
       //  let viewController = LocationViewController()
-        present(LocationViewController(), animated: true, completion: nil)
+        let sb = UIStoryboard(name:"Main",bundle: Bundle.main)
+        let locViewController = sb.instantiateViewController(withIdentifier: "LocationPage") as! LocationViewController
+        locViewController.locMarker = marker
+        present(locViewController, animated: true)
         print("pressed!")
     }
     //FIXME: make a working connection from location pg to landing pg

@@ -22,7 +22,7 @@
         <!--LocationPage-->
         <scene sceneID="EYV-p1-6HR">
             <objects>
-                <viewController title="LocationPage" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yPV-8i-Ndh" customClass="LocationViewController" customModule="Knovigo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LocationPage" title="LocationPage" id="yPV-8i-Ndh" customClass="LocationViewController" customModule="Knovigo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n7Z-tY-I91">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1146"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -53,7 +53,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaQ-KE-uVd">
-                                                <rect key="frame" x="20" y="185" width="60" height="25.5"/>
+                                                <rect key="frame" x="21" y="185" width="60" height="25.5"/>
                                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="21"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -64,14 +64,14 @@
                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grocey Store" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpz-ak-Vvq">
-                                                <rect key="frame" x="66.5" y="228" width="69.5" height="14.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grocery Store" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpz-ak-Vvq">
+                                                <rect key="frame" x="66.5" y="228" width="74.5" height="14.5"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$$$$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v50-oU-TQE">
-                                                <rect key="frame" x="146" y="228" width="28" height="14.5"/>
+                                                <rect key="frame" x="151" y="228" width="28" height="14.5"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                                 <color key="textColor" red="0.66659259800000004" green="0.66670936349999999" blue="0.66658520700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -103,7 +103,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="6P2-VQ-15a">
+                                            <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="6P2-VQ-15a">
                                                 <rect key="frame" x="192" y="330" width="250" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="JRX-RN-tSC"/>
@@ -124,7 +124,7 @@
                                                 <color key="textColor" systemColor="systemGrayColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Re9-th-brv">
+                                            <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Re9-th-brv">
                                                 <rect key="frame" x="189" y="368" width="250" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="o5X-UR-x1L"/>
@@ -187,7 +187,7 @@
                                                 <color key="textColor" systemColor="systemGrayColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="NJw-6Z-ZIh">
+                                            <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="NJw-6Z-ZIh">
                                                 <rect key="frame" x="132" y="426.5" width="254" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="GfQ-d1-4mM"/>
@@ -351,7 +351,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Within this region: 70" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shK-oI-IMH">
-                                                <rect key="frame" x="21" y="1096" width="133" height="17"/>
+                                                <rect key="frame" x="54" y="1093" width="133" height="17"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -362,7 +362,7 @@
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Reported COVID-19 Cases (Past 2 Weeks)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6t-Hz-7Bj">
-                                                <rect key="frame" x="21" y="1060" width="354" height="20"/>
+                                                <rect key="frame" x="21" y="1057" width="354" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="354" id="gc8-Sh-bgT"/>
                                                 </constraints>
@@ -370,17 +370,21 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="button_compass_night.png" translatesAutoresizingMaskIntoConstraints="NO" id="p0u-FY-Adq">
+                                                <rect key="frame" x="30" y="1096" width="12" height="12"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" red="0.82292341319999995" green="0.2570270207" blue="0.2224626582" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="FTS-nq-CwJ" secondAttribute="trailing" constant="10" id="0Nx-Hr-84x"/>
                                             <constraint firstItem="uRL-tq-eXq" firstAttribute="leading" secondItem="Mlb-xw-R7v" secondAttribute="trailing" constant="146.5" id="0en-kZ-iOJ"/>
                                             <constraint firstItem="D9o-3x-RZF" firstAttribute="top" secondItem="Eie-x5-fIV" secondAttribute="bottom" constant="14" id="0iI-zf-Zfv"/>
-                                            <constraint firstAttribute="trailing" secondItem="OaQ-KE-uVd" secondAttribute="trailing" constant="334" id="0n0-qH-9ep"/>
                                             <constraint firstItem="0c8-U9-ege" firstAttribute="top" secondItem="zzM-am-H22" secondAttribute="bottom" constant="30" id="1dH-3D-9cP"/>
                                             <constraint firstItem="v50-oU-TQE" firstAttribute="leading" secondItem="Rpz-ak-Vvq" secondAttribute="trailing" constant="10" id="1tB-17-Jd5"/>
                                             <constraint firstItem="3dg-c1-DzD" firstAttribute="top" secondItem="Re9-th-brv" secondAttribute="bottom" constant="2" id="2ne-Ax-YkH"/>
-                                            <constraint firstAttribute="bottom" secondItem="shK-oI-IMH" secondAttribute="bottom" constant="87" id="53z-RS-O8s"/>
+                                            <constraint firstAttribute="bottom" secondItem="shK-oI-IMH" secondAttribute="bottom" constant="90" id="53z-RS-O8s"/>
                                             <constraint firstItem="D9o-3x-RZF" firstAttribute="leading" secondItem="XkQ-Wj-TZH" secondAttribute="leading" constant="21" id="59Y-V8-trm"/>
                                             <constraint firstItem="Mlb-xw-R7v" firstAttribute="leading" secondItem="XkQ-Wj-TZH" secondAttribute="leading" constant="21" id="5gm-kl-UfA"/>
                                             <constraint firstAttribute="trailing" secondItem="sTC-tp-Awl" secondAttribute="trailing" constant="89.5" id="62a-Gp-JYX"/>
@@ -413,7 +417,7 @@
                                             <constraint firstItem="NJw-6Z-ZIh" firstAttribute="centerY" secondItem="0c8-U9-ege" secondAttribute="centerY" id="PsA-Nd-7DW"/>
                                             <constraint firstItem="6Zx-cK-TqZ" firstAttribute="top" secondItem="XkQ-Wj-TZH" secondAttribute="top" id="Pty-qu-nHK"/>
                                             <constraint firstItem="FTS-nq-CwJ" firstAttribute="top" secondItem="sTC-tp-Awl" secondAttribute="bottom" constant="7.5" id="Pud-P7-c4q"/>
-                                            <constraint firstItem="shK-oI-IMH" firstAttribute="leading" secondItem="XkQ-Wj-TZH" secondAttribute="leading" constant="21" id="Qhz-cC-dfC"/>
+                                            <constraint firstItem="shK-oI-IMH" firstAttribute="leading" secondItem="XkQ-Wj-TZH" secondAttribute="leading" constant="54" id="Qhz-cC-dfC"/>
                                             <constraint firstItem="H6W-De-kzK" firstAttribute="leading" secondItem="XkQ-Wj-TZH" secondAttribute="leading" constant="21" id="Qkf-TZ-sKg"/>
                                             <constraint firstItem="A0j-Vu-wAV" firstAttribute="leading" secondItem="XkQ-Wj-TZH" secondAttribute="leading" constant="20" id="Qkm-fD-fup"/>
                                             <constraint firstItem="gwp-To-67e" firstAttribute="top" secondItem="Rpz-ak-Vvq" secondAttribute="bottom" constant="10" id="RZK-6I-3Dg"/>
@@ -429,6 +433,7 @@
                                             <constraint firstAttribute="trailing" secondItem="uRL-tq-eXq" secondAttribute="trailing" constant="89" id="ajM-WV-m2M"/>
                                             <constraint firstItem="kmy-GY-fnW" firstAttribute="top" secondItem="XkQ-Wj-TZH" secondAttribute="top" constant="20" id="bTx-gU-EnK"/>
                                             <constraint firstItem="sTC-tp-Awl" firstAttribute="top" secondItem="uRL-tq-eXq" secondAttribute="bottom" constant="14" id="cA0-hO-5jA"/>
+                                            <constraint firstItem="OaQ-KE-uVd" firstAttribute="leading" secondItem="XkQ-Wj-TZH" secondAttribute="leading" constant="21" id="cLN-4X-tF2"/>
                                             <constraint firstAttribute="trailing" secondItem="dqR-PS-hJT" secondAttribute="trailing" constant="33" id="ccY-rd-QVc"/>
                                             <constraint firstItem="Eie-x5-fIV" firstAttribute="leading" secondItem="XkQ-Wj-TZH" secondAttribute="leading" constant="10" id="deM-RU-0HG"/>
                                             <constraint firstAttribute="trailing" secondItem="ifG-z3-m7X" secondAttribute="trailing" constant="33" id="dpJ-7x-doW"/>
@@ -490,7 +495,10 @@
                         <outlet property="estiMWearing" destination="NJw-6Z-ZIh" id="cNt-Su-sgO"/>
                         <outlet property="limitedCapacityBtn" destination="6p3-nx-A5A" id="zx3-70-Fnb"/>
                         <outlet property="lineOutsideBtn" destination="pW1-7e-z2v" id="Gg9-sC-8Sp"/>
+                        <outlet property="locAddress" destination="gwp-To-67e" id="r8T-5q-fu0"/>
                         <outlet property="locImage" destination="6Zx-cK-TqZ" id="6kB-Iv-L7c"/>
+                        <outlet property="locTitle" destination="OaQ-KE-uVd" id="Ddt-55-m6m"/>
+                        <outlet property="locisClosed" destination="2zL-rS-sSI" id="rRf-vJ-cca"/>
                         <outlet property="masksReqBtn" destination="HFy-5l-fyK" id="GTk-h7-JFx"/>
                         <outlet property="outdoorBtn" destination="HBk-mP-1SE" id="pq0-EB-XWG"/>
                         <outlet property="outletBtn" destination="ovM-br-NGF" id="eYg-qc-ORo"/>
@@ -1165,6 +1173,7 @@
     <resources>
         <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>
         <image name="arrowshape.turn.up.left" catalog="system" width="128" height="106"/>
+        <image name="button_compass_night.png" width="40" height="40"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="color-light-blue">
             <color red="0.81960784313725488" green="0.89803921568627454" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

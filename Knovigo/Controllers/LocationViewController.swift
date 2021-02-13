@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import GoogleMaps
 import DropDown
 
 class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -76,11 +77,25 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
     
     @IBOutlet weak var dineInBtn: UILabel!
     
+    //TEXT FIELDS
+    @IBOutlet weak var locTitle: UILabel!
+    @IBOutlet weak var locAddress: UILabel!
+    @IBOutlet weak var locisClosed: UILabel!
+    
+    @IBAction func backButtonPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     let dropDown = DropDown()
+    var locMarker = GMSMarker();
+    struct locData {
+        var image : UIImage
+        var distance : Double
+        var isOpen : Bool
+        var label: String
+        var pin: Double
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        backBtn.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
-
        // barChart.delegate = self;
         charInit()
         //dropDownInit()
@@ -102,7 +117,19 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
         lineOutsideBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
         outdoorBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
         wifiBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
-
+        
+        backBtn.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
+        
+        locTitle.text = locMarker.title
+        locAddress.text = locMarker.snippet
+//        let data = locMarker.userData as? locData
+//        if (!data!.isOpen) {
+//            locisClosed.text = "Closed"
+//            locisClosed.textColor = UIColor.red
+//        } else {
+//            locisClosed.text = "Open"
+//            locisClosed.textColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0)
+//        }
     }
     
     func charInit(){
@@ -125,6 +152,7 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
         set.drawValuesEnabled = set.isHighlightEnabled
         set.colors = [UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)]
         set.highlightColor = UIColor(red: 68/255, green: 150/255, blue: 176/255, alpha: 1)
+        set.highlightLineDashLengths = [CGFloat(3)]
 
         //store data in an array
         let data = BarChartData(dataSet: set)
@@ -162,9 +190,7 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
 //        }
 //    }
     
-    @IBAction func backButtonPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
+    
     //record % obtained from sliders
     @IBAction func putDensity(slider: UISlider){ density = slider.value }
     @IBAction func putDistancing(slider: UISlider) { distancing = slider.value }

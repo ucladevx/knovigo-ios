@@ -17,7 +17,13 @@ struct location {
     var label: String
     var pinLabel: Double
 }
-
+struct data {
+    var image : UIImage
+    var distance : Double
+    var isOpen : Bool
+    var label: String
+    var pin: Double
+}
 let GoogleMapsAPIKey = "AIzaSyDdpsQ_OSZrVjRIeGoXcCXHbuG2pk1rlKI"
 let mapLocation = location(name: "UCLA", coordinates: CLLocationCoordinate2D(latitude: 34.0700, longitude: -118.4398), address: "Los Angeles, CA 90095", image: UIImage(named: "tongva.jpg")!, distance: 0, isOpen: true, label: "University", pinLabel: 0.25)
 let markerCoords = [
