@@ -14,6 +14,7 @@ class SearchViewController: UIViewController {
     
     var recommendations : [LocationInfo]?
     var searchResuls : [LocationInfo]?
+    var searchActive : Bool = false
     
     let numRecommendations = 3
     let numSearchResults = 3
@@ -25,6 +26,8 @@ class SearchViewController: UIViewController {
         recommendationsTable.backgroundColor = .clear
         recommendationsTable.register(UINib(nibName: "LocationTableViewCell", bundle: nil), forCellReuseIdentifier: "LocationCellIdentifier")
         loadRecommended(withInput: "")
+        searchBar.delegate = self
+        
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
@@ -49,6 +52,36 @@ class SearchViewController: UIViewController {
 
 }
 
+//MARK:- SearchBar Delegate functions
+
+extension SearchViewController : UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true;
+    }
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchResuls = recommendations?.filter({ (location) -> Bool in
+            let tmp: NSString = location.name as NSString;
+            let range = tmp.range(of: searchText, options: .caseInsensitive);
+            return range.location != NSNotFound;
+        });
+        if (searchResuls!.count == 0) {
+            searchActive = false;
+        } else {
+            searchActive = true;
+        }
+        self.recommendationsTable.reloadData()
+    }
+}
+
 //MARK:- TableView Delegate functions
 
 extension SearchViewController : UITableViewDelegate {
@@ -60,6 +93,9 @@ extension SearchViewController : UITableViewDelegate {
 extension SearchViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == recommendationsTable {
+            if (searchActive) {
+                return searchResuls!.count;
+            }
             return recommendations!.count
         }
         print("Error: neither table entered for row count in RecommendationsViewController")
@@ -70,7 +106,11 @@ extension SearchViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCellIdentifier", for:indexPath) as! LocationInfoTableViewCell
         var locationInfo : LocationInfo
-        locationInfo = self.recommendations![indexPath.row]
+        if (searchActive) {
+            locationInfo = self.searchResuls![indexPath.row]
+        } else {
+            locationInfo = self.recommendations![indexPath.row]
+        }
         cell.densityValue.text = String(locationInfo.density)+"%"
         cell.distancingValue.text = String(locationInfo.distancing)+"%"
         cell.maskWearingValue.text = String(locationInfo.maskWearing)+"%"
