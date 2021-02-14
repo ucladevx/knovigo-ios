@@ -9,11 +9,13 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import GoogleMapsUtils
 
 class HomeViewController: UIViewController, GMSMapViewDelegate{
     
-    @IBOutlet weak var HeatMapView: UIView!
-    @IBOutlet weak var map: GMSMapView!
+    @IBOutlet weak var heatMapView: UIView!
+    @IBOutlet weak var mapView: GMSMapView!
+    var heatMapLayer : GMUHeatmapTileLayer!
     
     //view load function
     override func viewDidLoad() {
@@ -21,24 +23,29 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         // set map @UCLA
         //TODO: Map is HARD CODED for now :(; set view to person's location later
         let camera = GMSCameraPosition.camera(withLatitude: mapLocation.coordinates.latitude, longitude: mapLocation.coordinates.longitude, zoom: 14.5)
-        map.camera = camera
-        
+        mapView.camera = camera
         
         //set markers
         //TODO: Markers are HARD CODED for now :(; change later
         setMarker(markerGeoCoords: markerCoords)
         
+        //creates the search and report buttons
         setSearchButton();
         setReportButton();
         
         //style heat map box
-        HeatMapView.layer.cornerRadius = 30
-        HeatMapView.layer.shadowColor = UIColor.black.cgColor
-        HeatMapView.layer.shadowOpacity = 0.5
-        HeatMapView.layer.shadowOffset = .zero
-        HeatMapView.layer.shadowRadius = 10
-        map?.delegate = self
+        heatMapView.layer.cornerRadius = 30
+        heatMapView.layer.shadowColor = UIColor.black.cgColor
+        heatMapView.layer.shadowOpacity = 0.5
+        heatMapView.layer.shadowOffset = .zero
+        heatMapView.layer.shadowRadius = 10
         
+        heatMapLayer = GMUHeatmapTileLayer()
+        
+        mapView?.delegate = self
+        
+        //sets the data for the heatmap
+        loadHeatmap();
     }
     
     struct data {
@@ -57,7 +64,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
             marker.snippet = i.address
             marker.isFlat = true //make sure the orientation of marker depends on phone
             //styling the marker
-            marker.map = map
+            marker.map = mapView
             marker.userData = data(image: i.image, distance: i.distance, isOpen: i.isOpen, label: i.label, pin: i.pinLabel);
             if (i.pinLabel <= 0.20) {
                 marker.icon = UIImage(named: "pin-dark-green");
@@ -81,7 +88,6 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
     ////        markerTappedHandler?(marker)
     //        return true
     //    }
-    
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         let view = Bundle.main.loadNibNamed("CustomPopUp", owner: self, options: nil)![0] as! CustomPopUp
         let frame = CGRect(x: 10, y: 10, width: 350, height: 230)
@@ -112,10 +118,91 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         // self.present(viewController, animated: true, completion: nil)
         print("pressed!")
     }
+    
+    func mapView(_ mapView: GMSMapView, didChange: GMSCameraPosition){
+        let zoom = mapView.camera.zoom
+        if (zoom < 15.5) {
+            if (heatMapLayer.map == nil && heatMapSwitch.isOn){
+                turnOnHeatMap()
+            }
+            heatMapLayer.radius = UInt(15 * zoom)
+            //UInt(getHeatMapRadius(latitude: mapView.camera.target.latitude))
+        }
+        else {
+            turnOffHeatMap()
+        }
+    }
+    
+    //previously used to set heatmap radius
+    func getHeatMapRadius(latitude: Double) -> Float {
+        let distanceInMeter = 1000; /* meter distance in real world */
+        
+        let meters = 156543.03392 * (cos(latitude * Double.pi / 180))
+        let pixel = pow(2, mapView.camera.zoom);
+        let meterPerPixel = Float(meters) / pixel
+        let radius = Float(distanceInMeter) / meterPerPixel;
+      
+        return radius;
+    }
     //FIXME: make a working connection from location pg to landing pg
     //    @IBAction func unwindToLandingPG(unwindSegue: UIStoryboardSegue){
     //        print("function called")
     //    }
+    
+    func loadHeatmap() {
+        var list = [GMUWeightedLatLng]()
+        
+        // Get the data: latitude/longitude positions
+        let url = URL(string: "http://52.33.183.202:8000/ladph/heatmap")!
+        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+            guard let data = data else { return }
+            guard let json = try? JSONSerialization.jsonObject(with: data, options: []) else {
+              print("Serialization went wrong")
+              return
+            }
+            guard let object = json as? [[String: Any]] else {
+              print("Could not read the JSON.")
+              return
+            }
+            
+            for item in object {
+              let lat = item["lat"] as! CLLocationDegrees
+              let lng = item["lng"] as! CLLocationDegrees
+              let int = item["intensity"] as! Float
+              let coords = GMUWeightedLatLng(
+                coordinate: CLLocationCoordinate2DMake(lat, lng),
+                intensity: int
+              )
+              list.append(coords)
+            }
+            // Add the latlngs to the heatmap layer.
+            self.heatMapLayer.weightedData = list;
+        }
+
+        task.resume()
+        
+        let gradientColors: [UIColor] = [UIColorFromRGB(rgbValue: 0x568EC4),
+                                         UIColorFromRGB(rgbValue: 0x61AAFF),
+                                         UIColorFromRGB(rgbValue: 0xFFD372),
+                                         UIColorFromRGB(rgbValue: 0xE46B6B),
+                                         UIColorFromRGB(rgbValue: 0xBA0505)]
+        let gradientStartPoints: [NSNumber] = [0.1, 0.2, 0.4, 0.6, 0.8];
+        heatMapLayer.gradient = GMUGradient(
+          colors: gradientColors,
+          startPoints: gradientStartPoints,
+          colorMapSize: 256
+        )
+    }
+    
+    //helper function to convert colors for heatmap
+    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
     
     // Present the Autocomplete view controller when the button is pressed.
     @objc func autocompleteClicked(_ sender: UIButton) {
@@ -180,10 +267,23 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
     @IBOutlet weak var heatMapSwitch: UISwitch!
     @IBAction func setState(_ sender: Any) {
         if (heatMapSwitch.isOn){
-            heatMapLegend.isHidden = false;
+            turnOnHeatMap()
         }
         else {
-            heatMapLegend.isHidden = true;
+            turnOffHeatMap()
+        }
+    }
+    // turns off the heatmap
+    func turnOffHeatMap () {
+        heatMapLegend.isHidden = true
+        heatMapLayer.map = nil
+    }
+    // turns on heatmap
+    func turnOnHeatMap () {
+        let zoom = mapView.camera.zoom
+        if (zoom < 15.5){
+            heatMapLegend.isHidden = false
+            heatMapLayer.map = mapView
         }
     }
     

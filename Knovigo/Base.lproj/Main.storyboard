@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kBB-2X-M2c">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -303,8 +302,9 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COVID-19 Heat Map" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2W-1Y-KVj">
                                         <rect key="frame" x="10" y="75" width="60" height="29"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" preferredStyle="sliding" translatesAutoresizingMaskIntoConstraints="NO" id="rse-Ay-Qsd">
@@ -386,11 +386,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="RCM-wv-53I"/>
                     <connections>
-                        <outlet property="HeatMapView" destination="XbE-1W-Z1T" id="7yH-Dl-B9e"/>
                         <outlet property="ReportButton" destination="xoM-dQ-wOW" id="rnD-qE-1Gd"/>
                         <outlet property="heatMapLegend" destination="duO-0A-pv7" id="9HJ-c2-gZz"/>
                         <outlet property="heatMapSwitch" destination="rse-Ay-Qsd" id="e5V-jF-fhc"/>
-                        <outlet property="map" destination="epL-UF-OHu" id="Hhc-cO-FKk"/>
+                        <outlet property="heatMapView" destination="XbE-1W-Z1T" id="7yH-Dl-B9e"/>
+                        <outlet property="mapView" destination="epL-UF-OHu" id="Hhc-cO-FKk"/>
                         <outlet property="searchBtn" destination="EEx-Mq-RrG" id="6Ma-IG-Ekj"/>
                         <segue destination="jOZ-O2-jSA" kind="presentation" identifier="homeToSearch" id="a2X-Ew-fB5"/>
                         <segue destination="guB-is-CtR" kind="presentation" identifier="Report" id="EMw-UY-BOx"/>
@@ -543,7 +543,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fr6-Ok-a6O">
-                                                <rect key="frame" x="179" y="243.5" width="161" height="45"/>
+                                                <rect key="frame" x="172" y="243.5" width="387" height="45"/>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. When did you enter the place?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMD-ON-BZ2">
                                                 <rect key="frame" x="15" y="308.5" width="355" height="20.5"/>
@@ -772,7 +772,7 @@
                                                 <rect key="frame" x="15" y="244" width="48" height="49"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Current Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xo3-n5-nAD">
-                                                <rect key="frame" x="71" y="258.5" width="112" height="17"/>
+                                                <rect key="frame" x="45" y="258.5" width="112" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
