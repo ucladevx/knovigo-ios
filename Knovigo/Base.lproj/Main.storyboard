@@ -497,8 +497,9 @@
                         <outlet property="lineOutsideBtn" destination="pW1-7e-z2v" id="Gg9-sC-8Sp"/>
                         <outlet property="locAddress" destination="gwp-To-67e" id="r8T-5q-fu0"/>
                         <outlet property="locImage" destination="6Zx-cK-TqZ" id="6kB-Iv-L7c"/>
+                        <outlet property="locIsClosed" destination="2zL-rS-sSI" id="2Is-9B-Odc"/>
+                        <outlet property="locLabel" destination="Rpz-ak-Vvq" id="X4p-uc-KEI"/>
                         <outlet property="locTitle" destination="OaQ-KE-uVd" id="Ddt-55-m6m"/>
-                        <outlet property="locisClosed" destination="2zL-rS-sSI" id="rRf-vJ-cca"/>
                         <outlet property="masksReqBtn" destination="HFy-5l-fyK" id="GTk-h7-JFx"/>
                         <outlet property="outdoorBtn" destination="HBk-mP-1SE" id="pq0-EB-XWG"/>
                         <outlet property="outletBtn" destination="ovM-br-NGF" id="eYg-qc-ORo"/>

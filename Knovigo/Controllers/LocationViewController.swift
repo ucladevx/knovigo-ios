@@ -80,20 +80,21 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
     //TEXT FIELDS
     @IBOutlet weak var locTitle: UILabel!
     @IBOutlet weak var locAddress: UILabel!
-    @IBOutlet weak var locisClosed: UILabel!
+    @IBOutlet weak var locIsClosed: UILabel!
+    @IBOutlet weak var locLabel: UILabel!
     
     @IBAction func backButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     let dropDown = DropDown()
     var locMarker = GMSMarker();
-    struct locData {
-        var image : UIImage
-        var distance : Double
-        var isOpen : Bool
-        var label: String
-        var pin: Double
-    }
+//    struct locData {
+//        var image : UIImage
+//        var distance : Double
+//        var isOpen : Bool
+//        var label: String
+//        var pin: Double
+//    }
     override func viewDidLoad() {
         super.viewDidLoad()
        // barChart.delegate = self;
@@ -122,14 +123,19 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
         
         locTitle.text = locMarker.title
         locAddress.text = locMarker.snippet
-//        let data = locMarker.userData as? locData
-//        if (!data!.isOpen) {
-//            locisClosed.text = "Closed"
-//            locisClosed.textColor = UIColor.red
-//        } else {
-//            locisClosed.text = "Open"
-//            locisClosed.textColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0)
-//        }
+        let data = locMarker.userData as? data
+        if (!data!.isOpen) {
+            locIsClosed.text = "Closed"
+            locIsClosed.textColor = UIColor.red
+        }  else {
+            locIsClosed.text = "Open"
+            locIsClosed.textColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0)
+        }
+        locImage.image = data?.image
+        locLabel.text = data?.label
+        estiDensity.value = Float(data!.sDensity)
+        estiDistancing.value = Float(data!.sDistance)
+        estiMWearing.value = Float(data!.sMask)
     }
     
     func charInit(){
