@@ -119,31 +119,6 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         print("pressed!")
     }
     
-    func mapView(_ mapView: GMSMapView, didChange: GMSCameraPosition){
-        let zoom = mapView.camera.zoom
-        if (zoom < 15.5) {
-            if (heatMapLayer.map == nil && heatMapSwitch.isOn){
-                turnOnHeatMap()
-            }
-            heatMapLayer.radius = UInt(15 * zoom)
-            //UInt(getHeatMapRadius(latitude: mapView.camera.target.latitude))
-        }
-        else {
-            turnOffHeatMap()
-        }
-    }
-    
-    //previously used to set heatmap radius
-    func getHeatMapRadius(latitude: Double) -> Float {
-        let distanceInMeter = 1000; /* meter distance in real world */
-        
-        let meters = 156543.03392 * (cos(latitude * Double.pi / 180))
-        let pixel = pow(2, mapView.camera.zoom);
-        let meterPerPixel = Float(meters) / pixel
-        let radius = Float(distanceInMeter) / meterPerPixel;
-      
-        return radius;
-    }
     //FIXME: make a working connection from location pg to landing pg
     //    @IBAction func unwindToLandingPG(unwindSegue: UIStoryboardSegue){
     //        print("function called")
@@ -265,6 +240,21 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
     
     @IBOutlet weak var heatMapLegend: UIImageView!
     @IBOutlet weak var heatMapSwitch: UISwitch!
+    func mapView(_ mapView: GMSMapView, didChange: GMSCameraPosition){
+        let zoom = mapView.camera.zoom
+        if (zoom < 15.5) {
+            if (heatMapLayer.map == nil && heatMapSwitch.isOn){
+                turnOnHeatMap()
+            }
+            heatMapLayer.radius = UInt(15 * zoom)
+            //UInt(getHeatMapRadius(latitude: mapView.camera.target.latitude))
+        }
+        else {
+            turnOffHeatMap()
+            heatMapSwitch.setOn(false, animated: true)
+        }
+    }
+    
     @IBAction func setState(_ sender: Any) {
         if (heatMapSwitch.isOn){
             turnOnHeatMap()
@@ -281,10 +271,11 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
     // turns on heatmap
     func turnOnHeatMap () {
         let zoom = mapView.camera.zoom
-        if (zoom < 15.5){
-            heatMapLegend.isHidden = false
-            heatMapLayer.map = mapView
+        if (zoom > 15.5){
+            mapView.animate(toZoom: 15)
         }
+        heatMapLegend.isHidden = false
+        heatMapLayer.map = mapView
     }
     
 }
