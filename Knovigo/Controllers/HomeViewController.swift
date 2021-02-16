@@ -167,6 +167,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
           startPoints: gradientStartPoints,
           colorMapSize: 256
         )
+        heatMapLayer.radius = UInt(15 * mapView.camera.zoom)
     }
     
     //helper function to convert colors for heatmap
@@ -240,20 +241,26 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
     
     @IBOutlet weak var heatMapLegend: UIImageView!
     @IBOutlet weak var heatMapSwitch: UISwitch!
+    var userMoved : Bool!
+    func mapView(_ mapView: GMSMapView, willMove gesture: Bool){
+        userMoved = gesture
+    }
     func mapView(_ mapView: GMSMapView, didChange: GMSCameraPosition){
-        let zoom = mapView.camera.zoom
-        if (zoom < 15.5) {
-            if (heatMapLayer.map == nil && heatMapSwitch.isOn){
-                turnOnHeatMap()
+        if (userMoved ?? true){
+            let zoom = mapView.camera.zoom
+            if (zoom < 15.5) {
+                if (heatMapLayer.map == nil && heatMapSwitch.isOn){
+                    turnOnHeatMap()
+                }
+                heatMapLayer.radius = UInt(15 * zoom)
             }
-            heatMapLayer.radius = UInt(15 * zoom)
-            //UInt(getHeatMapRadius(latitude: mapView.camera.target.latitude))
-        }
-        else {
-            turnOffHeatMap()
-            heatMapSwitch.setOn(false, animated: true)
+            else {
+                turnOffHeatMap()
+                heatMapSwitch.setOn(false, animated: true)
+            }
         }
     }
+    
     
     @IBAction func setState(_ sender: Any) {
         if (heatMapSwitch.isOn){
