@@ -336,6 +336,47 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         dismiss(animated: true, completion: nil)
     }
     
+    // send a POST request to database to add the user report
+    @IBAction func submitButtonPressed(_ sender: UIButton) {
+        
+        struct ReportDataModel: Codable {
+            var userid: Int
+            var id: Int?
+        }
+
+        let url = URL(string: "http://localhost:8000/places/save_app_report")
+        guard let requestUrl = url else { fatalError() }
+
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+
+        // Set HTTP Request Header
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let newTodoItem = ReportDataModel(userid: 300, id:30)
+        let jsonData = try! JSONEncoder().encode(newTodoItem)
+        print(jsonData)
+        request.httpBody = jsonData
+
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+            struct Response : Decodable {
+                let succ : String
+            }
+            let d = try! JSONDecoder().decode(Response.self, from: data!)
+            print("got data: \(d.succ)")
+           
+        }
+        task.resume()
+    }
+    
+    
+    
     //    func showBackButton() {
 ////        let reportBtn = UIButton(type: .custom)
 //            backButton.frame = CGRect(x: 5, y: 50, width: 40, height: 40)
@@ -348,16 +389,6 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
 //    @objc func backButtonPressed() {
 //        self.performSegue(withIdentifier: "GoBack", sender: self)
 //    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     func setSlider(slider:UISlider) {
        let tgl = CAGradientLayer()
