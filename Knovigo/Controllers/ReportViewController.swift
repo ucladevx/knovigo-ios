@@ -378,17 +378,20 @@ extension ReportViewController {
             else if let d = d{
                 DispatchQueue.main.async {
                     if !d.success {
-                        if let reason = d.reason {
-                            print(reason)
-                            let alert = UIAlertController(title: "Unable to save report", message: "Please contact developer support for further information. \n Error is \(reason)", preferredStyle: .alert)
-                            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                        if let err = d.err_msg {
+                            print(err)
+                            let alert = UIAlertController(title: "Unable to save report", message: "Please contact developer support for further information. \n Error is \(err)", preferredStyle: .alert)
+                            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                             alert.addAction(cancelAction)
                             self.present(alert, animated: true, completion: nil)
+                            //potentially can add an option to report right away which can automatically
+                            //add to say, a google form
+                            
                         }
                     }
                     else {
                         let alert = UIAlertController(title: "Successfully saved report!", message: nil, preferredStyle: .alert)
-                        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+                        let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (UIAlertAction) in
                             self.dismiss(animated: true, completion: nil)
                         }
                         alert.addAction(cancelAction)

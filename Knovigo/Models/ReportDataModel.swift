@@ -20,5 +20,5 @@ struct ReportDataModel: Codable {
 /// Data representing the response value we get from the post request
 struct Response : Decodable {
     let success : Bool
-    let reason : String?
+    let err_msg : String?
 }
