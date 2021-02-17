@@ -893,6 +893,7 @@
                         <outlet property="bathroom" destination="NRv-hg-QDL" id="YoI-0x-gwg"/>
                         <outlet property="curPlaceLabel" destination="xo3-n5-nAD" id="RF6-v0-CDH"/>
                         <outlet property="dineIn" destination="ehS-Rg-BRe" id="lUN-2d-luT"/>
+                        <outlet property="endPicker" destination="EC7-ts-ZVh" id="iCM-3H-6Oj"/>
                         <outlet property="intro" destination="e4V-dt-59H" id="Seu-wp-cvE"/>
                         <outlet property="limitedCap" destination="Hx3-TC-DSy" id="SFV-rb-9My"/>
                         <outlet property="lineOutside" destination="j5j-i3-fcw" id="gxa-5i-G1t"/>
@@ -928,6 +929,7 @@
                         <outlet property="sliderlabel3" destination="ZNz-jJ-Xij" id="2RP-6g-9qB"/>
                         <outlet property="sliderlabel4" destination="t7O-eS-fyO" id="w3b-ZD-tiu"/>
                         <outlet property="staffMask" destination="NM0-IM-JKs" id="RqN-so-aCd"/>
+                        <outlet property="startPicker" destination="D5z-38-MrO" id="Iuy-Pf-8zb"/>
                         <outlet property="submitBtn" destination="Iud-9F-CdR" id="rWn-ui-Nnz"/>
                         <outlet property="takeout" destination="RLR-qx-gUR" id="LB5-hA-hhc"/>
                         <outlet property="wifiProv" destination="6sM-DU-i0c" id="eA6-dU-4qG"/>
