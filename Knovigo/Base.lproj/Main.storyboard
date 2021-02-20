@@ -10,6 +10,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--LocationPage-->
         <scene sceneID="EYV-p1-6HR">
@@ -282,33 +287,112 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="epL-UF-OHu" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoM-dQ-wOW">
-                                        <rect key="frame" x="266" y="690" width="46" height="45"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
-                                </subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="epL-UF-OHu" userLabel="Map" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heatMapLegend" translatesAutoresizingMaskIntoConstraints="NO" id="duO-0A-pv7">
+                                <rect key="frame" x="107" y="679" width="122" height="143"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="122" id="Lt4-fb-Hhj"/>
+                                    <constraint firstAttribute="height" constant="143" id="Uhf-Z4-6cu"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XbE-1W-Z1T" userLabel="HeatMap View">
+                                <rect key="frame" x="314" y="214" width="80" height="160"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COVID-19 Heat Map" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2W-1Y-KVj">
+                                        <rect key="frame" x="10" y="75" width="60" height="29"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" preferredStyle="sliding" translatesAutoresizingMaskIntoConstraints="NO" id="rse-Ay-Qsd">
+                                        <rect key="frame" x="15.5" y="114.5" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="setState:" destination="kBB-2X-M2c" eventType="valueChanged" id="Gnz-3b-lxq"/>
+                                        </connections>
+                                    </switch>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heatMapLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Wch-Lx-nKv">
+                                        <rect key="frame" x="17.5" y="15" width="45" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="78N-oh-Gw7"/>
+                                            <constraint firstAttribute="width" constant="45" id="PKM-9T-uyc"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="rse-Ay-Qsd" firstAttribute="centerX" secondItem="XbE-1W-Z1T" secondAttribute="centerX" id="1cp-be-pr2"/>
+                                    <constraint firstItem="K2W-1Y-KVj" firstAttribute="top" secondItem="XbE-1W-Z1T" secondAttribute="centerY" constant="-5" id="KfT-xK-mgn"/>
+                                    <constraint firstItem="K2W-1Y-KVj" firstAttribute="centerX" secondItem="XbE-1W-Z1T" secondAttribute="centerX" id="Qpu-9A-yrH"/>
+                                    <constraint firstAttribute="width" constant="80" id="Raz-xw-yD0"/>
+                                    <constraint firstItem="rse-Ay-Qsd" firstAttribute="centerY" secondItem="XbE-1W-Z1T" secondAttribute="bottom" constant="-30" id="TzD-Vg-64w"/>
+                                    <constraint firstItem="K2W-1Y-KVj" firstAttribute="leading" secondItem="XbE-1W-Z1T" secondAttribute="leading" constant="10" id="aXj-JC-GeG"/>
+                                    <constraint firstItem="Wch-Lx-nKv" firstAttribute="centerX" secondItem="XbE-1W-Z1T" secondAttribute="centerX" id="eE7-s0-a2k"/>
+                                    <constraint firstItem="Wch-Lx-nKv" firstAttribute="top" secondItem="XbE-1W-Z1T" secondAttribute="top" constant="15" id="lTi-fd-sW4"/>
+                                    <constraint firstAttribute="height" constant="160" id="vaG-ks-NiJ"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="densityLegend" translatesAutoresizingMaskIntoConstraints="NO" id="mKK-ih-lY2">
+                                <rect key="frame" x="17" y="679" width="120" height="143"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="143" id="PsQ-eF-ebL"/>
+                                    <constraint firstAttribute="width" constant="120" id="u9U-RP-5zy"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEx-Mq-RrG" userLabel="Search Button">
+                                <rect key="frame" x="303" y="34" width="97" height="97"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="RKI-IT-sj9"/>
+                                    <constraint firstAttribute="height" constant="97" id="oa3-0v-pd4"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="searchIcon">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoM-dQ-wOW">
+                                <rect key="frame" x="299" y="101" width="100" height="110"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="ZwW-og-157"/>
+                                    <constraint firstAttribute="height" constant="110" id="iSS-Sj-v8k"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="reportBtn">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fao-RH-VE7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="epL-UF-OHu" firstAttribute="top" secondItem="fao-RH-VE7" secondAttribute="top" id="1Oh-Bv-XTT"/>
-                            <constraint firstItem="fao-RH-VE7" firstAttribute="bottom" secondItem="epL-UF-OHu" secondAttribute="bottom" id="3tE-yT-hLn"/>
-                            <constraint firstItem="epL-UF-OHu" firstAttribute="leading" secondItem="fao-RH-VE7" secondAttribute="leading" id="UgN-Yp-lab"/>
-                            <constraint firstItem="fao-RH-VE7" firstAttribute="trailing" secondItem="epL-UF-OHu" secondAttribute="trailing" id="kS6-Co-Eld"/>
+                            <constraint firstItem="xoM-dQ-wOW" firstAttribute="trailing" secondItem="fao-RH-VE7" secondAttribute="trailing" constant="-15" id="593-wX-hkt"/>
+                            <constraint firstItem="epL-UF-OHu" firstAttribute="top" secondItem="cfF-4a-G80" secondAttribute="top" id="6nc-sn-ysc"/>
+                            <constraint firstItem="epL-UF-OHu" firstAttribute="bottom" secondItem="cfF-4a-G80" secondAttribute="bottom" id="E8E-H2-qGB"/>
+                            <constraint firstItem="XbE-1W-Z1T" firstAttribute="top" secondItem="fao-RH-VE7" secondAttribute="top" constant="170" id="M4t-1E-myO"/>
+                            <constraint firstItem="XbE-1W-Z1T" firstAttribute="trailing" secondItem="fao-RH-VE7" secondAttribute="trailing" constant="-20" id="QWf-Yr-tKv"/>
+                            <constraint firstItem="EEx-Mq-RrG" firstAttribute="trailing" secondItem="fao-RH-VE7" secondAttribute="trailing" constant="-14" id="Uo3-A4-3fl"/>
+                            <constraint firstItem="xoM-dQ-wOW" firstAttribute="top" secondItem="fao-RH-VE7" secondAttribute="top" constant="57" id="VrT-y7-wJw"/>
+                            <constraint firstItem="EEx-Mq-RrG" firstAttribute="top" secondItem="fao-RH-VE7" secondAttribute="top" constant="-10" id="a4R-6n-Mia"/>
+                            <constraint firstItem="mKK-ih-lY2" firstAttribute="leading" secondItem="fao-RH-VE7" secondAttribute="leading" constant="17" id="asn-Ww-Zci"/>
+                            <constraint firstItem="epL-UF-OHu" firstAttribute="leading" secondItem="cfF-4a-G80" secondAttribute="leading" id="d5h-qH-4F6"/>
+                            <constraint firstItem="duO-0A-pv7" firstAttribute="bottom" secondItem="fao-RH-VE7" secondAttribute="bottom" constant="-40" id="hpq-OK-Eno"/>
+                            <constraint firstItem="EEx-Mq-RrG" firstAttribute="top" secondItem="fao-RH-VE7" secondAttribute="top" constant="-10" id="nJh-jb-UCi"/>
+                            <constraint firstItem="duO-0A-pv7" firstAttribute="leading" secondItem="fao-RH-VE7" secondAttribute="leading" constant="107" id="oI8-qz-GNb"/>
+                            <constraint firstItem="mKK-ih-lY2" firstAttribute="bottom" secondItem="fao-RH-VE7" secondAttribute="bottom" constant="-40" id="qhc-R3-Wh3"/>
+                            <constraint firstItem="epL-UF-OHu" firstAttribute="trailing" secondItem="cfF-4a-G80" secondAttribute="trailing" id="zGo-K8-78x"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RCM-wv-53I"/>
                     <connections>
                         <outlet property="ReportButton" destination="xoM-dQ-wOW" id="rnD-qE-1Gd"/>
+                        <outlet property="heatMapLegend" destination="duO-0A-pv7" id="9HJ-c2-gZz"/>
+                        <outlet property="heatMapSwitch" destination="rse-Ay-Qsd" id="e5V-jF-fhc"/>
+                        <outlet property="heatMapView" destination="XbE-1W-Z1T" id="7yH-Dl-B9e"/>
+                        <outlet property="mapView" destination="epL-UF-OHu" id="Hhc-cO-FKk"/>
+                        <outlet property="searchBtn" destination="EEx-Mq-RrG" id="6Ma-IG-Ekj"/>
                         <segue destination="jOZ-O2-jSA" kind="presentation" identifier="homeToSearch" id="a2X-Ew-fB5"/>
                         <segue destination="guB-is-CtR" kind="presentation" identifier="Report" id="EMw-UY-BOx"/>
                     </connections>
@@ -460,7 +544,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fr6-Ok-a6O">
-                                                <rect key="frame" x="179" y="243.5" width="161" height="45"/>
+                                                <rect key="frame" x="172" y="243.5" width="387" height="45"/>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. When did you enter the place?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMD-ON-BZ2">
                                                 <rect key="frame" x="15" y="308.5" width="355" height="20.5"/>
@@ -692,7 +776,7 @@
                                                 <rect key="frame" x="15" y="244" width="48" height="49"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Current Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xo3-n5-nAD">
-                                                <rect key="frame" x="71" y="258.5" width="112" height="17"/>
+                                                <rect key="frame" x="45" y="258.5" width="112" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -943,6 +1027,11 @@
     <resources>
         <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>
         <image name="arrowshape.turn.up.left" catalog="system" width="128" height="106"/>
+        <image name="densityLegend" width="122" height="149.5"/>
+        <image name="heatMapLegend" width="130" height="149.5"/>
+        <image name="heatMapLogo" width="32" height="21.5"/>
+        <image name="reportBtn" width="94" height="101"/>
+        <image name="searchIcon" width="86" height="88"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="color-light-blue">
             <color red="0.81960784313725488" green="0.89803921568627454" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
