@@ -126,7 +126,7 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
        
         self.locationPicker.delegate = self
         self.locationPicker.dataSource = self
-        pickerData = ["Target", "Trader Joe's", "CVS", "Whole Foods", "Ralph's", "Barney's Beanery", "Tongva Steps Area", "Diddy Riese", "BJs Restaurant"]
+        pickerData = ["Target", "Trader Joe's", "CVS", "Whole Foods", "Ralph's", "Barney's Beanery", "Tongva Steps area", "Diddy Riese", "BJ's Restaurant & Brewhouse"]
 
         self.q4img.image = UIImage(named: "q4_50")
         self.q5img.image = UIImage(named: "q5_50")
@@ -206,15 +206,19 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         limitedCap.layer.borderWidth = 1.0
         limitedCap.layer.cornerRadius = 5.0
 
-
+        startPicker.timeZone = TimeZone(abbreviation: "PST")
+        endPicker.timeZone = TimeZone(abbreviation: "PST")
 //        q4ValChanged(q4slider)
     }
     
     @IBOutlet weak var locationPicker: UIPickerView!
     @IBOutlet weak var sliderlabel1: UILabel!
     @IBOutlet weak var sliderNums: UILabel!
-    
+
+    @IBOutlet weak var startPicker: UIDatePicker!
+    @IBOutlet weak var endPicker: UIDatePicker!
     @IBOutlet weak var locationImg: UIImageView!
+    
     
     @IBOutlet weak var submitBtn: UIButton!
     
@@ -335,30 +339,133 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBAction func goBack(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-    
-    //    func showBackButton() {
-////        let reportBtn = UIButton(type: .custom)
-//            backButton.frame = CGRect(x: 5, y: 50, width: 40, height: 40)
-//        backButton.clipsToBounds = true
-//        backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
-//            view.addSubview(backButton)
-//
-//    }
-//
-//    @objc func backButtonPressed() {
-//        self.performSegue(withIdentifier: "GoBack", sender: self)
-//    }
+}
 
-    /*
-    // MARK: - Navigation
+//MARK: - POST endpoint functions
+extension ReportViewController {
+    /// send a POST request to database to add the user report on "submit" button press
+    @IBAction func submitButtonPressed(_ sender: UIButton) {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        //TODO: change to AWS later on
+        let url = URL(string: "http://localhost:8000/places/save_app_report")
+        guard let requestUrl = url else { fatalError() }
+
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+
+        // Set HTTP Request Header
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let outgoingData = prepareData()
+        guard outgoingData != nil else {
+            return
+        }
+        let jsonData = try! JSONEncoder().encode(outgoingData)
+        print(jsonData)
+        request.httpBody = jsonData
+        var d : Response?
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+            d = try? JSONDecoder().decode(Response.self, from: data!)
+            if d == nil {
+                print("Error in getting JSON response")
+            }
+            else if let d = d{
+                DispatchQueue.main.async {
+                    if !d.success {
+                        if let err = d.err_msg {
+                            print(err)
+                            let alert = UIAlertController(title: "Unable to save report", message: "Please contact developer support for further information. \n Error is \(err)", preferredStyle: .alert)
+                            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                            alert.addAction(cancelAction)
+                            self.present(alert, animated: true, completion: nil)
+                            //potentially can add an option to report right away which can automatically
+                            //add to say, a google form
+                            
+                        }
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Successfully saved report!", message: nil, preferredStyle: .alert)
+                        let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (UIAlertAction) in
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                        alert.addAction(cancelAction)
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
+            }
+        }
+        task.resume()
+
     }
-    */
     
+    /**
+     Check if all fields and inputs are entered correctly
+     
+     - Returns: model bundling all the data required to send to the post request.
+     */
+    func prepareData()->ReportDataModel? {
+        /*
+         struct ReportDataModel: Codable {
+             let name : String
+             let start, end : Date
+             let density, social_distancing, mask, covid : Int
+             let masks_req, staff_masks_req, plexiglass_req, line_req, capacity_limit_req, takeout_avlbl, dinein_avlbl, outdoor_seats_avlbl, social_dist_req, bathroom_avlbl, wifi_avlbl, outlets_avlbl : Bool
+             let covid_notes : String
+             let other_comments : String
+         }
+         */
+        let name = pickerData[locationPicker.selectedRow(inComponent: 0)]
+        let start = startPicker.date
+        let end = endPicker.date
+        if end < start {
+            let alert = UIAlertController(title: "End time must be after start time", message: nil, preferredStyle: .alert)
+            let OKaction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+                alert.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(OKaction)
+            present(alert, animated: true, completion: nil)
+            return nil
+        }
+        
+        let socialDist = Int(round(q4slider.value/25)+1)
+        let masks = Int(round(q5slider.value/25)+1)
+        let crowded = Int(round(q6slider.value/25)+1)
+        let covid = Int(round(q7slider.value/25)+1)
+        let maskreq = buttonSelected(button: masksReq)
+        let staffmaskreq = buttonSelected(button: staffMask)
+        
+        let plexiglass = buttonSelected(button: plexiGlass)
+        let line = buttonSelected(button: lineOutside)
+        let capacity = buttonSelected(button: limitedCap)
+        let bathroomAvl = buttonSelected(button: bathroom)
+        let wifi = buttonSelected(button: wifiProv)
+        let outlet = buttonSelected(button: outlets)
+        let take_out = buttonSelected(button: takeout)
+        let dine_in = buttonSelected(button: dineIn)
+        let outseating = buttonSelected(button: outdoor)
+        
+        let comments = q9tv.text
+        
+        //FIXME: no field for social distancing requirement from front end, but backend requires it. need to discuss whether required or not since slider is already provided
+        let reportData = ReportDataModel(name: name, start: start, end: end, density: crowded, social_distancing: socialDist, mask: masks, covid: covid, masks_req: maskreq, staff_masks_req: staffmaskreq, plexiglass_req: plexiglass, line_req: line, capacity_limit_req: capacity, takeout_avlbl: take_out, dinein_avlbl: dine_in, outdoor_seats_avlbl: outseating, social_dist_req: false, bathroom_avlbl: bathroomAvl, wifi_avlbl: wifi, outlets_avlbl: outlet, covid_notes: "", other_comments: comments ?? "")
+        return reportData
+    }
+    
+    /// Roundabout function that uses the fact that deselcted button has a white background.
+    private func buttonSelected(button : UIButton)->Bool{
+        return button.backgroundColor != UIColor.white
+    }
+    
+}
+
+//MARK: - Slider functions
+extension ReportViewController {
     func setSlider(slider:UISlider) {
        let tgl = CAGradientLayer()
        let frame = CGRect(x: 0.0, y: 0.0, width: slider.bounds.width, height: 14.0 )

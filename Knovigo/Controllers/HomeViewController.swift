@@ -235,7 +235,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
     }
     
     @objc func userReportButtonPressed() {
-        performSegue(withIdentifier: "homeToSearch", sender: self)
+        self.performSegue(withIdentifier: "Report", sender: self)
     }
     
     
