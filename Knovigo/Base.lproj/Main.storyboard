@@ -369,16 +369,16 @@
                                                 <rect key="frame" x="0.0" y="80" width="414" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Suggestions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vto-5C-TtI" userLabel="Search Results">
-                                                        <rect key="frame" x="0.0" y="0.0" width="290" height="60"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="290" id="mFy-kI-JVD"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="0.0" y="0.0" width="294" height="60"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4F-eR-NIw">
-                                                        <rect key="frame" x="290" y="0.0" width="124" height="60"/>
+                                                        <rect key="frame" x="294" y="0.0" width="120" height="60"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="120" id="3Jy-0H-0JN"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                                         <state key="normal" title="View More">
                                                             <color key="titleColor" systemColor="linkColor"/>
