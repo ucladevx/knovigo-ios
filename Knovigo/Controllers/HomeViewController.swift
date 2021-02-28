@@ -53,7 +53,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
             //styling the marker
             marker.map = self.mapView
             marker.accessibilityLabel = i.name
-            marker.userData = data(image: i.image, distance: i.distance, isOpen: i.isOpen, label: i.label, pin: i.pinLabel, sMask: i.sliderMask, sDistance: i.sliderDistance, sDensity: i.sliderDensity);
+            marker.userData = data(image: i.image, imageWide: i.wideImage, distance: i.distance, isOpen: i.isOpen, label: i.label, pin: i.pinLabel, sMask: i.sliderMask, sDistance: i.sliderDistance, sDensity: i.sliderDensity);
             if (i.pinLabel <= 0.20) {
                 marker.icon = UIImage(named: "pin-dark-green");
             } else if (i.pinLabel <= 0.40) {
@@ -182,7 +182,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate {
     }
 
     @objc func userReportButtonPressed() {
-        self.performSegue(withIdentifier: "homeToLocation", sender: self)
+        self.performSegue(withIdentifier: "Report", sender: self)
     }
 
    }

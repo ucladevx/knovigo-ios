@@ -124,18 +124,18 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
         locTitle.text = locMarker.title
         locAddress.text = locMarker.snippet
         let data = locMarker.userData as? data
-        if (!data!.isOpen) {
+        if (!(data?.isOpen ?? false)) {
             locIsClosed.text = "Closed"
             locIsClosed.textColor = UIColor.red
         }  else {
             locIsClosed.text = "Open"
             locIsClosed.textColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0)
         }
-        locImage.image = data?.image
+        locImage.image = data?.imageWide
         locLabel.text = data?.label
-        estiDensity.value = Float(data!.sDensity)
-        estiDistancing.value = Float(data!.sDistance)
-        estiMWearing.value = Float(data!.sMask)
+        estiDensity.value = Float(data?.sDensity ?? 0)
+        estiDistancing.value = Float(data?.sDistance ?? 0)
+        estiMWearing.value = Float(data?.sMask ?? 0)
     }
     
     func charInit(){
