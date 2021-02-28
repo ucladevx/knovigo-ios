@@ -452,19 +452,26 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HG1-xi-Poe">
                                                 <rect key="frame" x="0.0" y="80" width="414" height="60"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Suggestions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vto-5C-TtI" userLabel="Search Results">
-                                                        <rect key="frame" x="0.0" y="0.0" width="290" height="60"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="290" id="mFy-kI-JVD"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Recommendations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vto-5C-TtI" userLabel="Search Results">
+                                                        <rect key="frame" x="0.0" y="0.0" width="314" height="60"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4F-eR-NIw">
-                                                        <rect key="frame" x="290" y="0.0" width="124" height="60"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UBn-rT-PRs">
+                                                        <rect key="frame" x="314" y="0.0" width="40" height="60"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="40" id="6S8-Ry-PtQ"/>
+                                                        </constraints>
+                                                        <state key="normal" image="filterBtn"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4F-eR-NIw">
+                                                        <rect key="frame" x="354" y="0.0" width="60" height="60"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="60" id="3Jy-0H-0JN"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
-                                                        <state key="normal" title="View More">
+                                                        <state key="normal" title="Filter">
                                                             <color key="titleColor" systemColor="linkColor"/>
                                                         </state>
                                                         <connections>
@@ -1027,6 +1034,7 @@
     <resources>
         <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>
         <image name="arrowshape.turn.up.left" catalog="system" width="128" height="106"/>
+        <image name="filterBtn" width="17" height="15"/>
         <image name="densityLegend" width="122" height="149.5"/>
         <image name="heatMapLegend" width="130" height="149.5"/>
         <image name="heatMapLogo" width="32" height="21.5"/>
