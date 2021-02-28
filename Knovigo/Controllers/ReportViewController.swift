@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -67,6 +68,7 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         submitBtn.layer.shadowOffset = CGSize(width: 0, height: 5)
         submitBtn.layer.shadowRadius = 5
         submitBtn.layer.shadowOpacity = 1.0
+        submitBtn.titleLabel?.font =  UIFont(name: "Poppins Bold", size: 20)
  
         let protocols = [masksReq, staffMask, plexiGlass, bathroom, lineOutside, outlets, takeout, dineIn, wifiProv, outdoor, limitedCap]
         for button in protocols{
@@ -79,6 +81,8 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
 
         startPicker.timeZone = TimeZone(abbreviation: "PST")
         endPicker.timeZone = TimeZone(abbreviation: "PST")
+        
+        IQKeyboardManager.shared.enable = true
     }
     
     @IBOutlet weak var locationPicker: UIPickerView!
@@ -92,6 +96,7 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var q5img: UIImageView!
     @IBOutlet weak var q6img: UIImageView!
     @IBOutlet weak var q9tv: UITextView!
+    
     
     @IBAction func q4ValChanged(_ sender: UISlider) {
         let sliderValue = sender.value
