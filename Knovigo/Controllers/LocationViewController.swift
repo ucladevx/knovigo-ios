@@ -118,9 +118,7 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
         lineOutsideBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
         outdoorBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
         wifiBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
-        
-        backBtn.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
-        
+                
         locTitle.text = locMarker.title
         locAddress.text = locMarker.snippet
         let data = locMarker.userData as? data
@@ -136,6 +134,8 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
         estiDensity.value = Float(data?.sDensity ?? 0)
         estiDistancing.value = Float(data?.sDistance ?? 0)
         estiMWearing.value = Float(data?.sMask ?? 0)
+        
+        backBtn.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
     }
     
     func charInit(){
