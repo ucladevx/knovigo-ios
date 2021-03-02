@@ -68,8 +68,7 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         submitBtn.layer.shadowOffset = CGSize(width: 0, height: 5)
         submitBtn.layer.shadowRadius = 5
         submitBtn.layer.shadowOpacity = 1.0
-        submitBtn.titleLabel?.font =  UIFont(name: "Poppins Bold", size: 20)
- 
+        
         let protocols = [masksReq, staffMask, plexiGlass, bathroom, lineOutside, outlets, takeout, dineIn, wifiProv, outdoor, limitedCap]
         for button in protocols{
             button?.backgroundColor = UIColor.white
@@ -312,7 +311,7 @@ extension ReportViewController {
 extension ReportViewController {
     func setSlider(slider:UISlider) {
        let tgl = CAGradientLayer()
-       let frame = CGRect(x: 0.0, y: 0.0, width: slider.bounds.width, height: 14.0 )
+       let frame = CGRect(x: 0.0, y: 0.0, width: slider.bounds.width - 7, height: 14.0 )
        tgl.frame = frame
 
         tgl.colors = [UIColor(red: 196/255, green: 13/255, blue: 0/255, alpha: 1.0).cgColor /* #c40d00 */, UIColor(red: 255/255, green: 231/255, blue: 81/255, alpha: 1.0).cgColor /* #ffec21 */, UIColor(red: 80/255, green: 175/255, blue: 114/255, alpha: 1.0).cgColor /* #50af72 */
@@ -323,8 +322,8 @@ extension ReportViewController {
        tgl.borderColor = UIColor.white.cgColor
        tgl.cornerRadius = 9.0
 
-       tgl.endPoint = CGPoint(x: 1.0, y:  1.0)
        tgl.startPoint = CGPoint(x: 0.0, y:  1.0)
+       tgl.endPoint = CGPoint(x: 1.0, y:  1.0)
 
        UIGraphicsBeginImageContextWithOptions(tgl.frame.size, false, 0.0)
        tgl.render(in: UIGraphicsGetCurrentContext()!)
@@ -357,7 +356,7 @@ extension ReportViewController {
     
     func setSliderInvert(slider:UISlider) {
        let tgl = CAGradientLayer()
-       let frame = CGRect(x: 0.0, y: 0.0, width: slider.bounds.width, height: 14.0 )
+       let frame = CGRect(x: 0.0, y: 0.0, width: slider.bounds.width - 6, height: 14.0 )
        tgl.frame = frame
 
         tgl.colors = [UIColor(red: 80/255, green: 175/255, blue: 114/255, alpha: 1.0).cgColor /* #50af72 */, UIColor(red: 255/255, green: 231/255, blue: 81/255, alpha: 1.0).cgColor /* #ffec21 */,  UIColor(red: 196/255, green: 13/255, blue: 0/255, alpha: 1.0).cgColor /* #c40d00 */
