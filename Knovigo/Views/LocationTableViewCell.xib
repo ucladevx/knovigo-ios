@@ -71,37 +71,37 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="CgP-fc-odc" userLabel="Density Slider">
-                                                <rect key="frame" x="49.5" y="18.5" width="124" height="34"/>
+                                                <rect key="frame" x="49.5" y="18.5" width="114" height="34"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="120" id="GfO-8O-5t0"/>
+                                                    <constraint firstAttribute="width" constant="110" id="GfO-8O-5t0"/>
                                                 </constraints>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="vsf-6g-1CC" userLabel="Distancing Slider">
-                                                <rect key="frame" x="64.5" y="33.5" width="124" height="34"/>
+                                                <rect key="frame" x="64.5" y="33.5" width="114" height="34"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="120" id="U1c-qU-OIE"/>
+                                                    <constraint firstAttribute="width" constant="110" id="U1c-qU-OIE"/>
                                                 </constraints>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="fsJ-EB-klM" userLabel="Mask slider">
-                                                <rect key="frame" x="81" y="48.5" width="124" height="34"/>
+                                                <rect key="frame" x="81" y="48.5" width="114" height="34"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="120" id="m9G-Ps-Nrk"/>
+                                                    <constraint firstAttribute="width" constant="110" id="m9G-Ps-Nrk"/>
                                                 </constraints>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vk3-dM-5WA" userLabel="Density Value">
-                                                <rect key="frame" x="176.5" y="29" width="27" height="12"/>
+                                                <rect key="frame" x="166.5" y="29" width="27" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15r-do-0wt" userLabel="Distancing Value">
-                                                <rect key="frame" x="191.5" y="44" width="27" height="12"/>
+                                                <rect key="frame" x="181.5" y="44" width="27" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ltd-3Y-WYN" userLabel="Mask Value">
-                                                <rect key="frame" x="208" y="59" width="27" height="12"/>
+                                                <rect key="frame" x="198" y="59" width="27" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -113,6 +113,7 @@
                                             <constraint firstAttribute="trailing" secondItem="BSp-Uh-w8d" secondAttribute="trailing" constant="15" id="3IE-uV-i0r"/>
                                             <constraint firstItem="4hi-IX-otq" firstAttribute="leading" secondItem="Igr-0O-sAZ" secondAttribute="leading" constant="10" id="769-np-By8"/>
                                             <constraint firstAttribute="bottom" secondItem="kMD-vP-fOb" secondAttribute="bottom" constant="5" id="BNc-Wb-7yt"/>
+                                            <constraint firstAttribute="width" constant="270" id="Bvh-vy-t09"/>
                                             <constraint firstItem="vk3-dM-5WA" firstAttribute="centerY" secondItem="Igr-0O-sAZ" secondAttribute="centerY" constant="-15" id="EwP-tB-afh"/>
                                             <constraint firstItem="vk3-dM-5WA" firstAttribute="leading" secondItem="CgP-fc-odc" secondAttribute="trailing" constant="5" id="FtX-My-M40"/>
                                             <constraint firstItem="4hi-IX-otq" firstAttribute="centerY" secondItem="Igr-0O-sAZ" secondAttribute="centerY" constant="-15" id="JZg-gS-axN"/>
