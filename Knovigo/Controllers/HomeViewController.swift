@@ -48,13 +48,6 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         loadHeatmap();
     }
     
-    struct data {
-        var image : UIImage
-        var distance : Double
-        var isOpen : Bool
-        var label: String
-        var pin: Double
-    }
     // function that takes in an array of location objects and marker them on the map
     func setMarker(markerGeoCoords: [location]){
         var marker: GMSMarker
@@ -64,9 +57,11 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
             marker.snippet = i.address
             marker.isFlat = true //make sure the orientation of marker depends on phone
             //styling the marker
-            marker.map = mapView
-            marker.userData = data(image: i.image, distance: i.distance, isOpen: i.isOpen, label: i.label, pin: i.pinLabel);
-            if (i.pinLabel <= 0.20) {
+            marker.map = self.mapView
+            marker.accessibilityLabel = i.name
+            marker.userData = data(image: i.image, imageWide: i.wideImage, distance: i.distance, isOpen: i.isOpen, label: i.label, pin: i.pinLabel, sMask: i.sliderMask, sDistance: i.sliderDistance, sDensity: i.sliderDensity);
+           
+          if (i.pinLabel <= 0.20) {
                 marker.icon = UIImage(named: "pin-dark-green");
             } else if (i.pinLabel <= 0.40) {
                 marker.icon = UIImage(named: "pin-light-green");
@@ -106,17 +101,22 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
             view.openClosed.textColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0)
         }
         setSliderInvert(slider: view.densitySlider)
+        view.densitySlider.value = Float((marker.userData as! data).sDensity)
         setSlider(slider: view.distanceSlider)
+        view.distanceSlider.value = Float((marker.userData as! data).sDistance)
         setSlider(slider: view.maskSlider)
+        view.maskSlider.value = Float((marker.userData as! data).sMask)
         return view
     }
     
     //will transition to location view controller once code is finished for that
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker)
     {
-        //  let viewController = LocationViewController()
-        // self.present(viewController, animated: true, completion: nil)
-        print("pressed!")
+      //  let viewController = LocationViewController()
+        let sb = UIStoryboard(name:"Main",bundle: Bundle.main)
+        let locViewController = sb.instantiateViewController(withIdentifier: "LocationPage") as! LocationViewController
+        locViewController.locMarker = marker
+        present(locViewController, animated: true)
     }
     
     //FIXME: make a working connection from location pg to landing pg

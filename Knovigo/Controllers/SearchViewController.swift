@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DropDown
 
 class SearchViewController: UIViewController {
 
@@ -13,11 +14,27 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     var recommendations : [LocationInfo]?
+    var filterResuls : [LocationInfo]?
     var searchResuls : [LocationInfo]?
+    
+    var filterActive : Bool = false
     var searchActive : Bool = false
+    var filters: [String: Bool] = ["Least Crowded":false, "Nearest Me":false];
     
     let numRecommendations = 3
     let numSearchResults = 3
+    let menu: DropDown = {
+        let menu = DropDown();
+        menu.dataSource = [
+            "Least Crowded",
+            "Nearest Me"
+        ];
+        menu.cellNib = UINib(nibName: "DropDownCell", bundle: nil);
+        menu.cornerRadius = 15;
+        menu.width = 200;
+        menu.cellHeight = 50;
+        return menu;
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +44,6 @@ class SearchViewController: UIViewController {
         recommendationsTable.register(UINib(nibName: "LocationTableViewCell", bundle: nil), forCellReuseIdentifier: "LocationCellIdentifier")
         loadRecommended(withInput: "")
         searchBar.delegate = self
-        
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
@@ -35,7 +51,28 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func viewMorePressed(_ sender: UIButton) {
-        print("View More was pressed! Wow, such a useful function!")
+        menu.selectionAction = { [unowned self](in: Int, it: String) in
+            menu.customCellConfiguration = {index, title, cell in
+                guard let cell = cell as? FilterViewCell else {
+                    return
+                }
+                filters[title] = cell.toggleswitch.isOn;
+                filterRecommendations()
+            }
+        }
+        menu.cancelAction = { [unowned self] in
+            menu.customCellConfiguration = {index, title, cell in
+                guard let cell = cell as? FilterViewCell else {
+                    return
+                }
+                filters[title] = cell.toggleswitch.isOn;
+                filterRecommendations()
+            }
+            filterRecommendations()
+        };
+        menu.anchorView = sender;
+        menu.bottomOffset = CGPoint(x:0, y:sender.frame.size.height);
+        menu.show();
     }
     
     func loadRecommended(withInput input: String){
@@ -49,7 +86,24 @@ class SearchViewController: UIViewController {
         
         self.recommendationsTable.reloadData()
     }
-
+    
+    func filterRecommendations() {
+        if(filters["Least Crowded"]! || filters["Nearest Me"]!) {
+            filterResuls = recommendations?.filter({ (location) -> Bool in
+                if(filters["Least Crowded"]! && filters["Nearest Me"]!) {
+                    return location.density < 30 && location.distancing < 100;
+                } else if(filters["Least Crowded"]!) {
+                    return location.density < 30;
+                } else {
+                    return location.distancing < 100;
+                }
+            });
+            filterActive = true;
+        } else {
+            filterActive = false;
+        }
+        self.recommendationsTable.reloadData()
+    }
 }
 
 //MARK:- SearchBar Delegate functions
@@ -68,11 +122,19 @@ extension SearchViewController : UISearchBarDelegate {
         searchActive = false;
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchResuls = recommendations?.filter({ (location) -> Bool in
-            let tmp: NSString = location.name as NSString;
-            let range = tmp.range(of: searchText, options: .caseInsensitive);
-            return range.location != NSNotFound;
-        });
+        if (filterActive) {
+            searchResuls = filterResuls?.filter({ (location) -> Bool in
+                let tmp: NSString = location.name as NSString;
+                let range = tmp.range(of: searchText, options: .caseInsensitive);
+                return range.location != NSNotFound;
+            });
+        } else {
+            searchResuls = recommendations?.filter({ (location) -> Bool in
+                let tmp: NSString = location.name as NSString;
+                let range = tmp.range(of: searchText, options: .caseInsensitive);
+                return range.location != NSNotFound;
+            });
+        }
         if (searchResuls!.count == 0) {
             searchActive = false;
         } else {
@@ -96,11 +158,13 @@ extension SearchViewController : UITableViewDataSource{
             if (searchActive) {
                 return searchResuls!.count;
             }
+            if (filterActive) {
+                return filterResuls!.count;
+            }
             return recommendations!.count
         }
         print("Error: neither table entered for row count in RecommendationsViewController")
         return 0;
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -108,6 +172,8 @@ extension SearchViewController : UITableViewDataSource{
         var locationInfo : LocationInfo
         if (searchActive) {
             locationInfo = self.searchResuls![indexPath.row]
+        } else if (filterActive) {
+            locationInfo = self.filterResuls![indexPath.row]
         } else {
             locationInfo = self.recommendations![indexPath.row]
         }
