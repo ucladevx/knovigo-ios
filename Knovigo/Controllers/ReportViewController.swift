@@ -128,13 +128,13 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     @IBAction func q6ValChanged(_ sender: UISlider) {
         let sliderValue = sender.value
-        if (sliderValue < 0.15) {
+        if (sliderValue < 0.04) {
             self.q6img.image = UIImage(named: "q6_0")
-        } else if (sliderValue < 0.38) {
+        } else if (sliderValue < 0.3) {
             self.q6img.image = UIImage(named: "q6_25")
-        } else if (sliderValue < 0.62) {
+        } else if (sliderValue < 0.5) {
             self.q6img.image = UIImage(named: "q6_50")
-        } else if (sliderValue < 0.90) {
+        } else if (sliderValue < 0.80) {
             self.q6img.image = UIImage(named: "q6_75")
         } else {
             self.q6img.image = UIImage(named: "q6_100")
