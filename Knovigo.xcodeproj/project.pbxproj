@@ -18,13 +18,13 @@
 		8F6371432594F5900032CA88 /* LocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F6371412594F5900032CA88 /* LocationTableViewCell.xib */; };
 		8F6F37122590DC0900B6BF72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F37112590DC0900B6BF72 /* AppDelegate.swift */; };
 		8F6F37142590DC0900B6BF72 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F37132590DC0900B6BF72 /* SceneDelegate.swift */; };
-		8F6F37162590DC0900B6BF72 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F37152590DC0900B6BF72 /* HomeViewController.swift */; };
 		8F6F37192590DC0900B6BF72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F6F37172590DC0900B6BF72 /* Main.storyboard */; };
 		8F6F371B2590DC0A00B6BF72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F6F371A2590DC0A00B6BF72 /* Assets.xcassets */; };
 		8F6F371E2590DC0A00B6BF72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F6F371C2590DC0A00B6BF72 /* LaunchScreen.storyboard */; };
 		8F6F37402590E08E00B6BF72 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F373F2590E08E00B6BF72 /* util.swift */; };
 		8F6F37432590E16A00B6BF72 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F37422590E16A00B6BF72 /* ReportViewController.swift */; };
 		8F6F37462590E18D00B6BF72 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F37452590E18D00B6BF72 /* LocationViewController.swift */; };
+		F524457625F1F3F400D4CDB4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F37152590DC0900B6BF72 /* HomeViewController.swift */; };
 		F57F300B25F0101000F27B01 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F57F2FEC25F0101000F27B01 /* Lato-Italic.ttf */; };
 		F57F300C25F0101000F27B01 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F57F2FED25F0101000F27B01 /* Lato-LightItalic.ttf */; };
 		F57F300D25F0101000F27B01 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F57F2FEE25F0101000F27B01 /* Lato-Thin.ttf */; };
@@ -425,10 +425,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F524457625F1F3F400D4CDB4 /* HomeViewController.swift in Sources */,
 				8F0EA7C825DC87C30006DE7E /* ReportDataModel.swift in Sources */,
 				75AE69C82592C948009D0A25 /* CustomPopUp.swift in Sources */,
-				8F6F37162590DC0900B6BF72 /* HomeViewController.swift in Sources */,
-				8F6F37162590DC0900B6BF72 /* HomeViewController.swift in Sources */,
 				8F6371422594F5900032CA88 /* LocationTableViewCell.swift in Sources */,
 				8F6F37122590DC0900B6BF72 /* AppDelegate.swift in Sources */,
 				8F23B74F25959AD400FCD942 /* constants.swift in Sources */,
