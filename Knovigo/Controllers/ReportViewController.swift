@@ -40,10 +40,6 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        curPlaceLabel.font = UIFont.systemFont(ofSize: 14.0)
-        curPlaceLabel.adjustsFontSizeToFitWidth = true
-        curPlaceLabel.minimumScaleFactor = 0.5
-        
         setSlider(slider: q4slider);
         setSlider(slider: q5slider);
         setSliderInvert(slider: q6slider);
@@ -87,7 +83,6 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var locationPicker: UIPickerView!
     @IBOutlet weak var startPicker: UIDatePicker!
     @IBOutlet weak var endPicker: UIDatePicker!
-    @IBOutlet weak var locationImg: UIImageView!
     
     @IBOutlet weak var submitBtn: UIButton!
     
@@ -97,61 +92,37 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var q9tv: UITextView!
     
     
-    @IBAction func q4ValChanged(_ sender: UISlider) {
+    @IBAction func sliderValChanged(_ sender: UISlider) {
         let sliderValue = sender.value
-        if (sliderValue < 0.15) {
-            self.q4img.image = UIImage(named: "q4_0")
-        } else if (sliderValue < 0.38) {
-            self.q4img.image = UIImage(named: "q4_25")
-        } else if (sliderValue < 0.62) {
-            self.q4img.image = UIImage(named: "q4_50")
-        } else if (sliderValue < 0.90) {
-            self.q4img.image = UIImage(named: "q4_75")
-        } else {
-            self.q4img.image = UIImage(named: "q4_100")
+        var imageView:UIImageView
+        let tag = sender.tag
+        switch(tag){
+            case(4):
+                imageView = q4img
+                break
+            case(5):
+                imageView = q5img
+                break
+            default:
+                imageView = q6img
         }
-    }
-    @IBAction func q5ValChanged(_ sender: UISlider) {
-        let sliderValue = sender.value
-        if (sliderValue < 0.15) {
-            self.q5img.image = UIImage(named: "q5_0")
-        } else if (sliderValue < 0.38) {
-            self.q5img.image = UIImage(named: "q5_25")
-        } else if (sliderValue < 0.62) {
-            self.q5img.image = UIImage(named: "q5_50")
-        } else if (sliderValue < 0.90) {
-            self.q5img.image = UIImage(named: "q5_75")
-        } else {
-            self.q5img.image = UIImage(named: "q5_100")
-        }
-    }
-    
-    @IBAction func q6ValChanged(_ sender: UISlider) {
-        let sliderValue = sender.value
         if (sliderValue < 0.04) {
-            self.q6img.image = UIImage(named: "q6_0")
-        } else if (sliderValue < 0.3) {
-            self.q6img.image = UIImage(named: "q6_25")
+            imageView.image = UIImage(named: "q" + String(tag) + "_0")
+        } else if (sliderValue < 0.28) {
+            imageView.image = UIImage(named: "q" + String(tag) + "_25")
         } else if (sliderValue < 0.5) {
-            self.q6img.image = UIImage(named: "q6_50")
-        } else if (sliderValue < 0.80) {
-            self.q6img.image = UIImage(named: "q6_75")
+            imageView.image = UIImage(named: "q" + String(tag) + "_50")
+        } else if (sliderValue < 0.72) {
+            imageView.image = UIImage(named: "q" + String(tag) + "_75")
         } else {
-            self.q6img.image = UIImage(named: "q6_100")
+            imageView.image = UIImage(named: "q" + String(tag) + "_100")
         }
     }
-    
-    @IBOutlet weak var LocationReport: UILabel!
-    @IBOutlet weak var ScrollView: UIScrollView!
-//    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var curPlaceLabel: UILabel!
     
     @IBOutlet weak var q4slider: UISlider!
     @IBOutlet weak var q5slider: UISlider!
     @IBOutlet weak var q6slider: UISlider!
     @IBOutlet weak var q7slider: UISlider!
-    
-    @IBOutlet weak var SurveyView: UIView!
     
     // QUESTION LABELS
     @IBOutlet weak var masksReq: UIButton!

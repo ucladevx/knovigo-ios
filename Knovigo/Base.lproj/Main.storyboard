@@ -311,7 +311,7 @@
                                 <rect key="frame" x="314" y="214" width="80" height="160"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COVID-19 Heat Map" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2W-1Y-KVj">
-                                        <rect key="frame" x="10" y="75" width="60" height="28"/>
+                                        <rect key="frame" x="10" y="75" width="60" height="29"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -362,7 +362,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoM-dQ-wOW">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoM-dQ-wOW" userLabel="Report Button">
                                 <rect key="frame" x="299" y="101" width="100" height="110"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="ZwW-og-157"/>
@@ -396,7 +396,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="RCM-wv-53I"/>
                     <connections>
-                        <outlet property="ReportButton" destination="xoM-dQ-wOW" id="rnD-qE-1Gd"/>
+                        <outlet property="ReportButton" destination="xoM-dQ-wOW" id="5iP-lw-KiP"/>
                         <outlet property="heatMapLegend" destination="duO-0A-pv7" id="9HJ-c2-gZz"/>
                         <outlet property="heatMapSwitch" destination="rse-Ay-Qsd" id="e5V-jF-fhc"/>
                         <outlet property="heatMapView" destination="XbE-1W-Z1T" id="7yH-Dl-B9e"/>
@@ -680,14 +680,14 @@
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <slider opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="lpi-yc-g83">
+                                                    <slider opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="lpi-yc-g83">
                                                         <rect key="frame" x="30" y="62.666666666666686" width="354" height="31"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="350" id="QOi-U2-ECM"/>
                                                         </constraints>
                                                         <connections>
-                                                            <action selector="q4ValChanged:" destination="guB-is-CtR" eventType="valueChanged" id="wuy-TA-GqK"/>
+                                                            <action selector="sliderValChanged:" destination="guB-is-CtR" eventType="valueChanged" id="JrE-Gf-1Oo"/>
                                                         </connections>
                                                     </slider>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mz6-f8-6wz" userLabel="Q4SliderNums">
@@ -831,14 +831,14 @@
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <slider opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="2SA-uf-mzz" userLabel="Q5slider">
+                                                    <slider opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="2SA-uf-mzz" userLabel="Q5slider">
                                                         <rect key="frame" x="30" y="62.666666666666742" width="354" height="31"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="350" id="n4i-bz-ljy"/>
                                                         </constraints>
                                                         <connections>
-                                                            <action selector="q5ValChanged:" destination="guB-is-CtR" eventType="valueChanged" id="kpc-XB-FdN"/>
+                                                            <action selector="sliderValChanged:" destination="guB-is-CtR" eventType="valueChanged" id="8Xu-t2-91K"/>
                                                         </connections>
                                                     </slider>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shs-eG-Uez" userLabel="Q5SliderNums">
@@ -982,13 +982,13 @@
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <slider opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="PnO-Jh-5Ia">
+                                                    <slider opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="PnO-Jh-5Ia">
                                                         <rect key="frame" x="30" y="62.666666666666629" width="354" height="31"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="350" id="MJd-Xb-tHG"/>
                                                         </constraints>
                                                         <connections>
-                                                            <action selector="q6ValChanged:" destination="guB-is-CtR" eventType="valueChanged" id="4Dt-Mh-P3n"/>
+                                                            <action selector="sliderValChanged:" destination="guB-is-CtR" eventType="valueChanged" id="UNv-2N-FRe"/>
                                                         </connections>
                                                     </slider>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqM-6l-Jur" userLabel="Q6SliderNums">
@@ -1565,17 +1565,12 @@
                     <navigationItem key="navigationItem" id="2eF-Br-1kw"/>
                     <size key="freeformSize" width="414" height="1800"/>
                     <connections>
-                        <outlet property="LocationReport" destination="bwq-rN-gVB" id="fFx-dh-IKW"/>
-                        <outlet property="ScrollView" destination="95L-8b-Dqx" id="iaw-Cg-ZSL"/>
-                        <outlet property="SurveyView" destination="J0z-iy-Gev" id="SFw-sn-7fH"/>
                         <outlet property="backBtn" destination="CMj-7t-Zel" id="5hJ-bS-XP5"/>
                         <outlet property="bathroom" destination="NRv-hg-QDL" id="YoI-0x-gwg"/>
-                        <outlet property="curPlaceLabel" destination="xo3-n5-nAD" id="RF6-v0-CDH"/>
                         <outlet property="dineIn" destination="ehS-Rg-BRe" id="lUN-2d-luT"/>
                         <outlet property="endPicker" destination="EC7-ts-ZVh" id="iCM-3H-6Oj"/>
                         <outlet property="limitedCap" destination="Hx3-TC-DSy" id="SFV-rb-9My"/>
                         <outlet property="lineOutside" destination="j5j-i3-fcw" id="gxa-5i-G1t"/>
-                        <outlet property="locationImg" destination="GSH-L1-HtK" id="B32-SO-aeY"/>
                         <outlet property="locationPicker" destination="fr6-Ok-a6O" id="KIw-VX-Tfs"/>
                         <outlet property="masksReq" destination="n4i-Ez-xg4" id="v6F-3s-y6S"/>
                         <outlet property="outdoor" destination="Ohc-70-IJF" id="Ry0-fa-nUm"/>
