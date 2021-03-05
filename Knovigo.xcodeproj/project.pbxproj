@@ -54,6 +54,8 @@
 		F57F302625F0101000F27B01 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F57F300825F0101000F27B01 /* Poppins-SemiBold.ttf */; };
 		F57F302725F0101000F27B01 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F57F300925F0101000F27B01 /* Poppins-Italic.ttf */; };
 		F57F302825F0101000F27B01 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F57F300A25F0101000F27B01 /* Poppins-MediumItalic.ttf */; };
+		F2E9B49725DC5B4300B192E0 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E9B49525DC5B4300B192E0 /* DropDownCell.swift */; };
+		F2E9B49825DC5B4400B192E0 /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E9B49625DC5B4300B192E0 /* DropDownCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +111,8 @@
 		F57F300825F0101000F27B01 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		F57F300925F0101000F27B01 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		F57F300A25F0101000F27B01 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
+		F2E9B49525DC5B4300B192E0 /* DropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
+		F2E9B49625DC5B4300B192E0 /* DropDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,8 @@
 			children = (
 				8F6371402594F5900032CA88 /* LocationTableViewCell.swift */,
 				8F6371412594F5900032CA88 /* LocationTableViewCell.xib */,
+				F2E9B49525DC5B4300B192E0 /* DropDownCell.swift */,
+				F2E9B49625DC5B4300B192E0 /* DropDownCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -325,10 +331,16 @@
 				F57F302425F0101000F27B01 /* Poppins-Black.ttf in Resources */,
 				F57F302225F0101000F27B01 /* Poppins-LightItalic.ttf in Resources */,
 				8F6F371E2590DC0A00B6BF72 /* LaunchScreen.storyboard in Resources */,
-				F57F300E25F0101000F27B01 /* Lato-Bold.ttf in Resources */,
-				F57F300D25F0101000F27B01 /* Lato-Thin.ttf in Resources */,
-				F57F300B25F0101000F27B01 /* Lato-Italic.ttf in Resources */,
 				F57F302125F0101000F27B01 /* Poppins-Regular.ttf in Resources */,
+				751215C22599318100405770 /* Lato-ThinItalic.ttf in Resources */,
+				751215C02599317E00405770 /* Lato-Light.ttf in Resources */,
+				751215B82599317100405770 /* Lato-Thin.ttf in Resources */,
+				F2E9B49825DC5B4400B192E0 /* DropDownCell.xib in Resources */,
+				751215B42599316D00405770 /* Lato-Italic.ttf in Resources */,
+				751215BE2599317C00405770 /* Lato-BoldItalic.ttf in Resources */,
+				751215B22599316800405770 /* Lato-Bold.ttf in Resources */,
+				751215BC2599317800405770 /* Lato-BlackItalic.ttf in Resources */,
+				751215B62599316F00405770 /* Lato-LightItalic.ttf in Resources */,
 				8F6371432594F5900032CA88 /* LocationTableViewCell.xib in Resources */,
 				F57F302525F0101000F27B01 /* Poppins-Thin.ttf in Resources */,
 				F57F301125F0101000F27B01 /* Lato-BlackItalic.ttf in Resources */,
@@ -433,6 +445,7 @@
 				8F23B74F25959AD400FCD942 /* constants.swift in Sources */,
 				8F6F37142590DC0900B6BF72 /* SceneDelegate.swift in Sources */,
 				8F23B74C259598BA00FCD942 /* LocationInfoModel.swift in Sources */,
+				F2E9B49725DC5B4300B192E0 /* DropDownCell.swift in Sources */,
 				8F6F37462590E18D00B6BF72 /* LocationViewController.swift in Sources */,
 				8F63713C25941F350032CA88 /* SearchViewController.swift in Sources */,
 				8F6F37432590E16A00B6BF72 /* ReportViewController.swift in Sources */,
