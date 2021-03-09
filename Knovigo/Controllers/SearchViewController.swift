@@ -23,18 +23,7 @@ class SearchViewController: UIViewController {
     
     let numRecommendations = 3
     let numSearchResults = 3
-    let menu: DropDown = {
-        let menu = DropDown();
-        menu.dataSource = [
-            "Least Crowded",
-            "Nearest Me"
-        ];
-        menu.cellNib = UINib(nibName: "DropDownCell", bundle: nil);
-        menu.cornerRadius = 15;
-        menu.width = 200;
-        menu.cellHeight = 50;
-        return menu;
-    }()
+    let menu: DropDown = DropDown();
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +33,21 @@ class SearchViewController: UIViewController {
         recommendationsTable.register(UINib(nibName: "LocationTableViewCell", bundle: nil), forCellReuseIdentifier: "LocationCellIdentifier")
         loadRecommended(withInput: "")
         searchBar.delegate = self
+        
+        menu.dataSource = [
+            "Least Crowded",
+            "Nearest Me"
+        ];
+        menu.cellNib = UINib(nibName: "DropDownCell", bundle: nil);
+        menu.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
+           guard let cell = cell as? FilterViewCell else {
+                return
+            }
+            cell.delegate = self
+        }
+        menu.cornerRadius = 15;
+        menu.width = 200;
+        menu.cellHeight = 50;
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
@@ -51,25 +55,6 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func viewMorePressed(_ sender: UIButton) {
-        menu.selectionAction = { [unowned self](in: Int, it: String) in
-            menu.customCellConfiguration = {index, title, cell in
-                guard let cell = cell as? FilterViewCell else {
-                    return
-                }
-                filters[title] = cell.toggleswitch.isOn;
-                filterRecommendations()
-            }
-        }
-        menu.cancelAction = { [unowned self] in
-            menu.customCellConfiguration = {index, title, cell in
-                guard let cell = cell as? FilterViewCell else {
-                    return
-                }
-                filters[title] = cell.toggleswitch.isOn;
-                filterRecommendations()
-            }
-            filterRecommendations()
-        };
         menu.anchorView = sender;
         menu.bottomOffset = CGPoint(x:0, y:sender.frame.size.height);
         menu.show();
@@ -103,6 +88,17 @@ class SearchViewController: UIViewController {
             filterActive = false;
         }
         self.recommendationsTable.reloadData()
+    }
+
+}
+
+//MARK:- DropDownCell Delegate functions
+
+extension SearchViewController : ToggleDelegate {
+    func toggleWasSwitched(_ item: String, toggleval: Bool) {
+        self.filters[item] = toggleval
+        print(filters)
+        self.filterRecommendations()
     }
 }
 
