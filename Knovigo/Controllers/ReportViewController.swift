@@ -10,40 +10,13 @@ import UIKit
 import IQKeyboardManagerSwift
 
 class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
-    }
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-
-       var title = UILabel()
-          if let view = view {
-                 title = view as! UILabel
-           }
-        title.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
-         title.textColor = UIColor(red: 80/255, green: 175/255, blue: 114/255, alpha: 1.0)
-         title.text =  pickerData[row]
-         title.textAlignment = .center
-
-     return title
-
-     }
-    var pickerData: [String] = [String]()
-
+    @IBOutlet weak var ScrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setSlider(slider: q4slider);
-        setSlider(slider: q5slider);
-        setSliderInvert(slider: q6slider);
-        setSlider(slider: q7slider);
+        setSlider(slider: q4slider)
+        setSlider(slider: q5slider)
+        setSliderInvert(slider: q6slider)
+        setSlider(slider: q7slider)
         
         let borderColor : UIColor = UIColor(red: 12/255, green: 0/255, blue: 9/255, alpha: 1.0)
                 q9tv.layer.borderWidth = 0.4
@@ -79,6 +52,32 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         IQKeyboardManager.shared.enable = true
     }
+    
+    var pickerData: [String] = [String]()
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+
+       var title = UILabel()
+          if let view = view {
+                 title = view as! UILabel
+           }
+        title.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
+         title.textColor = UIColor(red: 80/255, green: 175/255, blue: 114/255, alpha: 1.0)
+         title.text =  pickerData[row]
+         title.textAlignment = .center
+
+     return title
+     }
     
     @IBOutlet weak var locationPicker: UIPickerView!
     @IBOutlet weak var startPicker: UIDatePicker!
@@ -282,7 +281,7 @@ extension ReportViewController {
 extension ReportViewController {
     func setSlider(slider:UISlider) {
        let tgl = CAGradientLayer()
-       let frame = CGRect(x: 0.0, y: 0.0, width: slider.bounds.width - 7, height: 14.0 )
+        let frame = CGRect(x: 0.0, y: 0.0, width: slider.bounds.width, height: 14.0 )
        tgl.frame = frame
 
         tgl.colors = [UIColor(red: 196/255, green: 13/255, blue: 0/255, alpha: 1.0).cgColor /* #c40d00 */, UIColor(red: 255/255, green: 231/255, blue: 81/255, alpha: 1.0).cgColor /* #ffec21 */, UIColor(red: 80/255, green: 175/255, blue: 114/255, alpha: 1.0).cgColor /* #50af72 */
@@ -293,16 +292,20 @@ extension ReportViewController {
        tgl.borderColor = UIColor.white.cgColor
        tgl.cornerRadius = 9.0
 
-       tgl.startPoint = CGPoint(x: 0.0, y:  1.0)
-       tgl.endPoint = CGPoint(x: 1.0, y:  1.0)
+        tgl.startPoint = CGPoint.init(x:0.0, y:0.5)
+        tgl.endPoint = CGPoint.init(x:1.0, y:0.5)
 
-       UIGraphicsBeginImageContextWithOptions(tgl.frame.size, false, 0.0)
-       tgl.render(in: UIGraphicsGetCurrentContext()!)
-       let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
-       UIGraphicsEndImageContext()
+        UIGraphicsBeginImageContextWithOptions(tgl.frame.size, tgl.isOpaque, 0.0);
+            tgl.render(in: UIGraphicsGetCurrentContext()!)
+            if let image = UIGraphicsGetImageFromCurrentImageContext() {
+                UIGraphicsEndImageContext()
 
-       slider.setMaximumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
-       slider.setMinimumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+                image.resizableImage(withCapInsets: UIEdgeInsets.zero)
+
+                slider.setMinimumTrackImage(image, for: .normal)
+                slider.setMaximumTrackImage(image, for: .normal)
+            }
+       
 
        let layerFrame = CGRect(x: 0, y: 0, width: 15.0, height: 15.0)
 
@@ -327,7 +330,7 @@ extension ReportViewController {
     
     func setSliderInvert(slider:UISlider) {
        let tgl = CAGradientLayer()
-       let frame = CGRect(x: 0.0, y: 0.0, width: slider.bounds.width - 6, height: 14.0 )
+        let frame = CGRect(x: 0.0, y: 0.0, width: slider.bounds.width, height: 14.0 )
        tgl.frame = frame
 
         tgl.colors = [UIColor(red: 80/255, green: 175/255, blue: 114/255, alpha: 1.0).cgColor /* #50af72 */, UIColor(red: 255/255, green: 231/255, blue: 81/255, alpha: 1.0).cgColor /* #ffec21 */,  UIColor(red: 196/255, green: 13/255, blue: 0/255, alpha: 1.0).cgColor /* #c40d00 */
@@ -340,13 +343,16 @@ extension ReportViewController {
        tgl.endPoint = CGPoint(x: 1.0, y:  1.0)
        tgl.startPoint = CGPoint(x: 0.0, y:  1.0)
 
-       UIGraphicsBeginImageContextWithOptions(tgl.frame.size, false, 0.0)
-       tgl.render(in: UIGraphicsGetCurrentContext()!)
-       let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
-       UIGraphicsEndImageContext()
+        UIGraphicsBeginImageContextWithOptions(tgl.frame.size, tgl.isOpaque, 0.0);
+            tgl.render(in: UIGraphicsGetCurrentContext()!)
+            if let image = UIGraphicsGetImageFromCurrentImageContext() {
+                UIGraphicsEndImageContext()
 
-       slider.setMaximumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
-       slider.setMinimumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+                image.resizableImage(withCapInsets: UIEdgeInsets.zero)
+
+                slider.setMinimumTrackImage(image, for: .normal)
+                slider.setMaximumTrackImage(image, for: .normal)
+            }
 
        let layerFrame = CGRect(x: 0, y: 0, width: 15.0, height: 15.0)
 
