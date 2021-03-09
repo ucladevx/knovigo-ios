@@ -161,13 +161,13 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
                                          UIColorFromRGB(rgbValue: 0xFFD372),
                                          UIColorFromRGB(rgbValue: 0xE46B6B),
                                          UIColorFromRGB(rgbValue: 0xBA0505)]
-        let gradientStartPoints: [NSNumber] = [0.1, 0.2, 0.4, 0.6, 0.8];
+        let gradientStartPoints: [NSNumber] = [0.1, 0.3, 0.5, 0.7, 0.9];
         heatMapLayer.gradient = GMUGradient(
           colors: gradientColors,
           startPoints: gradientStartPoints,
           colorMapSize: 256
         )
-        heatMapLayer.radius = UInt(15 * mapView.camera.zoom)
+        heatMapLayer.radius = UInt(20)
     }
     
     //helper function to convert colors for heatmap
@@ -252,7 +252,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
                 if (heatMapLayer.map == nil && heatMapSwitch.isOn){
                     turnOnHeatMap()
                 }
-                heatMapLayer.radius = UInt(15 * zoom)
+                heatMapLayer.radius = UInt(50)
             }
             else {
                 turnOffHeatMap()

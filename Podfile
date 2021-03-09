@@ -9,6 +9,7 @@ target 'Knovigo' do
   pod 'Google-Maps-iOS-Utils', '3.4.0'
   pod 'Charts'
   pod 'DropDown'
+  pod 'IQKeyboardManagerSwift'
 
   # Pods for Knovigo
 
