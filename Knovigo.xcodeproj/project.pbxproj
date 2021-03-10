@@ -24,11 +24,10 @@
 		8F6F37402590E08E00B6BF72 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F373F2590E08E00B6BF72 /* util.swift */; };
 		8F6F37432590E16A00B6BF72 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F37422590E16A00B6BF72 /* ReportViewController.swift */; };
 		8F6F37462590E18D00B6BF72 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F37452590E18D00B6BF72 /* LocationViewController.swift */; };
+		F2E9B49725DC5B4300B192E0 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E9B49525DC5B4300B192E0 /* DropDownCell.swift */; };
+		F2E9B49825DC5B4400B192E0 /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E9B49625DC5B4300B192E0 /* DropDownCell.xib */; };
 		F524457625F1F3F400D4CDB4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6F37152590DC0900B6BF72 /* HomeViewController.swift */; };
-		F57F300B25F0101000F27B01 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F57F2FEC25F0101000F27B01 /* Lato-Italic.ttf */; };
 		F57F300C25F0101000F27B01 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F57F2FED25F0101000F27B01 /* Lato-LightItalic.ttf */; };
-		F57F300D25F0101000F27B01 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F57F2FEE25F0101000F27B01 /* Lato-Thin.ttf */; };
-		F57F300E25F0101000F27B01 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F57F2FEF25F0101000F27B01 /* Lato-Bold.ttf */; };
 		F57F300F25F0101000F27B01 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F57F2FF025F0101000F27B01 /* Lato-Black.ttf */; };
 		F57F301025F0101000F27B01 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F57F2FF125F0101000F27B01 /* Lato-Regular.ttf */; };
 		F57F301125F0101000F27B01 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F57F2FF225F0101000F27B01 /* Lato-BlackItalic.ttf */; };
@@ -54,8 +53,6 @@
 		F57F302625F0101000F27B01 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F57F300825F0101000F27B01 /* Poppins-SemiBold.ttf */; };
 		F57F302725F0101000F27B01 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F57F300925F0101000F27B01 /* Poppins-Italic.ttf */; };
 		F57F302825F0101000F27B01 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F57F300A25F0101000F27B01 /* Poppins-MediumItalic.ttf */; };
-		F2E9B49725DC5B4300B192E0 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E9B49525DC5B4300B192E0 /* DropDownCell.swift */; };
-		F2E9B49825DC5B4400B192E0 /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E9B49625DC5B4300B192E0 /* DropDownCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +78,8 @@
 		8F6F37452590E18D00B6BF72 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		B7DE5AEA8BAF17EC8145DD41 /* Pods_Knovigo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Knovigo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7B650AF635D53E0D95B8468 /* Pods-Knovigo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knovigo.debug.xcconfig"; path = "Target Support Files/Pods-Knovigo/Pods-Knovigo.debug.xcconfig"; sourceTree = "<group>"; };
+		F2E9B49525DC5B4300B192E0 /* DropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
+		F2E9B49625DC5B4300B192E0 /* DropDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
 		F57F2FEC25F0101000F27B01 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
 		F57F2FED25F0101000F27B01 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
 		F57F2FEE25F0101000F27B01 /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
@@ -111,8 +110,6 @@
 		F57F300825F0101000F27B01 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		F57F300925F0101000F27B01 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		F57F300A25F0101000F27B01 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
-		F2E9B49525DC5B4300B192E0 /* DropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
-		F2E9B49625DC5B4300B192E0 /* DropDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,15 +329,7 @@
 				F57F302225F0101000F27B01 /* Poppins-LightItalic.ttf in Resources */,
 				8F6F371E2590DC0A00B6BF72 /* LaunchScreen.storyboard in Resources */,
 				F57F302125F0101000F27B01 /* Poppins-Regular.ttf in Resources */,
-				751215C22599318100405770 /* Lato-ThinItalic.ttf in Resources */,
-				751215C02599317E00405770 /* Lato-Light.ttf in Resources */,
-				751215B82599317100405770 /* Lato-Thin.ttf in Resources */,
 				F2E9B49825DC5B4400B192E0 /* DropDownCell.xib in Resources */,
-				751215B42599316D00405770 /* Lato-Italic.ttf in Resources */,
-				751215BE2599317C00405770 /* Lato-BoldItalic.ttf in Resources */,
-				751215B22599316800405770 /* Lato-Bold.ttf in Resources */,
-				751215BC2599317800405770 /* Lato-BlackItalic.ttf in Resources */,
-				751215B62599316F00405770 /* Lato-LightItalic.ttf in Resources */,
 				8F6371432594F5900032CA88 /* LocationTableViewCell.xib in Resources */,
 				F57F302525F0101000F27B01 /* Poppins-Thin.ttf in Resources */,
 				F57F301125F0101000F27B01 /* Lato-BlackItalic.ttf in Resources */,
@@ -599,14 +588,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 69YFZB2ZXG;
+				DEVELOPMENT_TEAM = 542R2XTX38;
 				INFOPLIST_FILE = Knovigo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "kt.knovigo-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "knovigo-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -622,14 +611,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 69YFZB2ZXG;
+				DEVELOPMENT_TEAM = 542R2XTX38;
 				INFOPLIST_FILE = Knovigo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "kt.knovigo-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "knovigo-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
