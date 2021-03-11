@@ -26,13 +26,13 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
         self.dayPicker.dataSource = self
         pickerData = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
         
-        masksReqBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
-        plexiglassBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
-        staffWearsBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
-        limitedCapacityBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
-        lineOutsideBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
-        outdoorBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
-        wifiBtn.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
+        masksReq.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
+        staffWears.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
+        plexiglass.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
+        limitedCapacity.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
+        lineOutside.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
+        outdoor.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
+        wifi.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
         
         locTitle.text = locMarker.title
         locAddress.text = locMarker.snippet
@@ -90,22 +90,23 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
     
     @IBOutlet weak var backBtn: UIButton!
     
-    var density: Float = -1
-    var distancing: Float = -1
-    var mwearing: Float = -1
+//    var density: Float = -1
+//    var distancing: Float = -1
+//    var mwearing: Float = -1
     @IBOutlet weak var locImage: UIImageView!
     
-    @IBOutlet weak var masksReqBtn: UILabel!
-    @IBOutlet weak var staffWearsBtn: UILabel!
-    @IBOutlet weak var plexiglassBtn: UILabel!
-    @IBOutlet weak var limitedCapacityBtn: UILabel!
-    @IBOutlet weak var lineOutsideBtn: UILabel!
-    @IBOutlet weak var bathroomBtn: UILabel!
-    @IBOutlet weak var wifiBtn: UILabel!
-    @IBOutlet weak var outdoorBtn: UILabel!
-    @IBOutlet weak var outletBtn: UILabel!
-    @IBOutlet weak var takeoutBtn: UILabel!
-    @IBOutlet weak var dineInBtn: UILabel!
+    @IBOutlet weak var masksReq: UIView!
+    @IBOutlet weak var staffWears: UIView!
+    @IBOutlet weak var lineOutside: UIView!
+    @IBOutlet weak var limitedCapacity: UIView!
+    @IBOutlet weak var plexiglass: UIView!
+    @IBOutlet weak var bathroom: UIView!
+    @IBOutlet weak var dineIn: UIView!
+    @IBOutlet weak var outdoor: UIView!
+    @IBOutlet weak var outlet: UIView!
+    @IBOutlet weak var wifi: UIView!
+    @IBOutlet weak var takeout: UIView!
+  
     
     //TEXT FIELDS
     @IBOutlet weak var locTitle: UILabel!
@@ -180,9 +181,9 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
     
     
     //record % obtained from sliders
-    @IBAction func putDensity(slider: UISlider){ density = slider.value }
-    @IBAction func putDistancing(slider: UISlider) { distancing = slider.value }
-    @IBAction func putMWearing(slider: UISlider) { mwearing = slider.value }
+//    @IBAction func putDensity(slider: UISlider){ density = slider.value }
+//    @IBAction func putDistancing(slider: UISlider) { distancing = slider.value }
+//    @IBAction func putMWearing(slider: UISlider) { mwearing = slider.value }
     //    @IBAction func showDropDown(_ sender: Any) { dropDown.show() }
     
     func putTags(tagList: inout [tag]){
