@@ -105,13 +105,13 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             default:
                 imageView = q6img
         }
-        if (sliderValue < 0.04) {
+        if (sliderValue < 0.01) {
             imageView.image = UIImage(named: "q" + String(tag) + "_0")
-        } else if (sliderValue < 0.28) {
+        } else if (sliderValue < 0.25) {
             imageView.image = UIImage(named: "q" + String(tag) + "_25")
         } else if (sliderValue < 0.5) {
             imageView.image = UIImage(named: "q" + String(tag) + "_50")
-        } else if (sliderValue < 0.72) {
+        } else if (sliderValue < 0.75) {
             imageView.image = UIImage(named: "q" + String(tag) + "_75")
         } else {
             imageView.image = UIImage(named: "q" + String(tag) + "_100")
