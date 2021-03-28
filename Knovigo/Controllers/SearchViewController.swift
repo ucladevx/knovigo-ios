@@ -8,6 +8,17 @@
 import UIKit
 import DropDown
 
+struct LocationResponse:Decodable {
+    let name:String
+    let distance:Float
+    let address:String
+    let types:[String]
+    let price_level:Int
+    let agg_density:Int
+    let agg_social:Int
+    let agg_mask:Int
+}
+
 class SearchViewController: UIViewController {
 
     @IBOutlet weak var recommendationsTable: UITableView!
@@ -62,7 +73,42 @@ class SearchViewController: UIViewController {
     
     func loadRecommended(withInput input: String){
         //ideally this function will use the API to get the information about a place
-        //hard coded for testing purposes
+        let url = URL(string: "http://localhost:3000/test") //Change this to actual endpoint
+        guard let requestUrl = url else { fatalError() }
+        print("Hello can you see this")
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "GET"
+        
+        // Set HTTP Request Header
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+            
+            do {
+                var temp:[LocationInfo] = []
+                if let locationDict = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
+                    let locationArray = locationDict["data"] as! [[String:Any]];
+                    for location in locationArray {
+                        let locationStruct:LocationResponse? = try JSONDecoder().decode(LocationResponse.self, from: JSONSerialization.data(withJSONObject: location))
+                        temp.append(
+                            LocationInfo(name: locationStruct!.name, address: locationStruct!.name, distancing: Int(locationStruct!.distance), density: locationStruct!.agg_density, maskWearing: locationStruct!.agg_mask, image: #imageLiteral(resourceName: "q6_100"), priceRange: .LOW, tags: locationStruct!.types)
+                        );
+                    }
+                    self.recommendations = temp;
+                }
+                
+            } catch let error as NSError {
+               print(error.localizedDescription)
+            }
+            
+        }
+        task.resume()
+        
         self.recommendations = [
             LocationInfo(name: "MyTreeHouse", address: "Nowhere", distancing: 40, density: 40, maskWearing: 40, image: #imageLiteral(resourceName: "q6_100"), priceRange: .LOW, tags: ["Funky", "Munky"]),
             LocationInfo(name: "Tatooine", address: "Idk", distancing: 40, density: 40, maskWearing: 60, image: #imageLiteral(resourceName: "knovigo-icon"), priceRange: .MEDIUM, tags: ["Dusty", "Sandy"]),
