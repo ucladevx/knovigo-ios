@@ -42,6 +42,7 @@ class SearchViewController: UIViewController {
         recommendationsTable.layer.backgroundColor = UIColor.clear.cgColor
         recommendationsTable.backgroundColor = .clear
         recommendationsTable.register(UINib(nibName: "LocationTableViewCell", bundle: nil), forCellReuseIdentifier: "LocationCellIdentifier")
+        
         loadRecommended(withInput: "")
         searchBar.delegate = self
         
@@ -72,10 +73,21 @@ class SearchViewController: UIViewController {
     }
     
     func loadRecommended(withInput input: String){
+        self.recommendations = [];
         //ideally this function will use the API to get the information about a place
+        attemptLoadAPI { (success) in
+            DispatchQueue.main.async {
+                self.recommendationsTable.reloadData();
+            }
+            print(success)
+        }
+        
+        self.recommendationsTable.reloadData();
+    }
+    
+    func attemptLoadAPI(_ completion:@escaping (Bool)->()) {
         let url = URL(string: "http://localhost:3000/test") //Change this to actual endpoint
         guard let requestUrl = url else { fatalError() }
-        print("Hello can you see this")
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "GET"
         
@@ -86,9 +98,9 @@ class SearchViewController: UIViewController {
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print("Error took place \(error)")
+                completion(false)
                 return
             }
-            
             do {
                 var temp:[LocationInfo] = []
                 if let locationDict = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
@@ -100,22 +112,15 @@ class SearchViewController: UIViewController {
                         );
                     }
                     self.recommendations = temp;
+                    completion(true)
+                    return
                 }
-                
             } catch let error as NSError {
                print(error.localizedDescription)
+               completion(false)
             }
-            
         }
         task.resume()
-        
-        self.recommendations = [
-            LocationInfo(name: "MyTreeHouse", address: "Nowhere", distancing: 40, density: 40, maskWearing: 40, image: #imageLiteral(resourceName: "q6_100"), priceRange: .LOW, tags: ["Funky", "Munky"]),
-            LocationInfo(name: "Tatooine", address: "Idk", distancing: 40, density: 40, maskWearing: 60, image: #imageLiteral(resourceName: "knovigo-icon"), priceRange: .MEDIUM, tags: ["Dusty", "Sandy"]),
-            LocationInfo(name: "Moon", address: "Right beside the Earth, in Solar System", distancing: 100, density: 0, maskWearing: 0, image: #imageLiteral(resourceName: "locationPic-1"), priceRange: .HIGH, tags: ["Rocky", "Satellite", "Recommended"])
-        ]
-        
-        self.recommendationsTable.reloadData()
     }
     
     func filterRecommendations() {
