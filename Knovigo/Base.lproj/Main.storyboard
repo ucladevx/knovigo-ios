@@ -225,9 +225,11 @@
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstItem="Diq-W6-mJI" firstAttribute="centerY" secondItem="pw3-Re-vBu" secondAttribute="centerY" id="09P-u6-5mD"/>
+                                                            <constraint firstItem="QgZ-3D-2Ca" firstAttribute="trailing" secondItem="pw3-Re-vBu" secondAttribute="leading" constant="18" id="5aj-Ra-Xxp"/>
                                                             <constraint firstItem="psq-1I-jA8" firstAttribute="trailing" secondItem="pw3-Re-vBu" secondAttribute="trailing" id="7VZ-Qv-xF4"/>
                                                             <constraint firstItem="Diq-W6-mJI" firstAttribute="centerX" secondItem="pw3-Re-vBu" secondAttribute="centerX" id="Wjg-lF-G6y"/>
                                                             <constraint firstItem="QgZ-3D-2Ca" firstAttribute="centerY" secondItem="pw3-Re-vBu" secondAttribute="centerY" id="eoD-E4-d6K"/>
+                                                            <constraint firstItem="psq-1I-jA8" firstAttribute="leading" secondItem="pw3-Re-vBu" secondAttribute="trailing" constant="-33.000000000000028" id="fHq-kl-MIx"/>
                                                             <constraint firstAttribute="height" constant="20" id="nDY-eK-1OO"/>
                                                             <constraint firstItem="psq-1I-jA8" firstAttribute="centerY" secondItem="pw3-Re-vBu" secondAttribute="centerY" id="ttn-PY-RKE"/>
                                                             <constraint firstItem="QgZ-3D-2Ca" firstAttribute="leading" secondItem="pw3-Re-vBu" secondAttribute="leading" id="z3G-Rx-3Jf"/>
@@ -307,6 +309,8 @@
                                                             </label>
                                                         </subviews>
                                                         <constraints>
+                                                            <constraint firstItem="JP0-QL-bd7" firstAttribute="leading" secondItem="sNt-Gx-ePO" secondAttribute="trailing" constant="-33.000000000000028" id="3ws-63-2GE"/>
+                                                            <constraint firstItem="DqM-vN-o4e" firstAttribute="trailing" secondItem="sNt-Gx-ePO" secondAttribute="leading" constant="18" id="6uz-3T-OlI"/>
                                                             <constraint firstItem="JP0-QL-bd7" firstAttribute="trailing" secondItem="sNt-Gx-ePO" secondAttribute="trailing" id="HEe-Zp-hd9"/>
                                                             <constraint firstItem="eZy-pI-428" firstAttribute="centerX" secondItem="sNt-Gx-ePO" secondAttribute="centerX" id="OFr-r6-wa9"/>
                                                             <constraint firstItem="DqM-vN-o4e" firstAttribute="leading" secondItem="sNt-Gx-ePO" secondAttribute="leading" id="SmI-bU-iOO"/>
@@ -391,8 +395,10 @@
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstItem="cWn-Za-ooO" firstAttribute="trailing" secondItem="hzj-ik-ubP" secondAttribute="trailing" id="8fE-ly-WAA"/>
+                                                            <constraint firstItem="cWn-Za-ooO" firstAttribute="leading" secondItem="hzj-ik-ubP" secondAttribute="trailing" constant="-33.000000000000028" id="CX2-Ac-NRe"/>
                                                             <constraint firstItem="AvK-Qk-e10" firstAttribute="leading" secondItem="hzj-ik-ubP" secondAttribute="leading" id="IYd-fa-VEZ"/>
                                                             <constraint firstItem="1wh-bb-Wto" firstAttribute="centerX" secondItem="hzj-ik-ubP" secondAttribute="centerX" id="ZYW-Gz-RLj"/>
+                                                            <constraint firstItem="AvK-Qk-e10" firstAttribute="trailing" secondItem="hzj-ik-ubP" secondAttribute="leading" constant="18" id="col-1P-Kgx"/>
                                                             <constraint firstItem="AvK-Qk-e10" firstAttribute="centerY" secondItem="hzj-ik-ubP" secondAttribute="centerY" id="k8M-eW-5kp"/>
                                                             <constraint firstItem="cWn-Za-ooO" firstAttribute="centerY" secondItem="hzj-ik-ubP" secondAttribute="centerY" id="q3T-o8-GAU"/>
                                                             <constraint firstItem="1wh-bb-Wto" firstAttribute="centerY" secondItem="hzj-ik-ubP" secondAttribute="centerY" id="ssG-u3-gZI"/>
