@@ -10,13 +10,16 @@ import DropDown
 
 struct LocationResponse:Decodable {
     let name:String
-    let distance:Float
+    let distance:Double
     let address:String
     let types:[String]
     let price_level:Int
     let agg_density:Int
     let agg_social:Int
     let agg_mask:Int
+    let agg_density_n:Int?
+    let agg_social_n:Int?
+    let agg_mask_n:Int?
 }
 
 class SearchViewController: UIViewController {
@@ -107,8 +110,19 @@ class SearchViewController: UIViewController {
                     let locationArray = locationDict["data"] as! [[String:Any]];
                     for location in locationArray {
                         let locationStruct:LocationResponse? = try JSONDecoder().decode(LocationResponse.self, from: JSONSerialization.data(withJSONObject: location))
+                        var priceVal : PriceRange
+                        switch locationStruct!.price_level {
+                            case 0:
+                                priceVal = .LOW
+                            case 1:
+                                priceVal = .MEDIUM
+                            case 2:
+                                priceVal = .HIGH
+                            default:
+                                priceVal = .HIGH
+                        }
                         temp.append(
-                            LocationInfo(name: locationStruct!.name, address: locationStruct!.name, distancing: Int(locationStruct!.distance), density: locationStruct!.agg_density, maskWearing: locationStruct!.agg_mask, image: #imageLiteral(resourceName: "q6_100"), priceRange: .LOW, tags: locationStruct!.types)
+                            LocationInfo(name: locationStruct!.name, address: locationStruct!.address, distancing: locationStruct!.agg_social, density: locationStruct!.agg_density, maskWearing: locationStruct!.agg_mask, image: #imageLiteral(resourceName: "q6_100"), priceRange: priceVal, tags: locationStruct!.types, distance: (locationStruct!.distance * 1000).rounded()/1000)
                         );
                     }
                     self.recommendations = temp;
@@ -126,8 +140,9 @@ class SearchViewController: UIViewController {
     func filterRecommendations() {
         if(filters["Least Crowded"]! || filters["Nearest Me"]!) {
             filterResuls = recommendations?.filter({ (location) -> Bool in
+                print(location.distance < 100)
                 if(filters["Least Crowded"]! && filters["Nearest Me"]!) {
-                    return location.density < 30 && location.distancing < 100;
+                    return location.density < 30 && location.distance < 100.0;
                 } else if(filters["Least Crowded"]!) {
                     return location.density < 30;
                 } else {
@@ -148,7 +163,6 @@ class SearchViewController: UIViewController {
 extension SearchViewController : ToggleDelegate {
     func toggleWasSwitched(_ item: String, toggleval: Bool) {
         self.filters[item] = toggleval
-        print(filters)
         self.filterRecommendations()
     }
 }
@@ -233,7 +247,7 @@ extension SearchViewController : UITableViewDataSource{
         cell.maskWearingSlider.value = Float(locationInfo.maskWearing)
         
         cell.locationNameLabel.text = locationInfo.name
-        cell.distanceLabel.text = String(0.30) + "mi" //temp hard code
+        cell.distanceLabel.text = String(locationInfo.distance) + "mi"
         
         var tagsLine : String
         switch locationInfo.price {
