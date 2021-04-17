@@ -84,7 +84,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
             marker =  GMSMarker(position: i.coordinates)
             marker.title = i.name
             marker.snippet = i.address
-            marker.isFlat = true //make sure the orientation of marker depends on phone
+            marker.isFlat = false //make sure the orientation of marker depends on phone
             //styling the marker
             marker.map = self.mapView
             marker.accessibilityLabel = i.name
@@ -210,23 +210,23 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
     }
     
     // Present the Autocomplete view controller when the button is pressed.
-    @objc func autocompleteClicked(_ sender: UIButton) {
-        let autocompleteController = GMSAutocompleteViewController()
-        autocompleteController.delegate = self
-        
-        // Specify the place data types to return.
-        let fields: GMSPlaceField = [.name, .placeID]
-        autocompleteController.placeFields = fields
-        
-        // Specify a filter.
-        let filter = GMSAutocompleteFilter()
-        filter.type = .establishment
-        filter.countries = ["BR"]
-        autocompleteController.autocompleteFilter = filter
-        
-        // Display the autocomplete view controller.
-        present(autocompleteController, animated: true, completion: nil)
-    }
+//    @objc func autocompleteClicked(_ sender: UIButton) {
+//        let autocompleteController = GMSAutocompleteViewController()
+//        autocompleteController.delegate = self
+//
+//        // Specify the place data types to return.
+//        let fields: GMSPlaceField = [.name, .placeID]
+//        autocompleteController.placeFields = fields
+//
+//        // Specify a filter.
+//        let filter = GMSAutocompleteFilter()
+//        filter.type = .establishment
+//        filter.countries = ["BR"]
+//        autocompleteController.autocompleteFilter = filter
+//
+//        // Display the autocomplete view controller.
+//        present(autocompleteController, animated: true, completion: nil)
+//    }
     
     func makeBackground() {
         let screenSize: CGRect = UIScreen.main.bounds
@@ -253,20 +253,22 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
     // Set functionality of search button
     @IBOutlet weak var searchBtn: UIButton!
     func setSearchButton() {
-        searchBtn.addTarget(self, action: #selector(autocompleteClicked), for: .touchUpInside)
+        searchBtn.addTarget(self, action: #selector(userSearchButtonPressed), for: .touchUpInside)
     }
     
     //add user report button
     @IBOutlet weak var ReportButton: UIButton!
     func setReportButton() {
         ReportButton.addTarget(self, action: #selector(userReportButtonPressed), for: .touchUpInside)
-        
     }
     
     @objc func userReportButtonPressed() {
         self.performSegue(withIdentifier: "Report", sender: self)
     }
     
+    @objc func userSearchButtonPressed() {
+            self.performSegue(withIdentifier: "Search", sender: self)
+    }
     
     @IBOutlet weak var heatMapLegend: UIImageView!
     @IBOutlet weak var heatMapSwitch: UISwitch!
