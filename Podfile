@@ -6,9 +6,10 @@ target 'Knovigo' do
   use_frameworks!
   pod 'GoogleMaps', '4.0.0'
   pod 'GooglePlaces', '4.0.0'
+  pod 'Google-Maps-iOS-Utils', '3.4.0'
   pod 'Charts'
   pod 'DropDown'
-
+  pod 'IQKeyboardManagerSwift'
 
   # Pods for Knovigo
 

@@ -7,8 +7,53 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    @IBOutlet weak var ScrollView: UIScrollView!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setSlider(slider: q4slider)
+        setSlider(slider: q5slider)
+        setSliderInvert(slider: q6slider)
+        setSlider(slider: q7slider)
+        
+        let borderColor : UIColor = UIColor(red: 12/255, green: 0/255, blue: 9/255, alpha: 1.0)
+                q9tv.layer.borderWidth = 0.4
+                q9tv.layer.borderColor = borderColor.cgColor
+                q9tv.layer.cornerRadius = 5.0
+       
+        self.locationPicker.delegate = self
+        self.locationPicker.dataSource = self
+        pickerData = ["Target", "Trader Joe's", "CVS", "Whole Foods", "Ralph's", "Barney's Beanery", "Tongva Steps area", "Diddy Riese", "BJ's Restaurant & Brewhouse"]
+
+        self.q4img.image = UIImage(named: "q4_50")
+        self.q5img.image = UIImage(named: "q5_50")
+        self.q6img.image = UIImage(named: "q6_50")
+
+        submitBtn.layer.cornerRadius = 8.0
+        submitBtn.backgroundColor = UIColor(red: 88/255, green: 130/255, blue: 143/255, alpha: 1.0) /* #58828F */
+        submitBtn.layer.shadowColor = UIColor(red: 148/255, green: 183/255, blue: 192/255, alpha: 1.0).cgColor /* #94B7C0 */
+        submitBtn.layer.shadowOffset = CGSize(width: 0, height: 5)
+        submitBtn.layer.shadowRadius = 5
+        submitBtn.layer.shadowOpacity = 1.0
+        
+        let protocols = [masksReq, staffMask, plexiGlass, bathroom, lineOutside, outlets, takeout, dineIn, wifiProv, outdoor, limitedCap]
+        for button in protocols{
+            button?.backgroundColor = UIColor.white
+            button?.setTitleColor(UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1.0) /* #A0A0A0 */, for: UIControl.State.normal)
+            button?.layer.borderColor = UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1.0).cgColor
+            button?.layer.borderWidth = 1.0
+            button?.layer.cornerRadius = 5.0
+        }
+
+        startPicker.timeZone = TimeZone(abbreviation: "PST")
+        endPicker.timeZone = TimeZone(abbreviation: "PST")
+        
+        IQKeyboardManager.shared.enable = true
+    }
+    
+    var pickerData: [String] = [String]()
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -32,189 +77,11 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
          title.textAlignment = .center
 
      return title
-
      }
-    var pickerData: [String] = [String]()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        showBackButton();
-        // Do any additional setup after loading the view.
-        
-        LocationReport.font = UIFont.boldSystemFont(ofSize: 28.0)
-        LocationReport.adjustsFontSizeToFitWidth = true
-        intro.font = UIFont.systemFont(ofSize: 13.0)
-        intro.adjustsFontSizeToFitWidth = true
-        q1.font = UIFont.systemFont(ofSize: 16.0)
-        q1.adjustsFontSizeToFitWidth = true
-        q1.minimumScaleFactor = 0.5
-        q2.font = UIFont.systemFont(ofSize: 16.0)
-        q2.adjustsFontSizeToFitWidth = true
-        q2.minimumScaleFactor = 0.5
-        q3.font = UIFont.systemFont(ofSize: 16.0)
-        q3.adjustsFontSizeToFitWidth = true
-        q3.minimumScaleFactor = 0.5
-        q4.font = UIFont.systemFont(ofSize: 16.0)
-        q4.adjustsFontSizeToFitWidth = true
-        q4.minimumScaleFactor = 0.5
-        q5.font = UIFont.systemFont(ofSize: 16.0)
-        q5.adjustsFontSizeToFitWidth = true
-        q5.minimumScaleFactor = 0.5
-        q6.font = UIFont.systemFont(ofSize: 16.0)
-        q6.adjustsFontSizeToFitWidth = true
-        q6.minimumScaleFactor = 0.5
-        q7.font = UIFont.systemFont(ofSize: 16.0)
-        q7.adjustsFontSizeToFitWidth = true
-        q7.minimumScaleFactor = 0.5
-        q8.font = UIFont.systemFont(ofSize: 16.0)
-        q8.adjustsFontSizeToFitWidth = true
-        q8.minimumScaleFactor = 0.5
-        q9.font = UIFont.systemFont(ofSize: 16.0)
-        q9.adjustsFontSizeToFitWidth = true
-        q9.minimumScaleFactor = 0.5
-
-        curPlaceLabel.font = UIFont.systemFont(ofSize: 14.0)
-        curPlaceLabel.adjustsFontSizeToFitWidth = true
-        curPlaceLabel.minimumScaleFactor = 0.5
-        
-        sliderlabel1.font = UIFont.systemFont(ofSize: 13.0)
-        sliderlabel1.adjustsFontSizeToFitWidth = true
-        sliderlabel1.minimumScaleFactor = 0.5
-        sliderlabel1.textColor = UIColor.gray
-        sliderNums.textColor = UIColor.white
-        sliderNums.font = UIFont.systemFont(ofSize: 17.0, weight: UIFont.Weight.bold)
-        sliderNums.adjustsFontSizeToFitWidth = true
-        sliderNums.minimumScaleFactor = 0.5
-        
-        //switched around labels
-        sliderNums2.font = UIFont.systemFont(ofSize: 13.0)
-        sliderNums2.adjustsFontSizeToFitWidth = true
-        sliderNums2.minimumScaleFactor = 0.5
-        sliderNums2.textColor = UIColor.gray
-        sliderlabel2.textColor = UIColor.white
-        sliderlabel2.font = UIFont.systemFont(ofSize: 17.0, weight: UIFont.Weight.bold)
-        sliderlabel2.adjustsFontSizeToFitWidth = true
-        sliderlabel2.minimumScaleFactor = 0.5
-        
-        sliderNums3.font = UIFont.systemFont(ofSize: 13.0)
-        sliderNums3.adjustsFontSizeToFitWidth = true
-        sliderNums3.minimumScaleFactor = 0.5
-        sliderNums3.textColor = UIColor.gray
-        sliderlabel3.textColor = UIColor.white
-        sliderlabel3.font = UIFont.systemFont(ofSize: 17.0, weight: UIFont.Weight.bold)
-        sliderlabel3.adjustsFontSizeToFitWidth = true
-        sliderlabel3.minimumScaleFactor = 0.5
-        
-        sliderNums4.font = UIFont.systemFont(ofSize: 13.0)
-        sliderNums4.adjustsFontSizeToFitWidth = true
-        sliderNums4.minimumScaleFactor = 0.5
-        sliderNums4.textColor = UIColor.gray
-        sliderlabel4.textColor = UIColor.white
-        sliderlabel4.font = UIFont.systemFont(ofSize: 17.0, weight: UIFont.Weight.bold)
-        sliderlabel4.adjustsFontSizeToFitWidth = true
-        sliderlabel4.minimumScaleFactor = 0.5
-        
-        setSlider(slider: q4slider);
-        setSlider(slider: q5slider);
-        setSliderInvert(slider: q6slider);
-        setSlider(slider: q7slider);
-        
-        let borderColor : UIColor = UIColor(red: 12/255, green: 0/255, blue: 9/255, alpha: 1.0)
-                q9tv.layer.borderWidth = 0.5
-                q9tv.layer.borderColor = borderColor.cgColor
-                q9tv.layer.cornerRadius = 5.0
-       
-        self.locationPicker.delegate = self
-        self.locationPicker.dataSource = self
-        pickerData = ["Target", "Trader Joe's", "CVS", "Whole Foods", "Ralph's", "Barney's Beanery", "Tongva Steps Area", "Diddy Riese", "BJs Restaurant"]
-
-        self.q4img.image = UIImage(named: "q4_50")
-        self.q5img.image = UIImage(named: "q5_50")
-        self.q6img.image = UIImage(named: "q6_50")
-        
-        self.locationImg.image = UIImage(named: "locationPic")
-        
-        submitBtn.layer.cornerRadius = 3.0
-        submitBtn.frame = CGRect(x: 151, y: 1702, width: 150, height: 40)
-        submitBtn.backgroundColor = UIColor(red: 68/255, green: 150/255, blue: 176/255, alpha: 1.0) /* #4496b0 */
-        submitBtn.setTitle("Submit", for: .normal)
-        submitBtn.setTitleColor(UIColor.white, for: .normal)
-
-        masksReq.backgroundColor = UIColor.white
-        masksReq.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
-        masksReq.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
-        masksReq.layer.borderWidth = 1.0
-        masksReq.layer.cornerRadius = 5.0
-        
-        staffMask.backgroundColor = UIColor.white
-        staffMask.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
-        staffMask.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
-        staffMask.layer.borderWidth = 1.0
-        staffMask.layer.cornerRadius = 5.0
-
-        plexiGlass.backgroundColor = UIColor.white
-        plexiGlass.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
-        plexiGlass.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha:1.0).cgColor
-        plexiGlass.layer.borderWidth = 1.0
-        plexiGlass.layer.cornerRadius = 5.0
-
-        bathroom.backgroundColor = UIColor.white
-        bathroom.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
-        bathroom.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
-        bathroom.layer.borderWidth = 1.0
-        bathroom.layer.cornerRadius = 5.0
-
-        lineOutside.backgroundColor = UIColor.white
-        lineOutside.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
-        lineOutside.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
-        lineOutside.layer.borderWidth = 1.0
-        lineOutside.layer.cornerRadius = 5.0
-
-        outlets.backgroundColor = UIColor.white
-        outlets.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
-        outlets.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
-        outlets.layer.borderWidth = 1.0
-        outlets.layer.cornerRadius = 5.0
-
-        takeout.backgroundColor = UIColor.white
-        takeout.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
-        takeout.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
-        takeout.layer.borderWidth = 1.0
-        takeout.layer.cornerRadius = 5.0
-
-        dineIn.backgroundColor = UIColor.white
-        dineIn.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
-        dineIn.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
-        dineIn.layer.borderWidth = 1.0
-        dineIn.layer.cornerRadius = 5.0
-
-        wifiProv.backgroundColor = UIColor.white
-        wifiProv.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
-        wifiProv.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
-        wifiProv.layer.borderWidth = 1.0
-        wifiProv.layer.cornerRadius = 5.0
-
-        outdoor.backgroundColor = UIColor.white
-        outdoor.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
-        outdoor.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
-        outdoor.layer.borderWidth = 1.0
-        outdoor.layer.cornerRadius = 5.0
-
-        limitedCap.backgroundColor = UIColor.white
-        limitedCap.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
-        limitedCap.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
-        limitedCap.layer.borderWidth = 1.0
-        limitedCap.layer.cornerRadius = 5.0
-
-
-//        q4ValChanged(q4slider)
-    }
     
     @IBOutlet weak var locationPicker: UIPickerView!
-    @IBOutlet weak var sliderlabel1: UILabel!
-    @IBOutlet weak var sliderNums: UILabel!
-    
-    @IBOutlet weak var locationImg: UIImageView!
+    @IBOutlet weak var startPicker: UIDatePicker!
+    @IBOutlet weak var endPicker: UIDatePicker!
     
     @IBOutlet weak var submitBtn: UIButton!
     
@@ -223,92 +90,40 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var q6img: UIImageView!
     @IBOutlet weak var q9tv: UITextView!
     
-    @IBAction func q4ValChanged(_ sender: UISlider) {
+    
+    @IBAction func sliderValChanged(_ sender: UISlider) {
         let sliderValue = sender.value
-        if (sliderValue < 0.15) {
-            self.q4img.image = UIImage(named: "q4_0")
-        } else if (sliderValue < 0.38) {
-            self.q4img.image = UIImage(named: "q4_25")
-        } else if (sliderValue < 0.62) {
-            self.q4img.image = UIImage(named: "q4_50")
-        } else if (sliderValue < 0.90) {
-            self.q4img.image = UIImage(named: "q4_75")
+        var imageView:UIImageView
+        let tag = sender.tag
+        switch(tag){
+            case(4):
+                imageView = q4img
+                break
+            case(5):
+                imageView = q5img
+                break
+            default:
+                imageView = q6img
+        }
+        if (sliderValue < 0.01) {
+            imageView.image = UIImage(named: "q" + String(tag) + "_0")
+        } else if (sliderValue < 0.25) {
+            imageView.image = UIImage(named: "q" + String(tag) + "_25")
+        } else if (sliderValue < 0.5) {
+            imageView.image = UIImage(named: "q" + String(tag) + "_50")
+        } else if (sliderValue < 0.75) {
+            imageView.image = UIImage(named: "q" + String(tag) + "_75")
         } else {
-            self.q4img.image = UIImage(named: "q4_100")
+            imageView.image = UIImage(named: "q" + String(tag) + "_100")
         }
     }
-    @IBAction func q5ValChanged(_ sender: UISlider) {
-        let sliderValue = sender.value
-        if (sliderValue < 0.15) {
-            self.q5img.image = UIImage(named: "q5_0")
-        } else if (sliderValue < 0.38) {
-            self.q5img.image = UIImage(named: "q5_25")
-        } else if (sliderValue < 0.62) {
-            self.q5img.image = UIImage(named: "q5_50")
-        } else if (sliderValue < 0.90) {
-            self.q5img.image = UIImage(named: "q5_75")
-        } else {
-            self.q5img.image = UIImage(named: "q5_100")
-        }
-    }
-    
-    @IBAction func q6ValChanged(_ sender: UISlider) {
-        let sliderValue = sender.value
-        if (sliderValue < 0.15) {
-            self.q6img.image = UIImage(named: "q6_0")
-        } else if (sliderValue < 0.38) {
-            self.q6img.image = UIImage(named: "q6_25")
-        } else if (sliderValue < 0.62) {
-            self.q6img.image = UIImage(named: "q6_50")
-        } else if (sliderValue < 0.90) {
-            self.q6img.image = UIImage(named: "q6_75")
-        } else {
-            self.q6img.image = UIImage(named: "q6_100")
-        }
-    }
-    
-    @IBOutlet weak var sliderlabel2: UILabel!
-    @IBOutlet weak var sliderNums2: UILabel!
-    @IBOutlet weak var sliderNums3: UILabel!
-    @IBOutlet weak var sliderlabel3: UILabel!
-    
-    @IBOutlet weak var sliderNums4: UILabel!
-    @IBOutlet weak var sliderlabel4: UILabel!
-    
-    @IBOutlet weak var LocationReport: UILabel!
-    @IBOutlet weak var ScrollView: UIScrollView!
-//    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var curPlaceLabel: UILabel!
     
     @IBOutlet weak var q4slider: UISlider!
     @IBOutlet weak var q5slider: UISlider!
     @IBOutlet weak var q6slider: UISlider!
     @IBOutlet weak var q7slider: UISlider!
     
-    @IBOutlet weak var SurveyView: UIView!
-    
     // QUESTION LABELS
-    @IBOutlet weak var intro: UILabel!
-    
-    @IBOutlet weak var q1: UILabel!
-    
-    @IBOutlet weak var q2: UILabel!
-    
-    @IBOutlet weak var q3: UILabel!
-    
-    @IBOutlet weak var q4: UILabel!
-    
-    @IBOutlet weak var q5: UILabel!
-    
-    @IBOutlet weak var q6: UILabel!
-    
-    @IBOutlet weak var q7: UILabel!
-    
-    @IBOutlet weak var q8: UILabel!
-    
-    @IBOutlet weak var q9: UILabel!
-    
-    
     @IBOutlet weak var masksReq: UIButton!
     @IBOutlet weak var staffMask: UIButton!
     @IBOutlet weak var plexiGlass: UIButton!
@@ -325,9 +140,11 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         if (sender.backgroundColor == UIColor.white) {
             sender.backgroundColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0)
             sender.setTitleColor(UIColor.white, for: UIControl.State.normal);
+            sender.layer.borderColor = UIColor(red: 175/255, green: 209/255, blue: 154/255, alpha: 1.0).cgColor
         } else {
             sender.backgroundColor = UIColor.white
-            sender.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0), for: UIControl.State.normal);
+            sender.setTitleColor(UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1.0) /* #A0A0A0 */, for: UIControl.State.normal)
+            sender.layer.borderColor = UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1.0).cgColor
         }
     }
     
@@ -335,33 +152,136 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBAction func goBack(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-    
-    //    func showBackButton() {
-////        let reportBtn = UIButton(type: .custom)
-//            backButton.frame = CGRect(x: 5, y: 50, width: 40, height: 40)
-//        backButton.clipsToBounds = true
-//        backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
-//            view.addSubview(backButton)
-//
-//    }
-//
-//    @objc func backButtonPressed() {
-//        self.performSegue(withIdentifier: "GoBack", sender: self)
-//    }
+}
 
-    /*
-    // MARK: - Navigation
+//MARK: - POST endpoint functions
+extension ReportViewController {
+    /// send a POST request to database to add the user report on "submit" button press
+    @IBAction func submitButtonPressed(_ sender: UIButton) {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        //TODO: change to AWS later on
+        let url = URL(string: "http://localhost:8000/places/save_app_report")
+        guard let requestUrl = url else { fatalError() }
+
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+
+        // Set HTTP Request Header
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let outgoingData = prepareData()
+        guard outgoingData != nil else {
+            return
+        }
+        let jsonData = try! JSONEncoder().encode(outgoingData)
+        print(jsonData)
+        request.httpBody = jsonData
+        var d : Response?
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+            d = try? JSONDecoder().decode(Response.self, from: data!)
+            if d == nil {
+                print("Error in getting JSON response")
+            }
+            else if let d = d{
+                DispatchQueue.main.async {
+                    if !d.success {
+                        if let err = d.err_msg {
+                            print(err)
+                            let alert = UIAlertController(title: "Unable to save report", message: "Please contact developer support for further information. \n Error is \(err)", preferredStyle: .alert)
+                            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                            alert.addAction(cancelAction)
+                            self.present(alert, animated: true, completion: nil)
+                            //potentially can add an option to report right away which can automatically
+                            //add to say, a google form
+                            
+                        }
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Successfully saved report!", message: nil, preferredStyle: .alert)
+                        let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (UIAlertAction) in
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                        alert.addAction(cancelAction)
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
+            }
+        }
+        task.resume()
+
     }
-    */
     
+    /**
+     Check if all fields and inputs are entered correctly
+     
+     - Returns: model bundling all the data required to send to the post request.
+     */
+    func prepareData()->ReportDataModel? {
+        /*
+         struct ReportDataModel: Codable {
+             let name : String
+             let start, end : Date
+             let density, social_distancing, mask, covid : Int
+             let masks_req, staff_masks_req, plexiglass_req, line_req, capacity_limit_req, takeout_avlbl, dinein_avlbl, outdoor_seats_avlbl, social_dist_req, bathroom_avlbl, wifi_avlbl, outlets_avlbl : Bool
+             let covid_notes : String
+             let other_comments : String
+         }
+         */
+        let name = pickerData[locationPicker.selectedRow(inComponent: 0)]
+        let start = startPicker.date
+        let end = endPicker.date
+        if end < start {
+            let alert = UIAlertController(title: "End time must be after start time", message: nil, preferredStyle: .alert)
+            let OKaction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+                alert.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(OKaction)
+            present(alert, animated: true, completion: nil)
+            return nil
+        }
+        
+        let socialDist = Int(round(q4slider.value/25)+1)
+        let masks = Int(round(q5slider.value/25)+1)
+        let crowded = Int(round(q6slider.value/25)+1)
+        let covid = Int(round(q7slider.value/25)+1)
+        let maskreq = buttonSelected(button: masksReq)
+        let staffmaskreq = buttonSelected(button: staffMask)
+        
+        let plexiglass = buttonSelected(button: plexiGlass)
+        let line = buttonSelected(button: lineOutside)
+        let capacity = buttonSelected(button: limitedCap)
+        let bathroomAvl = buttonSelected(button: bathroom)
+        let wifi = buttonSelected(button: wifiProv)
+        let outlet = buttonSelected(button: outlets)
+        let take_out = buttonSelected(button: takeout)
+        let dine_in = buttonSelected(button: dineIn)
+        let outseating = buttonSelected(button: outdoor)
+        
+        let comments = q9tv.text
+        
+        //FIXME: no field for social distancing requirement from front end, but backend requires it. need to discuss whether required or not since slider is already provided
+        let reportData = ReportDataModel(name: name, start: start, end: end, density: crowded, social_distancing: socialDist, mask: masks, covid: covid, masks_req: maskreq, staff_masks_req: staffmaskreq, plexiglass_req: plexiglass, line_req: line, capacity_limit_req: capacity, takeout_avlbl: take_out, dinein_avlbl: dine_in, outdoor_seats_avlbl: outseating, social_dist_req: false, bathroom_avlbl: bathroomAvl, wifi_avlbl: wifi, outlets_avlbl: outlet, covid_notes: "", other_comments: comments ?? "")
+        return reportData
+    }
+    
+    /// Roundabout function that uses the fact that deselcted button has a white background.
+    private func buttonSelected(button : UIButton)->Bool{
+        return button.backgroundColor != UIColor.white
+    }
+    
+}
+
+//MARK: - Slider functions
+extension ReportViewController {
     func setSlider(slider:UISlider) {
        let tgl = CAGradientLayer()
-       let frame = CGRect(x: 0.0, y: 0.0, width: slider.bounds.width, height: 14.0 )
+        let frame = CGRect(x: 0.0, y: 0.0, width: slider.bounds.width, height: 14.0 )
        tgl.frame = frame
 
         tgl.colors = [UIColor(red: 196/255, green: 13/255, blue: 0/255, alpha: 1.0).cgColor /* #c40d00 */, UIColor(red: 255/255, green: 231/255, blue: 81/255, alpha: 1.0).cgColor /* #ffec21 */, UIColor(red: 80/255, green: 175/255, blue: 114/255, alpha: 1.0).cgColor /* #50af72 */
@@ -372,16 +292,20 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
        tgl.borderColor = UIColor.white.cgColor
        tgl.cornerRadius = 9.0
 
-       tgl.endPoint = CGPoint(x: 1.0, y:  1.0)
-       tgl.startPoint = CGPoint(x: 0.0, y:  1.0)
+        tgl.startPoint = CGPoint.init(x:0.0, y:0.5)
+        tgl.endPoint = CGPoint.init(x:1.0, y:0.5)
 
-       UIGraphicsBeginImageContextWithOptions(tgl.frame.size, false, 0.0)
-       tgl.render(in: UIGraphicsGetCurrentContext()!)
-       let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
-       UIGraphicsEndImageContext()
+        UIGraphicsBeginImageContextWithOptions(tgl.frame.size, tgl.isOpaque, 0.0);
+            tgl.render(in: UIGraphicsGetCurrentContext()!)
+            if let image = UIGraphicsGetImageFromCurrentImageContext() {
+                UIGraphicsEndImageContext()
 
-       slider.setMaximumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
-       slider.setMinimumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+                image.resizableImage(withCapInsets: UIEdgeInsets.zero)
+
+                slider.setMinimumTrackImage(image, for: .normal)
+                slider.setMaximumTrackImage(image, for: .normal)
+            }
+       
 
        let layerFrame = CGRect(x: 0, y: 0, width: 15.0, height: 15.0)
 
@@ -406,7 +330,7 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func setSliderInvert(slider:UISlider) {
        let tgl = CAGradientLayer()
-       let frame = CGRect(x: 0.0, y: 0.0, width: slider.bounds.width, height: 14.0 )
+        let frame = CGRect(x: 0.0, y: 0.0, width: slider.bounds.width, height: 14.0 )
        tgl.frame = frame
 
         tgl.colors = [UIColor(red: 80/255, green: 175/255, blue: 114/255, alpha: 1.0).cgColor /* #50af72 */, UIColor(red: 255/255, green: 231/255, blue: 81/255, alpha: 1.0).cgColor /* #ffec21 */,  UIColor(red: 196/255, green: 13/255, blue: 0/255, alpha: 1.0).cgColor /* #c40d00 */
@@ -419,13 +343,16 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
        tgl.endPoint = CGPoint(x: 1.0, y:  1.0)
        tgl.startPoint = CGPoint(x: 0.0, y:  1.0)
 
-       UIGraphicsBeginImageContextWithOptions(tgl.frame.size, false, 0.0)
-       tgl.render(in: UIGraphicsGetCurrentContext()!)
-       let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
-       UIGraphicsEndImageContext()
+        UIGraphicsBeginImageContextWithOptions(tgl.frame.size, tgl.isOpaque, 0.0);
+            tgl.render(in: UIGraphicsGetCurrentContext()!)
+            if let image = UIGraphicsGetImageFromCurrentImageContext() {
+                UIGraphicsEndImageContext()
 
-       slider.setMaximumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
-       slider.setMinimumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+                image.resizableImage(withCapInsets: UIEdgeInsets.zero)
+
+                slider.setMinimumTrackImage(image, for: .normal)
+                slider.setMaximumTrackImage(image, for: .normal)
+            }
 
        let layerFrame = CGRect(x: 0, y: 0, width: 15.0, height: 15.0)
 
