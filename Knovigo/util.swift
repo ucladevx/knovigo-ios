@@ -34,7 +34,7 @@ struct data {
 }
 let GoogleMapsAPIKey = "AIzaSyDdpsQ_OSZrVjRIeGoXcCXHbuG2pk1rlKI"
 let mapLocation = location(name: "UCLA", coordinates: CLLocationCoordinate2D(latitude: 34.0700, longitude: -118.4398), address: "Los Angeles, CA 90095", image: UIImage(named: "tongva.jpg")!, wideImage: UIImage(named: "tongvaWide.jpg")!, distance: 0, isOpen: true, label: "University", pinLabel: 0.25, sliderMask: 1, sliderDistance: 1, sliderDensity: 0)
-let markerCoords = [
+var markerCoords = [
     location(name: "Target", coordinates: CLLocationCoordinate2D(latitude: 34.062653, longitude: -118.443939), address: "10861 Weyburn Ave, Los Angeles, CA 90024, United States", image: UIImage(named: "target.jpg")!, wideImage: UIImage(named: "targetWide.jpg")!, distance: 3.4, isOpen: true, label: "Department Store", pinLabel: 0.65, sliderMask: 0.2, sliderDistance: 0.3, sliderDensity: 1),
     location(name: "Trader Joe's", coordinates: CLLocationCoordinate2D(latitude: 34.062210, longitude: -118.443830), address: "1000 Glendon Ave, Los Angeles, CA 90024", image: UIImage(named: "traderjoes.jpg")!, wideImage: UIImage(named: "traderjoeswide.jpg")!, distance: 2.8, isOpen: false, label: "Grocery Store", pinLabel: 0.85, sliderMask: 0.6, sliderDistance: 0.9, sliderDensity: 0.4),
     location(name: "CVS Pharmacy", coordinates: CLLocationCoordinate2D(latitude: 34.057300, longitude: -118.442500), address: "1001 Westwood Blvd, Los Angeles, CA 90024", image: UIImage(named: "cvs.jpg")!, wideImage: UIImage(named: "cvsWide.jpg")!,distance: 7.9, isOpen: true, label: "Drug Store", pinLabel: 0.15, sliderMask: 0.2, sliderDistance: 0.8, sliderDensity: 0.4),

@@ -13,6 +13,7 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var ScrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        q5slider.frame = CGRect(x: q5slider.bounds.midX, y: q5slider.bounds.midY, width: ScrollView.bounds.width * 0.85, height: 15)
         setSlider(slider: q4slider)
         setSlider(slider: q5slider)
         setSliderInvert(slider: q6slider)
@@ -347,9 +348,7 @@ extension ReportViewController {
             tgl.render(in: UIGraphicsGetCurrentContext()!)
             if let image = UIGraphicsGetImageFromCurrentImageContext() {
                 UIGraphicsEndImageContext()
-
                 image.resizableImage(withCapInsets: UIEdgeInsets.zero)
-
                 slider.setMinimumTrackImage(image, for: .normal)
                 slider.setMaximumTrackImage(image, for: .normal)
             }

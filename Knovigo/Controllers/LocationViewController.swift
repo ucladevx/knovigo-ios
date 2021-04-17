@@ -10,7 +10,7 @@ import UIKit
 import Charts
 import GoogleMaps
 import DropDown
-
+//http://52.33.183.202:8000//places/all
 class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -191,6 +191,17 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
         for i in tagList{
             print(i)
         }
+    }
+    
+    
+    @IBOutlet weak var ReportButton: UIButton!
+    func setReportButton() {
+        ReportButton.addTarget(self, action: #selector(userReportButtonPressed), for: .touchUpInside)
+        
+    }
+    
+    @objc func userReportButtonPressed() {
+        self.performSegue(withIdentifier: "LocToReport", sender: self)
     }
     
     func setSlider(slider:UISlider) {
