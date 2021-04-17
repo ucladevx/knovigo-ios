@@ -26,7 +26,6 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         mapView.camera = camera
         
         //set markers
-        //TODO: Markers are HARD CODED for now :(; change later
         setMarker(markerGeoCoords: markerCoords)
         
         //creates the search and report buttons
@@ -47,6 +46,36 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         //sets the data for the heatmap
         loadHeatmap();
     }
+    
+//    func loadData()->[location] {
+//        let url = URL(string: "http://52.33.183.202:8000//places/all")!
+//        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+//            guard let data = data else { return }
+//            guard let json = try? JSONSerialization.jsonObject(with: data, options: []) else {
+//              print("Serialization went wrong")
+//              return
+//            }
+//            guard let object = json as? [[String: Any]] else {
+//              print("Could not read the JSON.")
+//              return
+//            }
+//            var markerCoords = [location]();
+//            for item in object {
+//                //have to parse hours
+//                //missing: label? pinLabel? distance?
+//                let loc = location(name: item.name, coordinates: item.coordinates (CLLocationCoordinate2D), address: item.address, image: <#T##UIImage#>, wideImage: UIImage, distance: Double, isOpen: <#T##Bool#>, label: <#T##String#>, pinLabel: <#T##Double#>, sliderMask: <#T##Double#>, sliderDistance: <#T##Double#>, sliderDensity: <#T##Double#>)
+////                    //have to assign:
+////                    marker =  GMSMarker(position: i.coordinates)
+////                    i.name = item;
+////                    i.address
+////                    i.name
+////                    data(image: i.image, imageWide: i.wideImage, distance: i.distance, isOpen: i.isOpen, label: i.label, pin: i.pinLabel, sMask: i.sliderMask, sDistance: i.sliderDistance, sDensity: i.sliderDensity);
+//                markerCoords.append(loc);
+//            }
+//        }
+//        task.resume()
+//        return markerCoords;
+//    }
     
     // function that takes in an array of location objects and marker them on the map
     func setMarker(markerGeoCoords: [location]){

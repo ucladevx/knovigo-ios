@@ -38,178 +38,39 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        showBackButton();
-        // Do any additional setup after loading the view.
-        
-        LocationReport.font = UIFont.boldSystemFont(ofSize: 28.0)
-        LocationReport.adjustsFontSizeToFitWidth = true
-        intro.font = UIFont.systemFont(ofSize: 13.0)
-        intro.adjustsFontSizeToFitWidth = true
-        q1.font = UIFont.systemFont(ofSize: 16.0)
-        q1.adjustsFontSizeToFitWidth = true
-        q1.minimumScaleFactor = 0.5
-        q2.font = UIFont.systemFont(ofSize: 16.0)
-        q2.adjustsFontSizeToFitWidth = true
-        q2.minimumScaleFactor = 0.5
-        q3.font = UIFont.systemFont(ofSize: 16.0)
-        q3.adjustsFontSizeToFitWidth = true
-        q3.minimumScaleFactor = 0.5
-        q4.font = UIFont.systemFont(ofSize: 16.0)
-        q4.adjustsFontSizeToFitWidth = true
-        q4.minimumScaleFactor = 0.5
-        q5.font = UIFont.systemFont(ofSize: 16.0)
-        q5.adjustsFontSizeToFitWidth = true
-        q5.minimumScaleFactor = 0.5
-        q6.font = UIFont.systemFont(ofSize: 16.0)
-        q6.adjustsFontSizeToFitWidth = true
-        q6.minimumScaleFactor = 0.5
-        q7.font = UIFont.systemFont(ofSize: 16.0)
-        q7.adjustsFontSizeToFitWidth = true
-        q7.minimumScaleFactor = 0.5
-        q8.font = UIFont.systemFont(ofSize: 16.0)
-        q8.adjustsFontSizeToFitWidth = true
-        q8.minimumScaleFactor = 0.5
-        q9.font = UIFont.systemFont(ofSize: 16.0)
-        q9.adjustsFontSizeToFitWidth = true
-        q9.minimumScaleFactor = 0.5
-
-        curPlaceLabel.font = UIFont.systemFont(ofSize: 14.0)
-        curPlaceLabel.adjustsFontSizeToFitWidth = true
-        curPlaceLabel.minimumScaleFactor = 0.5
-        
-        sliderlabel1.font = UIFont.systemFont(ofSize: 13.0)
-        sliderlabel1.adjustsFontSizeToFitWidth = true
-        sliderlabel1.minimumScaleFactor = 0.5
-        sliderlabel1.textColor = UIColor.gray
-        sliderNums.textColor = UIColor.white
-        sliderNums.font = UIFont.systemFont(ofSize: 17.0, weight: UIFont.Weight.bold)
-        sliderNums.adjustsFontSizeToFitWidth = true
-        sliderNums.minimumScaleFactor = 0.5
-        
-        //switched around labels
-        sliderNums2.font = UIFont.systemFont(ofSize: 13.0)
-        sliderNums2.adjustsFontSizeToFitWidth = true
-        sliderNums2.minimumScaleFactor = 0.5
-        sliderNums2.textColor = UIColor.gray
-        sliderlabel2.textColor = UIColor.white
-        sliderlabel2.font = UIFont.systemFont(ofSize: 17.0, weight: UIFont.Weight.bold)
-        sliderlabel2.adjustsFontSizeToFitWidth = true
-        sliderlabel2.minimumScaleFactor = 0.5
-        
-        sliderNums3.font = UIFont.systemFont(ofSize: 13.0)
-        sliderNums3.adjustsFontSizeToFitWidth = true
-        sliderNums3.minimumScaleFactor = 0.5
-        sliderNums3.textColor = UIColor.gray
-        sliderlabel3.textColor = UIColor.white
-        sliderlabel3.font = UIFont.systemFont(ofSize: 17.0, weight: UIFont.Weight.bold)
-        sliderlabel3.adjustsFontSizeToFitWidth = true
-        sliderlabel3.minimumScaleFactor = 0.5
-        
-        sliderNums4.font = UIFont.systemFont(ofSize: 13.0)
-        sliderNums4.adjustsFontSizeToFitWidth = true
-        sliderNums4.minimumScaleFactor = 0.5
-        sliderNums4.textColor = UIColor.gray
-        sliderlabel4.textColor = UIColor.white
-        sliderlabel4.font = UIFont.systemFont(ofSize: 17.0, weight: UIFont.Weight.bold)
-        sliderlabel4.adjustsFontSizeToFitWidth = true
-        sliderlabel4.minimumScaleFactor = 0.5
-        
+        q5slider.frame = CGRect(x: q5slider.bounds.midX, y: q5slider.bounds.midY, width: ScrollView.bounds.width * 0.85, height: 15)
         setSlider(slider: q4slider);
         setSlider(slider: q5slider);
         setSliderInvert(slider: q6slider);
         setSlider(slider: q7slider);
-        
         let borderColor : UIColor = UIColor(red: 12/255, green: 0/255, blue: 9/255, alpha: 1.0)
-                q9tv.layer.borderWidth = 0.5
-                q9tv.layer.borderColor = borderColor.cgColor
-                q9tv.layer.cornerRadius = 5.0
-       
+            q9tv.layer.borderWidth = 0.4
+            q9tv.layer.borderColor = borderColor.cgColor
+            q9tv.layer.cornerRadius = 5.0
         self.locationPicker.delegate = self
         self.locationPicker.dataSource = self
-        pickerData = ["Target", "Trader Joe's", "CVS", "Whole Foods", "Ralph's", "Barney's Beanery", "Tongva Steps area", "Diddy Riese", "BJ's Restaurant & Brewhouse"]
-
-        self.q4img.image = UIImage(named: "q4_50")
+        pickerData = ["Target", "Trader Joe’s", "CVS", "Whole Foods", "Ralph’s", "Barney’s Beanery", "Tongva Steps area", "Diddy Riese", "BJ’s Restaurant & Brewhouse"]
+            self.q4img.image = UIImage(named: "q4_50")
         self.q5img.image = UIImage(named: "q5_50")
         self.q6img.image = UIImage(named: "q6_50")
-        
-        self.locationImg.image = UIImage(named: "locationPic")
-        
-        submitBtn.layer.cornerRadius = 3.0
-        submitBtn.frame = CGRect(x: 151, y: 1702, width: 150, height: 40)
-        submitBtn.backgroundColor = UIColor(red: 68/255, green: 150/255, blue: 176/255, alpha: 1.0) /* #4496b0 */
-        submitBtn.setTitle("Submit", for: .normal)
-        submitBtn.setTitleColor(UIColor.white, for: .normal)
-
-        masksReq.backgroundColor = UIColor.white
-        masksReq.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
-        masksReq.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
-        masksReq.layer.borderWidth = 1.0
-        masksReq.layer.cornerRadius = 5.0
-        
-        staffMask.backgroundColor = UIColor.white
-        staffMask.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
-        staffMask.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
-        staffMask.layer.borderWidth = 1.0
-        staffMask.layer.cornerRadius = 5.0
-
-        plexiGlass.backgroundColor = UIColor.white
-        plexiGlass.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
-        plexiGlass.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha:1.0).cgColor
-        plexiGlass.layer.borderWidth = 1.0
-        plexiGlass.layer.cornerRadius = 5.0
-
-        bathroom.backgroundColor = UIColor.white
-        bathroom.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
-        bathroom.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
-        bathroom.layer.borderWidth = 1.0
-        bathroom.layer.cornerRadius = 5.0
-
-        lineOutside.backgroundColor = UIColor.white
-        lineOutside.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
-        lineOutside.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
-        lineOutside.layer.borderWidth = 1.0
-        lineOutside.layer.cornerRadius = 5.0
-
-        outlets.backgroundColor = UIColor.white
-        outlets.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
-        outlets.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
-        outlets.layer.borderWidth = 1.0
-        outlets.layer.cornerRadius = 5.0
-
-        takeout.backgroundColor = UIColor.white
-        takeout.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
-        takeout.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
-        takeout.layer.borderWidth = 1.0
-        takeout.layer.cornerRadius = 5.0
-
-        dineIn.backgroundColor = UIColor.white
-        dineIn.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
-        dineIn.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
-        dineIn.layer.borderWidth = 1.0
-        dineIn.layer.cornerRadius = 5.0
-
-        wifiProv.backgroundColor = UIColor.white
-        wifiProv.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
-        wifiProv.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
-        wifiProv.layer.borderWidth = 1.0
-        wifiProv.layer.cornerRadius = 5.0
-
-        outdoor.backgroundColor = UIColor.white
-        outdoor.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
-        outdoor.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
-        outdoor.layer.borderWidth = 1.0
-        outdoor.layer.cornerRadius = 5.0
-
-        limitedCap.backgroundColor = UIColor.white
-        limitedCap.setTitleColor(UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0) /* #74b260 */, for: UIControl.State.normal)
-        limitedCap.layer.borderColor = UIColor(red: 116/255, green: 178/255, blue: 96/255, alpha: 1.0).cgColor
-        limitedCap.layer.borderWidth = 1.0
-        limitedCap.layer.cornerRadius = 5.0
-
+        submitBtn.layer.cornerRadius = 8.0
+        submitBtn.backgroundColor = UIColor(red: 88/255, green: 130/255, blue: 143/255, alpha: 1.0) /* #58828F */
+        submitBtn.layer.shadowColor = UIColor(red: 148/255, green: 183/255, blue: 192/255, alpha: 1.0).cgColor /* #94B7C0 */
+        submitBtn.layer.shadowOffset = CGSize(width: 0, height: 5)
+        submitBtn.layer.shadowRadius = 5
+        submitBtn.layer.shadowOpacity = 1.0
+        let protocols = [masksReq, staffMask, plexiGlass, bathroom, lineOutside, outlets, takeout, dineIn, wifiProv, outdoor, limitedCap]
+        for button in protocols{
+          button?.backgroundColor = UIColor.white
+          button?.setTitleColor(UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1.0) /* #A0A0A0 */, for: UIControl.State.normal)
+          button?.layer.borderColor = UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1.0).cgColor
+          button?.layer.borderWidth = 1.0
+          button?.layer.cornerRadius = 5.0
+        }
         startPicker.timeZone = TimeZone(abbreviation: "PST")
         endPicker.timeZone = TimeZone(abbreviation: "PST")
-//        q4ValChanged(q4slider)
-    }
+  //      IQKeyboardManager.shared.enable = true
+      }
     
     @IBOutlet weak var locationPicker: UIPickerView!
     @IBOutlet weak var sliderlabel1: UILabel!
@@ -533,6 +394,8 @@ extension ReportViewController {
 
        slider.setMaximumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
        slider.setMinimumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+        UIGraphicsEndImageContext()
+
 
        let layerFrame = CGRect(x: 0, y: 0, width: 15.0, height: 15.0)
 
