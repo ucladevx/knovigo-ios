@@ -8,6 +8,20 @@
 import UIKit
 import DropDown
 
+struct LocationResponse:Decodable {
+    let name:String
+    let distance:Double
+    let address:String
+    let types:[String]
+    let price_level:Int
+    let agg_density:Int
+    let agg_social:Int
+    let agg_mask:Int
+    let agg_density_n:Int?
+    let agg_social_n:Int?
+    let agg_mask_n:Int?
+}
+
 class SearchViewController: UIViewController {
 
     @IBOutlet weak var recommendationsTable: UITableView!
@@ -31,6 +45,7 @@ class SearchViewController: UIViewController {
         recommendationsTable.layer.backgroundColor = UIColor.clear.cgColor
         recommendationsTable.backgroundColor = .clear
         recommendationsTable.register(UINib(nibName: "LocationTableViewCell", bundle: nil), forCellReuseIdentifier: "LocationCellIdentifier")
+        
         loadRecommended(withInput: "")
         searchBar.delegate = self
         
@@ -61,22 +76,73 @@ class SearchViewController: UIViewController {
     }
     
     func loadRecommended(withInput input: String){
+        self.recommendations = [];
         //ideally this function will use the API to get the information about a place
-        //hard coded for testing purposes
-        self.recommendations = [
-            LocationInfo(name: "MyTreeHouse", address: "Nowhere", distancing: 40, density: 40, maskWearing: 40, image: #imageLiteral(resourceName: "q6_100"), priceRange: .LOW, tags: ["Funky", "Munky"]),
-            LocationInfo(name: "Tatooine", address: "Idk", distancing: 40, density: 40, maskWearing: 60, image: #imageLiteral(resourceName: "knovigo-icon"), priceRange: .MEDIUM, tags: ["Dusty", "Sandy"]),
-            LocationInfo(name: "Moon", address: "Right beside the Earth, in Solar System", distancing: 100, density: 0, maskWearing: 0, image: #imageLiteral(resourceName: "locationPic-1"), priceRange: .HIGH, tags: ["Rocky", "Satellite", "Recommended"])
-        ]
+        attemptLoadAPI { (success) in
+            DispatchQueue.main.async {
+                self.recommendationsTable.reloadData();
+            }
+            print(success)
+        }
         
-        self.recommendationsTable.reloadData()
+        self.recommendationsTable.reloadData();
+    }
+    
+    func attemptLoadAPI(_ completion:@escaping (Bool)->()) {
+        let url = URL(string: "http://localhost:3000/test") //Change this to actual endpoint
+        guard let requestUrl = url else { fatalError() }
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "GET"
+        
+        // Set HTTP Request Header
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error took place \(error)")
+                completion(false)
+                return
+            }
+            do {
+                var temp:[LocationInfo] = []
+                if let locationDict = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
+                    let locationArray = locationDict["data"] as! [[String:Any]];
+                    for location in locationArray {
+                        let locationStruct:LocationResponse? = try JSONDecoder().decode(LocationResponse.self, from: JSONSerialization.data(withJSONObject: location))
+                        var priceVal : PriceRange
+                        switch locationStruct!.price_level {
+                            case 0:
+                                priceVal = .LOW
+                            case 1:
+                                priceVal = .MEDIUM
+                            case 2:
+                                priceVal = .HIGH
+                            default:
+                                priceVal = .HIGH
+                        }
+                        temp.append(
+                            LocationInfo(name: locationStruct!.name, address: locationStruct!.address, distancing: locationStruct!.agg_social, density: locationStruct!.agg_density, maskWearing: locationStruct!.agg_mask, image: #imageLiteral(resourceName: "q6_100"), priceRange: priceVal, tags: locationStruct!.types, distance: (locationStruct!.distance * 1000).rounded()/1000)
+                        );
+                    }
+                    self.recommendations = temp;
+                    completion(true)
+                    return
+                }
+            } catch let error as NSError {
+               print(error.localizedDescription)
+               completion(false)
+            }
+        }
+        task.resume()
     }
     
     func filterRecommendations() {
         if(filters["Least Crowded"]! || filters["Nearest Me"]!) {
             filterResuls = recommendations?.filter({ (location) -> Bool in
+                print(location.distance < 100)
                 if(filters["Least Crowded"]! && filters["Nearest Me"]!) {
-                    return location.density < 30 && location.distancing < 100;
+                    return location.density < 30 && location.distance < 100.0;
                 } else if(filters["Least Crowded"]!) {
                     return location.density < 30;
                 } else {
@@ -97,7 +163,6 @@ class SearchViewController: UIViewController {
 extension SearchViewController : ToggleDelegate {
     func toggleWasSwitched(_ item: String, toggleval: Bool) {
         self.filters[item] = toggleval
-        print(filters)
         self.filterRecommendations()
     }
 }
@@ -182,7 +247,7 @@ extension SearchViewController : UITableViewDataSource{
         cell.maskWearingSlider.value = Float(locationInfo.maskWearing)
         
         cell.locationNameLabel.text = locationInfo.name
-        cell.distanceLabel.text = String(0.30) + "mi" //temp hard code
+        cell.distanceLabel.text = String(locationInfo.distance) + "mi"
         
         var tagsLine : String
         switch locationInfo.price {

@@ -9,7 +9,7 @@ import UIKit.UIImage
 
 struct LocationInfo
 {
-    init(name nm : String, address add : String, distancing dist : Int, density dsty : Int, maskWearing msk : Int, image img : UIImage?, priceRange prc : PriceRange, tags tgs : [String]) {
+    init(name nm : String, address add : String, distancing dist : Int, density dsty : Int, maskWearing msk : Int, image img : UIImage?, priceRange prc : PriceRange, tags tgs : [String], distance range: Double) {
         name = nm
         address = add
         distancing = dist
@@ -18,6 +18,7 @@ struct LocationInfo
         profileImage = img
         price = prc
         tags = tgs
+        distance = range
     }
     let name : String
     let address : String
@@ -27,7 +28,7 @@ struct LocationInfo
     let profileImage : UIImage?
     let price : PriceRange
     let tags : [String]
-    // let distance : Double
+    let distance : Double
     // let rating : Int
 //    var coordinates: CLLocationCoordinate2D
     
