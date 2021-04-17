@@ -119,6 +119,16 @@
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YnF-A8-eZo">
+                                                        <rect key="frame" x="332" y="168" width="70" height="77"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <state key="normal" image="reportBtn">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <segue destination="guB-is-CtR" kind="presentation" identifier="LocToReport" id="uAG-Wd-VI0"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -1050,6 +1060,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
+                        <outlet property="ReportButton" destination="YnF-A8-eZo" id="4oF-uN-z34"/>
                         <outlet property="backBtn" destination="kmy-GY-fnW" id="dDv-Xs-ZRe"/>
                         <outlet property="barChart" destination="JhR-2C-e8r" id="wCh-fl-NUW"/>
                         <outlet property="bathroom" destination="znT-bC-sTI" id="u75-c2-1OK"/>
@@ -2295,6 +2306,9 @@
             <point key="canvasLocation" x="1008.6956521739131" y="126.5625"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="uAG-Wd-VI0"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>
         <image name="backBtn" width="16.666666030883789" height="29"/>
@@ -2315,6 +2329,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
