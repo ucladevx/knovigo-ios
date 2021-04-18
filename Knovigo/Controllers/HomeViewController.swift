@@ -114,7 +114,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
     //    }
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         let view = Bundle.main.loadNibNamed("CustomPopUp", owner: self, options: nil)![0] as! CustomPopUp
-        let frame = CGRect(x: 10, y: 10, width: 350, height: 230)
+        let frame = CGRect(x: 0, y: 0, width: 350, height: 230)
         view.frame = frame
         view.layer.cornerRadius = 9.0
         view.locTitle.text = marker.title
@@ -135,6 +135,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         view.distanceSlider.value = Float((marker.userData as! data).sDistance)
         setSlider(slider: view.maskSlider)
         view.maskSlider.value = Float((marker.userData as! data).sMask)
+        marker.infoWindowAnchor = CGPoint(x: 0.5, y: 3.2)
         return view
     }
     
