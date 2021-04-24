@@ -7,6 +7,7 @@
 
 import UIKit
 import DropDown
+import GoogleMapsUtils
 
 struct LocationResponse:Decodable {
     let name:String
@@ -42,6 +43,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         recommendationsTable.dataSource = self
+        recommendationsTable.delegate = self
         recommendationsTable.layer.backgroundColor = UIColor.clear.cgColor
         recommendationsTable.backgroundColor = .clear
         recommendationsTable.register(UINib(nibName: "LocationTableViewCell", bundle: nil), forCellReuseIdentifier: "LocationCellIdentifier")
@@ -137,6 +139,14 @@ class SearchViewController: UIViewController {
         task.resume()
     }
     
+    func convertLocationInfoToMarker(location : LocationInfo) -> GMSMarker {
+        var marker: GMSMarker;
+        marker =  GMSMarker();
+        marker.title = location.name
+        marker.snippet = location.address
+        return marker;
+    }
+    
     func filterRecommendations() {
         if(filters["Least Crowded"]! || filters["Nearest Me"]!) {
             filterResuls = recommendations?.filter({ (location) -> Bool in
@@ -208,7 +218,21 @@ extension SearchViewController : UISearchBarDelegate {
 //MARK:- TableView Delegate functions
 
 extension SearchViewController : UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var locationInfo : LocationInfo
+        if (searchActive) {
+            locationInfo = self.searchResuls![indexPath.row]
+        } else if (filterActive) {
+            locationInfo = self.filterResuls![indexPath.row]
+        } else {
+            locationInfo = self.recommendations![indexPath.row]
+        }
+        let sb = UIStoryboard(name:"Main",bundle: Bundle.main)
+        let locViewController = sb.instantiateViewController(withIdentifier: "LocationPage") as! LocationViewController
+        let marker = convertLocationInfoToMarker(location: locationInfo);
+        locViewController.locMarker = marker
+        present(locViewController, animated: true)
+    }
 }
 
 //MARK:- TableView Data Source functions
@@ -273,6 +297,5 @@ extension SearchViewController : UITableViewDataSource{
         
         return cell
     }
-    
     
 }
