@@ -47,35 +47,35 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         loadHeatmap();
     }
     
-//    func loadData()->[location] {
-//        let url = URL(string: "http://52.33.183.202:8000//places/all")!
-//        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
-//            guard let data = data else { return }
-//            guard let json = try? JSONSerialization.jsonObject(with: data, options: []) else {
-//              print("Serialization went wrong")
-//              return
-//            }
-//            guard let object = json as? [[String: Any]] else {
-//              print("Could not read the JSON.")
-//              return
-//            }
-//            var markerCoords = [location]();
-//            for item in object {
-//                //have to parse hours
-//                //missing: label? pinLabel? distance?
-//                let loc = location(name: item.name, coordinates: item.coordinates (CLLocationCoordinate2D), address: item.address, image: <#T##UIImage#>, wideImage: UIImage, distance: Double, isOpen: <#T##Bool#>, label: <#T##String#>, pinLabel: <#T##Double#>, sliderMask: <#T##Double#>, sliderDistance: <#T##Double#>, sliderDensity: <#T##Double#>)
-////                    //have to assign:
-////                    marker =  GMSMarker(position: i.coordinates)
-////                    i.name = item;
-////                    i.address
-////                    i.name
-////                    data(image: i.image, imageWide: i.wideImage, distance: i.distance, isOpen: i.isOpen, label: i.label, pin: i.pinLabel, sMask: i.sliderMask, sDistance: i.sliderDistance, sDensity: i.sliderDensity);
-//                markerCoords.append(loc);
-//            }
-//        }
-//        task.resume()
-//        return markerCoords;
-//    }
+    //    func loadData()->[location] {
+    //        let url = URL(string: "http://52.33.183.202:8000//places/all")!
+    //        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+    //            guard let data = data else { return }
+    //            guard let json = try? JSONSerialization.jsonObject(with: data, options: []) else {
+    //              print("Serialization went wrong")
+    //              return
+    //            }
+    //            guard let object = json as? [[String: Any]] else {
+    //              print("Could not read the JSON.")
+    //              return
+    //            }
+    //            var markerCoords = [location]();
+    //            for item in object {
+    //                //have to parse hours
+    //                //missing: label? pinLabel? distance?
+    //                let loc = location(name: item.name, coordinates: item.coordinates (CLLocationCoordinate2D), address: item.address, image: <#T##UIImage#>, wideImage: UIImage, distance: Double, isOpen: <#T##Bool#>, label: <#T##String#>, pinLabel: <#T##Double#>, sliderMask: <#T##Double#>, sliderDistance: <#T##Double#>, sliderDensity: <#T##Double#>)
+    ////                    //have to assign:
+    ////                    marker =  GMSMarker(position: i.coordinates)
+    ////                    i.name = item;
+    ////                    i.address
+    ////                    i.name
+    ////                    data(image: i.image, imageWide: i.wideImage, distance: i.distance, isOpen: i.isOpen, label: i.label, pin: i.pinLabel, sMask: i.sliderMask, sDistance: i.sliderDistance, sDensity: i.sliderDensity);
+    //                markerCoords.append(loc);
+    //            }
+    //        }
+    //        task.resume()
+    //        return markerCoords;
+    //    }
     
     // function that takes in an array of location objects and marker them on the map
     func setMarker(markerGeoCoords: [location]){
@@ -89,8 +89,8 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
             marker.map = self.mapView
             marker.accessibilityLabel = i.name
             marker.userData = data(image: i.image, imageWide: i.wideImage, distance: i.distance, isOpen: i.isOpen, label: i.label, pin: i.pinLabel, sMask: i.sliderMask, sDistance: i.sliderDistance, sDensity: i.sliderDensity);
-           
-          if (i.pinLabel <= 0.20) {
+            
+            if (i.pinLabel <= 0.20) {
                 marker.icon = UIImage(named: "pin-dark-green");
             } else if (i.pinLabel <= 0.40) {
                 marker.icon = UIImage(named: "pin-light-green");
@@ -142,7 +142,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
     //will transition to location view controller once code is finished for that
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker)
     {
-      //  let viewController = LocationViewController()
+        //  let viewController = LocationViewController()
         let sb = UIStoryboard(name:"Main",bundle: Bundle.main)
         let locViewController = sb.instantiateViewController(withIdentifier: "LocationPage") as! LocationViewController
         locViewController.locMarker = marker
@@ -162,28 +162,28 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             guard let data = data else { return }
             guard let json = try? JSONSerialization.jsonObject(with: data, options: []) else {
-              print("Serialization went wrong")
-              return
+                print("Serialization went wrong")
+                return
             }
             guard let object = json as? [[String: Any]] else {
-              print("Could not read the JSON.")
-              return
+                print("Could not read the JSON.")
+                return
             }
             
             for item in object {
-              let lat = item["lat"] as! CLLocationDegrees
-              let lng = item["lng"] as! CLLocationDegrees
-              let int = item["intensity"] as! Float
-              let coords = GMUWeightedLatLng(
-                coordinate: CLLocationCoordinate2DMake(lat, lng),
-                intensity: int
-              )
-              list.append(coords)
+                let lat = item["lat"] as! CLLocationDegrees
+                let lng = item["lng"] as! CLLocationDegrees
+                let int = item["intensity"] as! Float
+                let coords = GMUWeightedLatLng(
+                    coordinate: CLLocationCoordinate2DMake(lat, lng),
+                    intensity: int
+                )
+                list.append(coords)
             }
             // Add the latlngs to the heatmap layer.
             self.heatMapLayer.weightedData = list;
         }
-
+        
         task.resume()
         
         let gradientColors: [UIColor] = [UIColorFromRGB(rgbValue: 0x568EC4),
@@ -193,9 +193,9 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
                                          UIColorFromRGB(rgbValue: 0xBA0505)]
         let gradientStartPoints: [NSNumber] = [0.1, 0.3, 0.5, 0.7, 0.9];
         heatMapLayer.gradient = GMUGradient(
-          colors: gradientColors,
-          startPoints: gradientStartPoints,
-          colorMapSize: 256
+            colors: gradientColors,
+            startPoints: gradientStartPoints,
+            colorMapSize: 256
         )
         heatMapLayer.radius = UInt(20)
     }
@@ -211,23 +211,23 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
     }
     
     // Present the Autocomplete view controller when the button is pressed.
-//    @objc func autocompleteClicked(_ sender: UIButton) {
-//        let autocompleteController = GMSAutocompleteViewController()
-//        autocompleteController.delegate = self
-//
-//        // Specify the place data types to return.
-//        let fields: GMSPlaceField = [.name, .placeID]
-//        autocompleteController.placeFields = fields
-//
-//        // Specify a filter.
-//        let filter = GMSAutocompleteFilter()
-//        filter.type = .establishment
-//        filter.countries = ["BR"]
-//        autocompleteController.autocompleteFilter = filter
-//
-//        // Display the autocomplete view controller.
-//        present(autocompleteController, animated: true, completion: nil)
-//    }
+    //    @objc func autocompleteClicked(_ sender: UIButton) {
+    //        let autocompleteController = GMSAutocompleteViewController()
+    //        autocompleteController.delegate = self
+    //
+    //        // Specify the place data types to return.
+    //        let fields: GMSPlaceField = [.name, .placeID]
+    //        autocompleteController.placeFields = fields
+    //
+    //        // Specify a filter.
+    //        let filter = GMSAutocompleteFilter()
+    //        filter.type = .establishment
+    //        filter.countries = ["BR"]
+    //        autocompleteController.autocompleteFilter = filter
+    //
+    //        // Display the autocomplete view controller.
+    //        present(autocompleteController, animated: true, completion: nil)
+    //    }
     
     func makeBackground() {
         let screenSize: CGRect = UIScreen.main.bounds
@@ -268,7 +268,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
     }
     
     @objc func userSearchButtonPressed() {
-            self.performSegue(withIdentifier: "Search", sender: self)
+        self.performSegue(withIdentifier: "Search", sender: self)
     }
     
     @IBOutlet weak var heatMapLegend: UIImageView!
@@ -365,13 +365,21 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         tgl.endPoint = CGPoint(x: 1.0, y:  1.0)
         tgl.startPoint = CGPoint(x: 0.0, y:  1.0)
         
-        UIGraphicsBeginImageContextWithOptions(tgl.frame.size, false, 0.0)
+//        UIGraphicsBeginImageContextWithOptions(tgl.frame.size, false, 0.0)
+//        tgl.render(in: UIGraphicsGetCurrentContext()!)
+//        let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+//
+//        slider.setMaximumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+//        slider.setMinimumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+        UIGraphicsBeginImageContextWithOptions(tgl.frame.size, tgl.isOpaque, 0.0);
         tgl.render(in: UIGraphicsGetCurrentContext()!)
-        let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        slider.setMaximumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
-        slider.setMinimumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+        if let image = UIGraphicsGetImageFromCurrentImageContext() {
+            UIGraphicsEndImageContext()
+            image.resizableImage(withCapInsets: UIEdgeInsets.zero)
+            slider.setMinimumTrackImage(image, for: .normal)
+            slider.setMaximumTrackImage(image, for: .normal)
+        }
         
         let layerFrame = CGRect(x: 0, y: 0, width: 10.0, height: 10.0)
         
@@ -409,13 +417,21 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         tgl.endPoint = CGPoint(x: 1.0, y:  1.0)
         tgl.startPoint = CGPoint(x: 0.0, y:  1.0)
         
-        UIGraphicsBeginImageContextWithOptions(tgl.frame.size, false, 0.0)
+//        UIGraphicsBeginImageContextWithOptions(tgl.frame.size, false, 0.0)
+//        tgl.render(in: UIGraphicsGetCurrentContext()!)
+//        let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+//
+//        slider.setMaximumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+//        slider.setMinimumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+        UIGraphicsBeginImageContextWithOptions(tgl.frame.size, tgl.isOpaque, 0.0);
         tgl.render(in: UIGraphicsGetCurrentContext()!)
-        let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        slider.setMaximumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
-        slider.setMinimumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+        if let image = UIGraphicsGetImageFromCurrentImageContext() {
+            UIGraphicsEndImageContext()
+            image.resizableImage(withCapInsets: UIEdgeInsets.zero)
+            slider.setMinimumTrackImage(image, for: .normal)
+            slider.setMaximumTrackImage(image, for: .normal)
+        }
         
         let layerFrame = CGRect(x: 0, y: 0, width: 10.0, height: 10.0)
         

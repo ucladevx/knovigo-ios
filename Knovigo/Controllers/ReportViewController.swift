@@ -20,18 +20,18 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         setSlider(slider: q7slider)
         
         let borderColor : UIColor = UIColor(red: 12/255, green: 0/255, blue: 9/255, alpha: 1.0)
-                q9tv.layer.borderWidth = 0.4
-                q9tv.layer.borderColor = borderColor.cgColor
-                q9tv.layer.cornerRadius = 5.0
-       
+        q9tv.layer.borderWidth = 0.4
+        q9tv.layer.borderColor = borderColor.cgColor
+        q9tv.layer.cornerRadius = 5.0
+        
         self.locationPicker.delegate = self
         self.locationPicker.dataSource = self
         pickerData = ["Target", "Trader Joe's", "CVS", "Whole Foods", "Ralph's", "Barney's Beanery", "Tongva Steps area", "Diddy Riese", "BJ's Restaurant & Brewhouse"]
-
+        
         self.q4img.image = UIImage(named: "q4_50")
         self.q5img.image = UIImage(named: "q5_50")
         self.q6img.image = UIImage(named: "q6_50")
-
+        
         submitBtn.layer.cornerRadius = 8.0
         submitBtn.backgroundColor = UIColor(red: 88/255, green: 130/255, blue: 143/255, alpha: 1.0) /* #58828F */
         submitBtn.layer.shadowColor = UIColor(red: 148/255, green: 183/255, blue: 192/255, alpha: 1.0).cgColor /* #94B7C0 */
@@ -47,7 +47,7 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             button?.layer.borderWidth = 1.0
             button?.layer.cornerRadius = 5.0
         }
-
+        
         startPicker.timeZone = TimeZone(abbreviation: "PST")
         endPicker.timeZone = TimeZone(abbreviation: "PST")
         
@@ -67,18 +67,18 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         return pickerData[row]
     }
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-
-       var title = UILabel()
-          if let view = view {
-                 title = view as! UILabel
-           }
+        
+        var title = UILabel()
+        if let view = view {
+            title = view as! UILabel
+        }
         title.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
-         title.textColor = UIColor(red: 80/255, green: 175/255, blue: 114/255, alpha: 1.0)
-         title.text =  pickerData[row]
-         title.textAlignment = .center
-
-     return title
-     }
+        title.textColor = UIColor(red: 80/255, green: 175/255, blue: 114/255, alpha: 1.0)
+        title.text =  pickerData[row]
+        title.textAlignment = .center
+        
+        return title
+    }
     
     @IBOutlet weak var locationPicker: UIPickerView!
     @IBOutlet weak var startPicker: UIDatePicker!
@@ -97,14 +97,14 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         var imageView:UIImageView
         let tag = sender.tag
         switch(tag){
-            case(4):
-                imageView = q4img
-                break
-            case(5):
-                imageView = q5img
-                break
-            default:
-                imageView = q6img
+        case(4):
+            imageView = q4img
+            break
+        case(5):
+            imageView = q5img
+            break
+        default:
+            imageView = q6img
         }
         if (sliderValue < 0.01) {
             imageView.image = UIImage(named: "q" + String(tag) + "_0")
@@ -159,18 +159,18 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
 extension ReportViewController {
     /// send a POST request to database to add the user report on "submit" button press
     @IBAction func submitButtonPressed(_ sender: UIButton) {
-
+        
         //TODO: change to AWS later on
         let url = URL(string: "http://localhost:8000/places/save_app_report")
         guard let requestUrl = url else { fatalError() }
-
+        
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "POST"
-
+        
         // Set HTTP Request Header
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
+        
         let outgoingData = prepareData()
         guard outgoingData != nil else {
             return
@@ -215,7 +215,7 @@ extension ReportViewController {
             }
         }
         task.resume()
-
+        
     }
     
     /**
@@ -226,12 +226,12 @@ extension ReportViewController {
     func prepareData()->ReportDataModel? {
         /*
          struct ReportDataModel: Codable {
-             let name : String
-             let start, end : Date
-             let density, social_distancing, mask, covid : Int
-             let masks_req, staff_masks_req, plexiglass_req, line_req, capacity_limit_req, takeout_avlbl, dinein_avlbl, outdoor_seats_avlbl, social_dist_req, bathroom_avlbl, wifi_avlbl, outlets_avlbl : Bool
-             let covid_notes : String
-             let other_comments : String
+         let name : String
+         let start, end : Date
+         let density, social_distancing, mask, covid : Int
+         let masks_req, staff_masks_req, plexiglass_req, line_req, capacity_limit_req, takeout_avlbl, dinein_avlbl, outdoor_seats_avlbl, social_dist_req, bathroom_avlbl, wifi_avlbl, outlets_avlbl : Bool
+         let covid_notes : String
+         let other_comments : String
          }
          */
         let name = pickerData[locationPicker.selectedRow(inComponent: 0)]
@@ -281,97 +281,97 @@ extension ReportViewController {
 //MARK: - Slider functions
 extension ReportViewController {
     func setSlider(slider:UISlider) {
-       let tgl = CAGradientLayer()
+        let tgl = CAGradientLayer()
         let frame = CGRect(x: 0.0, y: 0.0, width: slider.bounds.width, height: 14.0 )
-       tgl.frame = frame
-
+        tgl.frame = frame
+        
         tgl.colors = [UIColor(red: 196/255, green: 13/255, blue: 0/255, alpha: 1.0).cgColor /* #c40d00 */, UIColor(red: 255/255, green: 231/255, blue: 81/255, alpha: 1.0).cgColor /* #ffec21 */, UIColor(red: 80/255, green: 175/255, blue: 114/255, alpha: 1.0).cgColor /* #50af72 */
-
-       ]
-
-       tgl.borderWidth = 1.0
-       tgl.borderColor = UIColor.white.cgColor
-       tgl.cornerRadius = 9.0
-
+                      
+        ]
+        
+        tgl.borderWidth = 1.0
+        tgl.borderColor = UIColor.white.cgColor
+        tgl.cornerRadius = 9.0
+        
         tgl.startPoint = CGPoint.init(x:0.0, y:0.5)
         tgl.endPoint = CGPoint.init(x:1.0, y:0.5)
-
+        
         UIGraphicsBeginImageContextWithOptions(tgl.frame.size, tgl.isOpaque, 0.0);
-            tgl.render(in: UIGraphicsGetCurrentContext()!)
-            if let image = UIGraphicsGetImageFromCurrentImageContext() {
-                UIGraphicsEndImageContext()
-
-                image.resizableImage(withCapInsets: UIEdgeInsets.zero)
-
-                slider.setMinimumTrackImage(image, for: .normal)
-                slider.setMaximumTrackImage(image, for: .normal)
-            }
-       
-
-       let layerFrame = CGRect(x: 0, y: 0, width: 15.0, height: 15.0)
-
-       let shapeLayer = CAShapeLayer()
-       shapeLayer.path = CGPath(ellipseIn: layerFrame, transform: nil)
-       shapeLayer.fillColor = UIColor.white.cgColor
+        tgl.render(in: UIGraphicsGetCurrentContext()!)
+        if let image = UIGraphicsGetImageFromCurrentImageContext() {
+            UIGraphicsEndImageContext()
+            
+            image.resizableImage(withCapInsets: UIEdgeInsets.zero)
+            
+            slider.setMinimumTrackImage(image, for: .normal)
+            slider.setMaximumTrackImage(image, for: .normal)
+        }
+        
+        
+        let layerFrame = CGRect(x: 0, y: 0, width: 15.0, height: 15.0)
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = CGPath(ellipseIn: layerFrame, transform: nil)
+        shapeLayer.fillColor = UIColor.white.cgColor
         shapeLayer.strokeColor = UIColor.black.cgColor
         
-       let thumb = CALayer.init()
-       thumb.frame = layerFrame
-       thumb.addSublayer(shapeLayer)
-
-       UIGraphicsBeginImageContextWithOptions(thumb.frame.size, false, 0.0)
-
-       thumb.render(in: UIGraphicsGetCurrentContext()!)
-       let thumbImage = UIGraphicsGetImageFromCurrentImageContext()
-       UIGraphicsEndImageContext()
-
-       slider.setThumbImage(thumbImage, for: .normal)
-       slider.setThumbImage(thumbImage, for: .highlighted)
-   }
+        let thumb = CALayer.init()
+        thumb.frame = layerFrame
+        thumb.addSublayer(shapeLayer)
+        
+        UIGraphicsBeginImageContextWithOptions(thumb.frame.size, false, 0.0)
+        
+        thumb.render(in: UIGraphicsGetCurrentContext()!)
+        let thumbImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        slider.setThumbImage(thumbImage, for: .normal)
+        slider.setThumbImage(thumbImage, for: .highlighted)
+    }
     
     func setSliderInvert(slider:UISlider) {
-       let tgl = CAGradientLayer()
+        let tgl = CAGradientLayer()
         let frame = CGRect(x: 0.0, y: 0.0, width: slider.bounds.width, height: 14.0 )
-       tgl.frame = frame
-
+        tgl.frame = frame
+        
         tgl.colors = [UIColor(red: 80/255, green: 175/255, blue: 114/255, alpha: 1.0).cgColor /* #50af72 */, UIColor(red: 255/255, green: 231/255, blue: 81/255, alpha: 1.0).cgColor /* #ffec21 */,  UIColor(red: 196/255, green: 13/255, blue: 0/255, alpha: 1.0).cgColor /* #c40d00 */
-       ]
-
-       tgl.borderWidth = 1.0
-       tgl.borderColor = UIColor.white.cgColor
-       tgl.cornerRadius = 9.0
-
-       tgl.endPoint = CGPoint(x: 1.0, y:  1.0)
-       tgl.startPoint = CGPoint(x: 0.0, y:  1.0)
-
+        ]
+        
+        tgl.borderWidth = 1.0
+        tgl.borderColor = UIColor.white.cgColor
+        tgl.cornerRadius = 9.0
+        
+        tgl.endPoint = CGPoint(x: 1.0, y:  1.0)
+        tgl.startPoint = CGPoint(x: 0.0, y:  1.0)
+        
         UIGraphicsBeginImageContextWithOptions(tgl.frame.size, tgl.isOpaque, 0.0);
-            tgl.render(in: UIGraphicsGetCurrentContext()!)
-            if let image = UIGraphicsGetImageFromCurrentImageContext() {
-                UIGraphicsEndImageContext()
-                image.resizableImage(withCapInsets: UIEdgeInsets.zero)
-                slider.setMinimumTrackImage(image, for: .normal)
-                slider.setMaximumTrackImage(image, for: .normal)
-            }
-
-       let layerFrame = CGRect(x: 0, y: 0, width: 15.0, height: 15.0)
-
-       let shapeLayer = CAShapeLayer()
-       shapeLayer.path = CGPath(ellipseIn: layerFrame, transform: nil)
-       shapeLayer.fillColor = UIColor.white.cgColor
+        tgl.render(in: UIGraphicsGetCurrentContext()!)
+        if let image = UIGraphicsGetImageFromCurrentImageContext() {
+            UIGraphicsEndImageContext()
+            image.resizableImage(withCapInsets: UIEdgeInsets.zero)
+            slider.setMinimumTrackImage(image, for: .normal)
+            slider.setMaximumTrackImage(image, for: .normal)
+        }
+        
+        let layerFrame = CGRect(x: 0, y: 0, width: 15.0, height: 15.0)
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = CGPath(ellipseIn: layerFrame, transform: nil)
+        shapeLayer.fillColor = UIColor.white.cgColor
         shapeLayer.strokeColor = UIColor.black.cgColor
         
-       let thumb = CALayer.init()
-       thumb.frame = layerFrame
-       thumb.addSublayer(shapeLayer)
-
-       UIGraphicsBeginImageContextWithOptions(thumb.frame.size, false, 0.0)
-
-       thumb.render(in: UIGraphicsGetCurrentContext()!)
-       let thumbImage = UIGraphicsGetImageFromCurrentImageContext()
-       UIGraphicsEndImageContext()
-
-       slider.setThumbImage(thumbImage, for: .normal)
-       slider.setThumbImage(thumbImage, for: .highlighted)
-   }
-
+        let thumb = CALayer.init()
+        thumb.frame = layerFrame
+        thumb.addSublayer(shapeLayer)
+        
+        UIGraphicsBeginImageContextWithOptions(thumb.frame.size, false, 0.0)
+        
+        thumb.render(in: UIGraphicsGetCurrentContext()!)
+        let thumbImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        slider.setThumbImage(thumbImage, for: .normal)
+        slider.setThumbImage(thumbImage, for: .highlighted)
+    }
+    
 }
