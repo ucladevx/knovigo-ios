@@ -1208,7 +1208,7 @@
                         <outlet property="heatMapView" destination="XbE-1W-Z1T" id="7yH-Dl-B9e"/>
                         <outlet property="mapView" destination="epL-UF-OHu" id="Hhc-cO-FKk"/>
                         <outlet property="searchBtn" destination="EEx-Mq-RrG" id="6Ma-IG-Ekj"/>
-                        <segue destination="jOZ-O2-jSA" kind="presentation" identifier="homeToSearch" id="a2X-Ew-fB5"/>
+                        <segue destination="jOZ-O2-jSA" kind="presentation" identifier="Search" id="a2X-Ew-fB5"/>
                         <segue destination="guB-is-CtR" kind="presentation" identifier="Report" id="EMw-UY-BOx"/>
                     </connections>
                 </viewController>

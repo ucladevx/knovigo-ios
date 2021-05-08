@@ -32,7 +32,7 @@ struct data {
     var sDistance : Double
     var sDensity: Double
 }
-let GoogleMapsAPIKey = "AIzaSyDdpsQ_OSZrVjRIeGoXcCXHbuG2pk1rlKI"
+let GoogleMapsAPIKey = "AIzaSyDXBl8VMXv_Ok0pd6EcUt_Pti83hbM7gf4"
 let mapLocation = location(name: "UCLA", coordinates: CLLocationCoordinate2D(latitude: 34.0700, longitude: -118.4398), address: "Los Angeles, CA 90095", image: UIImage(named: "tongva.jpg")!, wideImage: UIImage(named: "tongvaWide.jpg")!, distance: 0, isOpen: true, label: "University", pinLabel: 0.25, sliderMask: 1, sliderDistance: 1, sliderDensity: 0)
 var markerCoords = [
     location(name: "Target", coordinates: CLLocationCoordinate2D(latitude: 34.062653, longitude: -118.443939), address: "10861 Weyburn Ave, Los Angeles, CA 90024, United States", image: UIImage(named: "target.jpg")!, wideImage: UIImage(named: "targetWide.jpg")!, distance: 3.4, isOpen: true, label: "Department Store", pinLabel: 0.65, sliderMask: 0.2, sliderDistance: 0.3, sliderDensity: 1),
