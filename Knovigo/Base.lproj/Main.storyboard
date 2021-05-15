@@ -1116,10 +1116,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XbE-1W-Z1T" userLabel="HeatMap View">
                                 <rect key="frame" x="290" y="214" width="80" height="160"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COVID-19 Heat Map" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2W-1Y-KVj">
-                                        <rect key="frame" x="10" y="75" width="60" height="29"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vaccination Heat Map" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2W-1Y-KVj">
+                                        <rect key="frame" x="10" y="75" width="60" height="27.666666666666671"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="11.5"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -2312,14 +2312,14 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uAG-Wd-VI0"/>
+        <segue reference="EMw-UY-BOx"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>
         <image name="backBtn" width="16.666666030883789" height="29"/>
         <image name="densityLegend" width="122" height="149.33332824707031"/>
         <image name="filterBtn" width="17" height="15"/>
-        <image name="heatMapLegend" width="129.66667175292969" height="149.33332824707031"/>
+        <image name="heatMapLegend" width="128" height="149.33332824707031"/>
         <image name="heatMapLogo" width="32" height="21.333333969116211"/>
         <image name="locationPin" width="14" height="22"/>
         <image name="reportBtn" width="94" height="101"/>
