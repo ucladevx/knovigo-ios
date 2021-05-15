@@ -10,7 +10,7 @@ import UIKit
 import Charts
 import GoogleMaps
 import DropDown
-//http://52.33.183.202:8000//places/all
+//places/place/id
 class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()

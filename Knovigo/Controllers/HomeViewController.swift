@@ -10,6 +10,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import GoogleMapsUtils
+import CoreLocation
 
 class HomeViewController: UIViewController, GMSMapViewDelegate{
     
@@ -24,9 +25,6 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         //TODO: Map is HARD CODED for now :(; set view to person's location later
         let camera = GMSCameraPosition.camera(withLatitude: mapLocation.coordinates.latitude, longitude: mapLocation.coordinates.longitude, zoom: 14.5)
         mapView.camera = camera
-        
-        //set markers
-        setMarker(markerGeoCoords: markerCoords)
         
         //creates the search and report buttons
         setSearchButton();
@@ -43,39 +41,65 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         
         mapView?.delegate = self
         
+        let locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
+        var currentLoc: CLLocation!
+        if(CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
+        CLLocationManager.authorizationStatus() == .authorizedAlways) {
+            currentLoc = locationManager.location
+            let locLat = Float(currentLoc.coordinate.latitude)
+            let locLong = Float(currentLoc.coordinate.longitude)
+            //set markers
+            
+            //THIS IS THE RIGHT ONE
+            //setMarker(markerGeoCoords: loadData(markerGeoCoords: markerCoords, lat: locLat, long: locLong))
+        }
         //sets the data for the heatmap
         loadHeatmap();
+        
+        //TEMPORARY
+        setMarker(markerGeoCoords: markerCoords)
     }
     
-//    func loadData()->[location] {
-//        let url = URL(string: "http://52.33.183.202:8000//places/all")!
-//        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
-//            guard let data = data else { return }
-//            guard let json = try? JSONSerialization.jsonObject(with: data, options: []) else {
-//              print("Serialization went wrong")
-//              return
-//            }
-//            guard let object = json as? [[String: Any]] else {
-//              print("Could not read the JSON.")
-//              return
-//            }
-//            var markerCoords = [location]();
-//            for item in object {
-//                //have to parse hours
-//                //missing: label? pinLabel? distance?
-//                let loc = location(name: item.name, coordinates: item.coordinates (CLLocationCoordinate2D), address: item.address, image: <#T##UIImage#>, wideImage: UIImage, distance: Double, isOpen: <#T##Bool#>, label: <#T##String#>, pinLabel: <#T##Double#>, sliderMask: <#T##Double#>, sliderDistance: <#T##Double#>, sliderDensity: <#T##Double#>)
-////                    //have to assign:
-////                    marker =  GMSMarker(position: i.coordinates)
-////                    i.name = item;
-////                    i.address
-////                    i.name
-////                    data(image: i.image, imageWide: i.wideImage, distance: i.distance, isOpen: i.isOpen, label: i.label, pin: i.pinLabel, sMask: i.sliderMask, sDistance: i.sliderDistance, sDensity: i.sliderDensity);
-//                markerCoords.append(loc);
-//            }
-//        }
-//        task.resume()
-//        return markerCoords;
-//    }
+    func loadData(markerGeoCoords: [location], lat: Float, long: Float)->[location] {
+        let url2 = URL(string: "http://52.33.183.202:8000//places/location/\(lat)/\(long)")!
+        let task2 = URLSession.shared.dataTask(with: url2) {(data, response, error) in
+            guard let data = data else { return }
+            guard let json = try? JSONSerialization.jsonObject(with: data, options: []) else {
+              print("Serialization went wrong")
+              return
+            }
+            guard let object2 = json as? [placesModel] else {
+              print("Could not read the JSON.")
+              return
+            }
+            var markerCoords = [location]();
+            for item in object2 {
+                var locImage = UIImage(named: "tongva.jpg")
+                var locWideImage = UIImage (named: "tongvaWide.jpg")
+                for i in markerGeoCoords {
+                    if (i.name == item.name) {
+                        locImage = i.image
+                        locWideImage = i.wideImage
+                    }
+                }
+                
+                let hour = Calendar.current.component(.hour, from: Date())
+                var validHour = false
+                for j in item.businessHours {
+                    if (hour == j) {
+                        validHour = true
+                    }
+                }
+                
+                let loc = location(name: item.name, coordinates: item.coordinates, address: item.address, image: locImage!, wideImage: locWideImage!, distance: item.dist, isOpen: validHour, label: item.types, pinLabel: item.agg_density, sliderMask: item.agg_mask, sliderDistance: item.agg_social, sliderDensity: item.agg_density);
+                
+                markerCoords.append(loc);
+            }
+        }
+        task2.resume()
+        return markerCoords;
+    }
     
     // function that takes in an array of location objects and marker them on the map
     func setMarker(markerGeoCoords: [location]){
