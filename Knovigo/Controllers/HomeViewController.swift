@@ -18,11 +18,13 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
     @IBOutlet weak var mapView: GMSMapView!
     var heatMapLayer : GMUHeatmapTileLayer!
     
+    var locationManager: CLLocationManager!
+    var markCoords = [location]();
+
     //view load function
     override func viewDidLoad() {
         super.viewDidLoad()
         // set map @UCLA
-        //TODO: Map is HARD CODED for now :(; set view to person's location later
         let camera = GMSCameraPosition.camera(withLatitude: mapLocation.coordinates.latitude, longitude: mapLocation.coordinates.longitude, zoom: 14.5)
         mapView.camera = camera
         
@@ -41,78 +43,85 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         
         mapView?.delegate = self
         
-        let locationManager = CLLocationManager()
+        //location manager
+        locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
         var currentLoc: CLLocation!
+      //  currentLoc = CLLocation(latitude: 34.0700, longitude: -118.4398)
         if(CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
         CLLocationManager.authorizationStatus() == .authorizedAlways) {
+            locationManager.startUpdatingLocation()
             currentLoc = locationManager.location
-            let locLat = Float(currentLoc.coordinate.latitude)
-            let locLong = Float(currentLoc.coordinate.longitude)
-            //set markers
-            
-            //THIS IS THE RIGHT ONE
-            //setMarker(markerGeoCoords: loadData(markerGeoCoords: markerCoords, lat: locLat, long: locLong))
         }
+        let locLat = Float(currentLoc.coordinate.latitude)
+        let locLong = Float(currentLoc.coordinate.longitude)
+        
+        //load data from backend
+        loadData(markerGeoCoords: markerCoords, lat: locLat, long: locLong)
+        
         //sets the data for the heatmap
         loadHeatmap();
-        
-        //TEMPORARY
-        setMarker(markerGeoCoords: markerCoords)
     }
     
-    func loadData(markerGeoCoords: [location], lat: Float, long: Float)->[location] {
-        let url2 = URL(string: "http://52.33.183.202:8000//places/location/\(lat)/\(long)")!
-        let task2 = URLSession.shared.dataTask(with: url2) {(data, response, error) in
+    func loadData(markerGeoCoords: [location], lat: Float, long: Float) {
+        let url2 = URL(string: "http://13.52.104.196:8000/places/location/\(lat)/\(long)")
+        let task2 = URLSession.shared.dataTask(with: url2!) {(data, response, error) in
             guard let data = data else { return }
             guard let json = try? JSONSerialization.jsonObject(with: data, options: []) else {
               print("Serialization went wrong")
               return
             }
-            guard let object2 = json as? [placesModel] else {
+            guard let object2 = json as? [[String: Any]] else {
               print("Could not read the JSON.")
               return
             }
-            var markerCoords = [location]();
             for item in object2 {
                 var locImage = UIImage(named: "tongva.jpg")
                 var locWideImage = UIImage (named: "tongvaWide.jpg")
                 for i in markerGeoCoords {
-                    if (i.name == item.name) {
+                    if (i.name == (item["name"] as! String)) {
                         locImage = i.image
                         locWideImage = i.wideImage
                     }
                 }
                 
-                let hour = Calendar.current.component(.hour, from: Date())
+               let hour = Calendar.current.component(.hour, from: Date())
                 var validHour = false
-                for j in item.businessHours {
-                    if (hour == j) {
-                        validHour = true
-                    }
-                }
-                
-                let loc = location(name: item.name, coordinates: item.coordinates, address: item.address, image: locImage!, wideImage: locWideImage!, distance: item.dist, isOpen: validHour, label: item.types, pinLabel: item.agg_density, sliderMask: item.agg_mask, sliderDistance: item.agg_social, sliderDensity: item.agg_density);
-                
-                markerCoords.append(loc);
+//                for j in (item["businessHours"] as! [Int]) {
+//                    if (hour == j) {
+//                        validHour = true
+//                    }
+//                }
+                let loc = location(name: item["name"] as! String, coordinates: CLLocationCoordinate2D(latitude: 34.0700, longitude: -118.4398), address: item["address"] as! String, image: locImage!, wideImage: locWideImage!, distance: Double(round(1000*(item["distance"] as! Double))/1000), isOpen: validHour, label: "temp", pinLabel: item["agg_density"] as! Double, sliderMask: item["agg_mask"] as! Double, sliderDistance: item["agg_social"] as! Double, sliderDensity: item["agg_density"] as! Double)
+                self.markCoords.append(loc)
+            }
+            DispatchQueue.main.async {
+                self.setMarker(markerGeoCoords: self.markCoords, tempCoords: markerCoords)
             }
         }
         task2.resume()
-        return markerCoords;
     }
     
     // function that takes in an array of location objects and marker them on the map
-    func setMarker(markerGeoCoords: [location]){
+    func setMarker(markerGeoCoords: [location], tempCoords: [location]){
         var marker: GMSMarker
-        for i in markerGeoCoords{
-            marker =  GMSMarker(position: i.coordinates)
+        for i in markerGeoCoords {
+            var coords = i.coordinates
+            var description = i.label
+            for loc in markerCoords {
+                if (i.name == loc.name) {
+                    coords = loc.coordinates
+                    description = loc.label
+                }
+            }
+            marker =  GMSMarker(position: coords)
             marker.title = i.name
             marker.snippet = i.address
             marker.isFlat = true //make sure the orientation of marker depends on phone
             //styling the marker
             marker.map = self.mapView
             marker.accessibilityLabel = i.name
-            marker.userData = data(image: i.image, imageWide: i.wideImage, distance: i.distance, isOpen: i.isOpen, label: i.label, pin: i.pinLabel, sMask: i.sliderMask, sDistance: i.sliderDistance, sDensity: i.sliderDensity);
+            marker.userData = data(image: i.image, imageWide: i.wideImage, distance: i.distance, isOpen: i.isOpen, label: description, pin: i.pinLabel, sMask: i.sliderMask, sDistance: i.sliderDistance, sDensity: i.sliderDensity);
            
           if (i.pinLabel <= 0.20) {
                 marker.icon = UIImage(named: "pin-dark-green");
@@ -181,7 +190,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         var list = [GMUWeightedLatLng]()
         
         // Get the data: latitude/longitude positions
-        let url = URL(string: "http://52.33.183.202:8000/ladph/heatmap")!
+        let url = URL(string: "http://13.52.104.196:8000/ladph/heatmap")!
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             guard let data = data else { return }
             guard let json = try? JSONSerialization.jsonObject(with: data, options: []) else {
@@ -196,7 +205,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
             for item in object {
               let lat = item["lat"] as! CLLocationDegrees
               let lng = item["lng"] as! CLLocationDegrees
-              let int = item["intensity"] as! Float
+              let int = (item["intensity"] as! NSNumber).floatValue - 30
               let coords = GMUWeightedLatLng(
                 coordinate: CLLocationCoordinate2DMake(lat, lng),
                 intensity: int
@@ -220,7 +229,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
           startPoints: gradientStartPoints,
           colorMapSize: 256
         )
-        heatMapLayer.radius = UInt(20)
+        heatMapLayer.radius = UInt(50)
     }
     
     //helper function to convert colors for heatmap
