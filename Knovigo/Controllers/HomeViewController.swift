@@ -158,7 +158,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         var list = [GMUWeightedLatLng]()
         
         // Get the data: latitude/longitude positions
-        let url = URL(string: "http://52.33.183.202:8000/ladph/heatmap")!
+        let url = URL(string: "http://13.52.104.196:8000/ladph/heatmap")!
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             guard let data = data else { return }
             guard let json = try? JSONSerialization.jsonObject(with: data, options: []) else {
@@ -173,7 +173,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
             for item in object {
                 let lat = item["lat"] as! CLLocationDegrees
                 let lng = item["lng"] as! CLLocationDegrees
-                let int = item["intensity"] as! Float
+                let int = (item["intensity"] as! NSNumber).floatValue - 30
                 let coords = GMUWeightedLatLng(
                     coordinate: CLLocationCoordinate2DMake(lat, lng),
                     intensity: int
@@ -197,7 +197,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
             startPoints: gradientStartPoints,
             colorMapSize: 256
         )
-        heatMapLayer.radius = UInt(20)
+        heatMapLayer.radius = UInt(50)
     }
     
     //helper function to convert colors for heatmap
