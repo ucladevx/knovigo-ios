@@ -85,13 +85,53 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
                     }
                 }
                 
-               let hour = Calendar.current.component(.hour, from: Date())
-                var validHour = false
-//                for j in (item["businessHours"] as! [Int]) {
-//                    if (hour == j) {
-//                        validHour = true
-//                    }
-//                }
+            let hour = Calendar.current.component(.hour, from: Date())*100
+            let weekday = Calendar.current.component(.weekday, from: Date())
+            var validHour = false
+            var openHour = -1
+            var closeHour = -1
+            var openString = ""
+            var closeString = ""
+            let arr = item["businessHours"] as! [[String: Any]]
+            let times = arr.first
+                switch(weekday) {
+                case 1:
+                    openString = "sunday_open"
+                    closeString = "sunday_close"
+                case 2:
+                    openString = "monday_open"
+                    closeString = "monday_close"
+                case 3:
+                    openString = "tuesday_open"
+                    closeString = "tuesday_close"
+                case 4:
+                    openString = "wednesday_open"
+                    closeString = "wednesday_close"
+                case 5:
+                    openString = "thursday_open"
+                    closeString = "thursday_close"
+                case 6:
+                    openString = "friday_open"
+                    closeString = "friday_close"
+                case 7:
+                    openString = "saturday_open"
+                    closeString = "saturday_close"
+                default:
+                    break
+                }
+                if (times?[openString] != nil && times?[closeString] != nil) {
+                    openHour = times?[openString] as! Int
+                    closeHour = times?[closeString] as! Int
+                }
+                
+                if (closeHour == 0) {
+                    closeHour = 2400
+                }
+                
+                if ((openHour != -1 && closeHour != -1) && (hour > openHour) && (hour < closeHour)) {
+                    validHour = true
+                }
+                
                 let loc = location(name: item["name"] as! String, coordinates: CLLocationCoordinate2D(latitude: 34.0700, longitude: -118.4398), address: item["address"] as! String, image: locImage!, wideImage: locWideImage!, distance: Double(round(1000*(item["distance"] as! Double))/1000), isOpen: validHour, label: "temp", pinLabel: item["agg_density"] as! Double, sliderMask: item["agg_mask"] as! Double, sliderDistance: item["agg_social"] as! Double, sliderDensity: item["agg_density"] as! Double)
                 self.markCoords.append(loc)
             }
