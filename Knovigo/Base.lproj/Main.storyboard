@@ -1203,9 +1203,9 @@
                     <navigationItem key="navigationItem" id="RCM-wv-53I"/>
                     <connections>
                         <outlet property="ReportButton" destination="xoM-dQ-wOW" id="5iP-lw-KiP"/>
-                        <outlet property="heatMapLegend" destination="duO-0A-pv7" id="9HJ-c2-gZz"/>
                         <outlet property="heatMapSwitch" destination="rse-Ay-Qsd" id="e5V-jF-fhc"/>
                         <outlet property="heatMapView" destination="XbE-1W-Z1T" id="7yH-Dl-B9e"/>
+                        <outlet property="legend" destination="mKK-ih-lY2" id="9ro-x5-NXi"/>
                         <outlet property="mapView" destination="epL-UF-OHu" id="Hhc-cO-FKk"/>
                         <outlet property="searchBtn" destination="EEx-Mq-RrG" id="6Ma-IG-Ekj"/>
                         <segue destination="jOZ-O2-jSA" kind="presentation" identifier="Search" id="a2X-Ew-fB5"/>
@@ -2312,7 +2312,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uAG-Wd-VI0"/>
+        <segue reference="EMw-UY-BOx"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>

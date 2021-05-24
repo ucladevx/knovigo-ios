@@ -205,7 +205,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         )
     }
     
-    @IBOutlet weak var heatMapLegend: UIImageView!
+    @IBOutlet weak var legend: UIImageView!
     @IBOutlet weak var heatMapSwitch: UISwitch!
     var userMoved : Bool!
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool){
@@ -238,7 +238,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
     }
     // turns off the heatmap
     func turnOffHeatMap () {
-        heatMapLegend.isHidden = true
+        legend.image = #imageLiteral(resourceName: "densityLegend")
         heatMapLayer.map = nil
     }
     // turns on heatmap
@@ -247,7 +247,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         if (zoom > 15.5){
             mapView.animate(toZoom: 15)
         }
-        heatMapLegend.isHidden = false
+        legend.image = #imageLiteral(resourceName: "heatMapLegend")
         heatMapLayer.map = mapView
     }
     
@@ -340,14 +340,6 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         
         tgl.endPoint = CGPoint(x: 1.0, y:  1.0)
         tgl.startPoint = CGPoint(x: 0.0, y:  1.0)
-        
-        //        UIGraphicsBeginImageContextWithOptions(tgl.frame.size, false, 0.0)
-        //        tgl.render(in: UIGraphicsGetCurrentContext()!)
-        //        let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
-        //        UIGraphicsEndImageContext()
-        //
-        //        slider.setMaximumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
-        //        slider.setMinimumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
         UIGraphicsBeginImageContextWithOptions(tgl.frame.size, tgl.isOpaque, 0.0);
         tgl.render(in: UIGraphicsGetCurrentContext()!)
         if let image = UIGraphicsGetImageFromCurrentImageContext() {
@@ -392,14 +384,6 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         
         tgl.endPoint = CGPoint(x: 1.0, y:  1.0)
         tgl.startPoint = CGPoint(x: 0.0, y:  1.0)
-        
-        //        UIGraphicsBeginImageContextWithOptions(tgl.frame.size, false, 0.0)
-        //        tgl.render(in: UIGraphicsGetCurrentContext()!)
-        //        let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
-        //        UIGraphicsEndImageContext()
-        //
-        //        slider.setMaximumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
-        //        slider.setMinimumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
         UIGraphicsBeginImageContextWithOptions(tgl.frame.size, tgl.isOpaque, 0.0);
         tgl.render(in: UIGraphicsGetCurrentContext()!)
         if let image = UIGraphicsGetImageFromCurrentImageContext() {
