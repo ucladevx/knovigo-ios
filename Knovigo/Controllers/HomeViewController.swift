@@ -126,9 +126,9 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
                 default:
                     break
                 }
-//                if (arr["business"] == nil) {
-//                    validHour = true;
-//                }
+                if (times?["businessHours"] == nil) {
+                    validHour = true;
+                }
                 if (times?[openString] != nil && times?[closeString] != nil) {
                     openHour = times?[openString] as! Int
                     closeHour = times?[closeString] as! Int
