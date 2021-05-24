@@ -1106,13 +1106,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heatMapLegend" translatesAutoresizingMaskIntoConstraints="NO" id="duO-0A-pv7">
-                                <rect key="frame" x="107" y="627" width="122" height="143"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="122" id="Lt4-fb-Hhj"/>
-                                    <constraint firstAttribute="height" constant="143" id="Uhf-Z4-6cu"/>
-                                </constraints>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XbE-1W-Z1T" userLabel="HeatMap View">
                                 <rect key="frame" x="290" y="214" width="80" height="160"/>
                                 <subviews>
@@ -1193,9 +1186,7 @@
                             <constraint firstItem="EEx-Mq-RrG" firstAttribute="top" secondItem="fao-RH-VE7" secondAttribute="top" constant="-10" id="a4R-6n-Mia"/>
                             <constraint firstItem="mKK-ih-lY2" firstAttribute="leading" secondItem="fao-RH-VE7" secondAttribute="leading" constant="17" id="asn-Ww-Zci"/>
                             <constraint firstItem="epL-UF-OHu" firstAttribute="leading" secondItem="cfF-4a-G80" secondAttribute="leading" id="d5h-qH-4F6"/>
-                            <constraint firstItem="duO-0A-pv7" firstAttribute="bottom" secondItem="fao-RH-VE7" secondAttribute="bottom" constant="-40" id="hpq-OK-Eno"/>
                             <constraint firstItem="EEx-Mq-RrG" firstAttribute="top" secondItem="fao-RH-VE7" secondAttribute="top" constant="-10" id="nJh-jb-UCi"/>
-                            <constraint firstItem="duO-0A-pv7" firstAttribute="leading" secondItem="fao-RH-VE7" secondAttribute="leading" constant="107" id="oI8-qz-GNb"/>
                             <constraint firstItem="mKK-ih-lY2" firstAttribute="bottom" secondItem="fao-RH-VE7" secondAttribute="bottom" constant="-40" id="qhc-R3-Wh3"/>
                             <constraint firstItem="epL-UF-OHu" firstAttribute="trailing" secondItem="cfF-4a-G80" secondAttribute="trailing" id="zGo-K8-78x"/>
                         </constraints>
@@ -2319,7 +2310,6 @@
         <image name="backBtn" width="16.666666030883789" height="29"/>
         <image name="densityLegend" width="122" height="149.33332824707031"/>
         <image name="filterBtn" width="17" height="15"/>
-        <image name="heatMapLegend" width="128" height="149.33332824707031"/>
         <image name="heatMapLogo" width="32" height="21.333333969116211"/>
         <image name="locationPin" width="14" height="22"/>
         <image name="reportBtn" width="94" height="101"/>
