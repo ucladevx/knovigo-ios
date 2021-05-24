@@ -82,17 +82,12 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
     
     @IBOutlet weak var barChart: BarChartView!
     @IBOutlet weak var dayPicker: UIPickerView!
-    //@IBOutlet weak var barChart: BarChartView!
     @IBOutlet weak var estiDensity: UISlider!
     @IBOutlet weak var estiDistancing: UISlider!
     @IBOutlet weak var estiMWearing: UISlider!
-    //@IBOutlet weak var dropDownBtn: UIButton!
     
     @IBOutlet weak var backBtn: UIButton!
     
-//    var density: Float = -1
-//    var distancing: Float = -1
-//    var mwearing: Float = -1
     @IBOutlet weak var locImage: UIImageView!
     
     @IBOutlet weak var masksReq: UIView!

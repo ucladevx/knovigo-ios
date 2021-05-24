@@ -45,8 +45,14 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         
         //sets the data for the heatmap
         loadHeatmap();
+        
+        //load places data
+        loadPlaces()
     }
     
+    func loadPlaces() {
+        
+    }
     //    func loadData()->[location] {
     //        let url = URL(string: "http://52.33.183.202:8000//places/all")!
     //        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
@@ -105,13 +111,6 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
     }
     
     //function that manages tapped markers
-    //FIXME: function does not react at all; supposedly would if Google pin/marker is tapped
-    //    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-    //        print("\n\n\ntippity tap\n\n\n")
-    //        print(marker)
-    ////        markerTappedHandler?(marker)
-    //        return true
-    //    }
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         let view = Bundle.main.loadNibNamed("CustomPopUp", owner: self, options: nil)![0] as! CustomPopUp
         let frame = CGRect(x: 0, y: 0, width: 350, height: 230)
@@ -149,11 +148,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         present(locViewController, animated: true)
     }
     
-    //FIXME: make a working connection from location pg to landing pg
-    //    @IBAction func unwindToLandingPG(unwindSegue: UIStoryboardSegue){
-    //        print("function called")
-    //    }
-    
+    //loads the data for the heatmap
     func loadHeatmap() {
         var list = [GMUWeightedLatLng]()
         
@@ -173,7 +168,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
             for item in object {
                 let lat = item["lat"] as! CLLocationDegrees
                 let lng = item["lng"] as! CLLocationDegrees
-                let int = (item["intensity"] as! NSNumber).floatValue - 30
+                let int = 100 - (item["intensity"] as! NSNumber).floatValue
                 let coords = GMUWeightedLatLng(
                     coordinate: CLLocationCoordinate2DMake(lat, lng),
                     intensity: int
@@ -191,13 +186,13 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
                                          UIColorFromRGB(rgbValue: 0xFFD372),
                                          UIColorFromRGB(rgbValue: 0xE46B6B),
                                          UIColorFromRGB(rgbValue: 0xBA0505)]
-        let gradientStartPoints: [NSNumber] = [0.1, 0.3, 0.5, 0.7, 0.9];
+        let gradientStartPoints: [NSNumber] = [0.001, 0.3, 0.5, 0.7, 0.9];
         heatMapLayer.gradient = GMUGradient(
             colors: gradientColors,
             startPoints: gradientStartPoints,
             colorMapSize: 256
         )
-        heatMapLayer.radius = UInt(50)
+        heatMapLayer.radius = UInt(500)
     }
     
     //helper function to convert colors for heatmap
@@ -208,67 +203,6 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
             alpha: CGFloat(1.0)
         )
-    }
-    
-    // Present the Autocomplete view controller when the button is pressed.
-    //    @objc func autocompleteClicked(_ sender: UIButton) {
-    //        let autocompleteController = GMSAutocompleteViewController()
-    //        autocompleteController.delegate = self
-    //
-    //        // Specify the place data types to return.
-    //        let fields: GMSPlaceField = [.name, .placeID]
-    //        autocompleteController.placeFields = fields
-    //
-    //        // Specify a filter.
-    //        let filter = GMSAutocompleteFilter()
-    //        filter.type = .establishment
-    //        filter.countries = ["BR"]
-    //        autocompleteController.autocompleteFilter = filter
-    //
-    //        // Display the autocomplete view controller.
-    //        present(autocompleteController, animated: true, completion: nil)
-    //    }
-    
-    func makeBackground() {
-        let screenSize: CGRect = UIScreen.main.bounds
-        let screenWidth = screenSize.width
-        let screenHeight = screenSize.height
-        
-        let xPos = 0
-        let yPos = 470
-        
-        let rectWidth = Int(screenWidth)
-        
-        let rectHeight = Int(screenHeight) - 450
-        
-        let rectFrame: CGRect = CGRect(x:CGFloat(xPos), y:CGFloat(yPos), width:CGFloat(rectWidth), height:CGFloat(rectHeight))
-        
-        let rectView = UIView(frame: rectFrame)
-        
-        rectView.backgroundColor = UIColor.white
-        
-        self.view.addSubview(rectView)
-        
-    }
-    
-    // Set functionality of search button
-    @IBOutlet weak var searchBtn: UIButton!
-    func setSearchButton() {
-        searchBtn.addTarget(self, action: #selector(userSearchButtonPressed), for: .touchUpInside)
-    }
-    
-    //add user report button
-    @IBOutlet weak var ReportButton: UIButton!
-    func setReportButton() {
-        ReportButton.addTarget(self, action: #selector(userReportButtonPressed), for: .touchUpInside)
-    }
-    
-    @objc func userReportButtonPressed() {
-        self.performSegue(withIdentifier: "Report", sender: self)
-    }
-    
-    @objc func userSearchButtonPressed() {
-        self.performSegue(withIdentifier: "Search", sender: self)
     }
     
     @IBOutlet weak var heatMapLegend: UIImageView!
@@ -293,7 +227,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         }
     }
     
-    
+    //function connected to the heatmap toggle button
     @IBAction func setState(_ sender: Any) {
         if (heatMapSwitch.isOn){
             turnOnHeatMap()
@@ -317,6 +251,48 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         heatMapLayer.map = mapView
     }
     
+    
+    //    func makeBackground() {
+    //        let screenSize: CGRect = UIScreen.main.bounds
+    //        let screenWidth = screenSize.width
+    //        let screenHeight = screenSize.height
+    //
+    //        let xPos = 0
+    //        let yPos = 470
+    //
+    //        let rectWidth = Int(screenWidth)
+    //
+    //        let rectHeight = Int(screenHeight) - 450
+    //
+    //        let rectFrame: CGRect = CGRect(x:CGFloat(xPos), y:CGFloat(yPos), width:CGFloat(rectWidth), height:CGFloat(rectHeight))
+    //
+    //        let rectView = UIView(frame: rectFrame)
+    //
+    //        rectView.backgroundColor = UIColor.white
+    //
+    //        self.view.addSubview(rectView)
+    //
+    //    }
+    
+    // Set functionality of search button
+    @IBOutlet weak var searchBtn: UIButton!
+    func setSearchButton() {
+        searchBtn.addTarget(self, action: #selector(userSearchButtonPressed), for: .touchUpInside)
+    }
+    
+    //add user report button
+    @IBOutlet weak var ReportButton: UIButton!
+    func setReportButton() {
+        ReportButton.addTarget(self, action: #selector(userReportButtonPressed), for: .touchUpInside)
+    }
+    
+    @objc func userReportButtonPressed() {
+        self.performSegue(withIdentifier: "Report", sender: self)
+    }
+    
+    @objc func userSearchButtonPressed() {
+        self.performSegue(withIdentifier: "Search", sender: self)
+    }
 }
 
 extension HomeViewController: GMSAutocompleteViewControllerDelegate {
@@ -365,13 +341,13 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         tgl.endPoint = CGPoint(x: 1.0, y:  1.0)
         tgl.startPoint = CGPoint(x: 0.0, y:  1.0)
         
-//        UIGraphicsBeginImageContextWithOptions(tgl.frame.size, false, 0.0)
-//        tgl.render(in: UIGraphicsGetCurrentContext()!)
-//        let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-//
-//        slider.setMaximumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
-//        slider.setMinimumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+        //        UIGraphicsBeginImageContextWithOptions(tgl.frame.size, false, 0.0)
+        //        tgl.render(in: UIGraphicsGetCurrentContext()!)
+        //        let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
+        //        UIGraphicsEndImageContext()
+        //
+        //        slider.setMaximumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+        //        slider.setMinimumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
         UIGraphicsBeginImageContextWithOptions(tgl.frame.size, tgl.isOpaque, 0.0);
         tgl.render(in: UIGraphicsGetCurrentContext()!)
         if let image = UIGraphicsGetImageFromCurrentImageContext() {
@@ -417,13 +393,13 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         tgl.endPoint = CGPoint(x: 1.0, y:  1.0)
         tgl.startPoint = CGPoint(x: 0.0, y:  1.0)
         
-//        UIGraphicsBeginImageContextWithOptions(tgl.frame.size, false, 0.0)
-//        tgl.render(in: UIGraphicsGetCurrentContext()!)
-//        let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-//
-//        slider.setMaximumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
-//        slider.setMinimumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+        //        UIGraphicsBeginImageContextWithOptions(tgl.frame.size, false, 0.0)
+        //        tgl.render(in: UIGraphicsGetCurrentContext()!)
+        //        let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
+        //        UIGraphicsEndImageContext()
+        //
+        //        slider.setMaximumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+        //        slider.setMinimumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
         UIGraphicsBeginImageContextWithOptions(tgl.frame.size, tgl.isOpaque, 0.0);
         tgl.render(in: UIGraphicsGetCurrentContext()!)
         if let image = UIGraphicsGetImageFromCurrentImageContext() {
