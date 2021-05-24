@@ -21,6 +21,11 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
     var locationManager: CLLocationManager!
     var markCoords = [location]();
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        locationManager.requestWhenInUseAuthorization()
+    }
+    
     //view load function
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,13 +50,15 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         
         //location manager
         locationManager = CLLocationManager()
-        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         var currentLoc: CLLocation!
-      //  currentLoc = CLLocation(latitude: 34.0700, longitude: -118.4398)
         if(CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
         CLLocationManager.authorizationStatus() == .authorizedAlways) {
             locationManager.startUpdatingLocation()
             currentLoc = locationManager.location
+        }
+        if (currentLoc == nil) {
+            currentLoc = CLLocation(latitude: 34.0700, longitude: -118.4398)
         }
         let locLat = Float(currentLoc.coordinate.latitude)
         let locLong = Float(currentLoc.coordinate.longitude)
@@ -119,6 +126,9 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
                 default:
                     break
                 }
+//                if (arr["business"] == nil) {
+//                    validHour = true;
+//                }
                 if (times?[openString] != nil && times?[closeString] != nil) {
                     openHour = times?[openString] as! Int
                     closeHour = times?[closeString] as! Int
