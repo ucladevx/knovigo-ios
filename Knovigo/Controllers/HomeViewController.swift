@@ -20,15 +20,13 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
     
     var locationManager: CLLocationManager!
     var markCoords = [location]();
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        locationManager.requestWhenInUseAuthorization()
-    }
     
     //view load function
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
+
         // set map @UCLA
         let camera = GMSCameraPosition.camera(withLatitude: mapLocation.coordinates.latitude, longitude: mapLocation.coordinates.longitude, zoom: 14.5)
         mapView.camera = camera
@@ -49,7 +47,6 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         mapView?.delegate = self
         
         //location manager
-        locationManager = CLLocationManager()
         locationManager.startUpdatingLocation()
         var currentLoc: CLLocation!
         if(CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
@@ -60,6 +57,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         if (currentLoc == nil) {
             currentLoc = CLLocation(latitude: 34.0700, longitude: -118.4398)
         }
+        
         let locLat = Float(currentLoc.coordinate.latitude)
         let locLong = Float(currentLoc.coordinate.longitude)
         

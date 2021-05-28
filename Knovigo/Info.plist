@@ -14,10 +14,6 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>need location</string>
-	<key>NSLocationUsageDescription</key>
-	<string>for heat map and location</string>
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
@@ -39,6 +35,10 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSLocationUsageDescription</key>
+	<string>for heat map and location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>need location for distance to places</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Lato-Regular.ttf</string>
