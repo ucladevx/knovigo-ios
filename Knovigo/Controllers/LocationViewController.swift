@@ -82,17 +82,12 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
     
     @IBOutlet weak var barChart: BarChartView!
     @IBOutlet weak var dayPicker: UIPickerView!
-    //@IBOutlet weak var barChart: BarChartView!
     @IBOutlet weak var estiDensity: UISlider!
     @IBOutlet weak var estiDistancing: UISlider!
     @IBOutlet weak var estiMWearing: UISlider!
-    //@IBOutlet weak var dropDownBtn: UIButton!
     
     @IBOutlet weak var backBtn: UIButton!
     
-//    var density: Float = -1
-//    var distancing: Float = -1
-//    var mwearing: Float = -1
     @IBOutlet weak var locImage: UIImageView!
     
     @IBOutlet weak var masksReq: UIView!
@@ -122,6 +117,34 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
     
     
     func charInit(){
+        //popular times --> monday --> array of 24 indexed 0-23
+        /*
+        let url = URL(string: "http://52.33.183.202:8000/places/place/<id>")!
+        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+            guard let data = data else { return }
+            guard let json = try? JSONSerialization.jsonObject(with: data, options: []) else {
+                print("Serialization went wrong")
+                return
+            }
+            guard let object = json as? [[String: Any]] else {
+                print("Could not read the JSON.")
+                return
+            }
+            
+            for item in object {
+                let lat = item["lat"] as! CLLocationDegrees
+                let lng = item["lng"] as! CLLocationDegrees
+                let int = item["intensity"] as! Float
+                let coords = GMUWeightedLatLng(
+                    coordinate: CLLocationCoordinate2DMake(lat, lng),
+                    intensity: int
+                )
+                list.append(coords)
+            }
+            // Add the latlngs to the heatmap layer.
+            self.heatMapLayer.weightedData = list;
+        }
+         */
         //TODO: hard coding data for chart
         let set = BarChartDataSet(entries: [
             BarChartDataEntry(x: 0, y: 3),
