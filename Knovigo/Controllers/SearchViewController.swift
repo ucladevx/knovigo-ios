@@ -7,19 +7,35 @@
 
 import UIKit
 import DropDown
+import GoogleMapsUtils
 
 struct LocationResponse:Decodable {
     let name:String
-    let distance:Double
     let address:String
     let types:[String]
-    let price_level:Int
+    let price_level:Int?
     let agg_density:Int
     let agg_social:Int
     let agg_mask:Int
-    let agg_density_n:Int?
-    let agg_social_n:Int?
-    let agg_mask_n:Int?
+}
+
+struct LocationMoreData {
+    var image : UIImage
+    var imageWide: UIImage
+    var distance : Double
+    var isOpen : Bool
+    var sMask : Double
+    var sDistance : Double
+    var sDensity: Double
+    init() {
+        image = #imageLiteral(resourceName: "q6_100");
+        imageWide = #imageLiteral(resourceName: "q6_100");
+        distance = 0;
+        isOpen = false;
+        sMask = 0;
+        sDistance = 0;
+        sDensity = 0;
+    }
 }
 
 class SearchViewController: UIViewController {
@@ -42,6 +58,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         recommendationsTable.dataSource = self
+        recommendationsTable.delegate = self
         recommendationsTable.layer.backgroundColor = UIColor.clear.cgColor
         recommendationsTable.backgroundColor = .clear
         recommendationsTable.register(UINib(nibName: "LocationTableViewCell", bundle: nil), forCellReuseIdentifier: "LocationCellIdentifier")
@@ -77,6 +94,7 @@ class SearchViewController: UIViewController {
     
     func loadRecommended(withInput input: String){
         self.recommendations = [];
+        print("Loading Recommendations")
         //ideally this function will use the API to get the information about a place
         attemptLoadAPI { (success) in
             DispatchQueue.main.async {
@@ -89,7 +107,7 @@ class SearchViewController: UIViewController {
     }
     
     func attemptLoadAPI(_ completion:@escaping (Bool)->()) {
-        let url = URL(string: "http://localhost:3000/test") //Change this to actual endpoint
+        let url = URL(string: "http://13.52.104.196:8000/places/busiest") //Change this to actual endpoint
         guard let requestUrl = url else { fatalError() }
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "GET"
@@ -106,9 +124,9 @@ class SearchViewController: UIViewController {
             }
             do {
                 var temp:[LocationInfo] = []
-                if let locationDict = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
-                    let locationArray = locationDict["data"] as! [[String:Any]];
+                if let locationArray = try JSONSerialization.jsonObject(with: data!, options: []) as? [[String:Any]] {
                     for location in locationArray {
+                        print(location)
                         let locationStruct:LocationResponse? = try JSONDecoder().decode(LocationResponse.self, from: JSONSerialization.data(withJSONObject: location))
                         var priceVal : PriceRange
                         switch locationStruct!.price_level {
@@ -122,7 +140,7 @@ class SearchViewController: UIViewController {
                                 priceVal = .HIGH
                         }
                         temp.append(
-                            LocationInfo(name: locationStruct!.name, address: locationStruct!.address, distancing: locationStruct!.agg_social, density: locationStruct!.agg_density, maskWearing: locationStruct!.agg_mask, image: #imageLiteral(resourceName: "q6_100"), priceRange: priceVal, tags: locationStruct!.types, distance: (locationStruct!.distance * 1000).rounded()/1000)
+                            LocationInfo(name: locationStruct!.name, address: locationStruct!.address, distancing: locationStruct!.agg_social, density: locationStruct!.agg_density, maskWearing: locationStruct!.agg_mask, image: #imageLiteral(resourceName: "q6_100"), priceRange: priceVal, tags: locationStruct!.types, distance: 1000)
                         );
                     }
                     self.recommendations = temp;
@@ -135,6 +153,24 @@ class SearchViewController: UIViewController {
             }
         }
         task.resume()
+    }
+    
+    func convertLocationInfoToMarker(location : LocationInfo) -> GMSMarker {
+        var marker: GMSMarker;
+        var temp: LocationMoreData;
+        marker =  GMSMarker();
+        temp = LocationMoreData();
+        temp.distance = location.distance
+        temp.image = #imageLiteral(resourceName: "q6_100")
+        temp.imageWide = #imageLiteral(resourceName: "q6_100")
+        temp.isOpen = true
+        temp.sDensity = Double(location.density)
+        temp.sMask = Double(location.maskWearing)
+        temp.sDistance = Double(location.distancing)
+        marker.title = location.name
+        marker.snippet = location.address
+        marker.userData = temp
+        return marker;
     }
     
     func filterRecommendations() {
@@ -208,7 +244,21 @@ extension SearchViewController : UISearchBarDelegate {
 //MARK:- TableView Delegate functions
 
 extension SearchViewController : UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var locationInfo : LocationInfo
+        if (searchActive) {
+            locationInfo = self.searchResuls![indexPath.row]
+        } else if (filterActive) {
+            locationInfo = self.filterResuls![indexPath.row]
+        } else {
+            locationInfo = self.recommendations![indexPath.row]
+        }
+        let sb = UIStoryboard(name:"Main",bundle: Bundle.main)
+        let locViewController = sb.instantiateViewController(withIdentifier: "LocationPage") as! LocationViewController
+        let marker = convertLocationInfoToMarker(location: locationInfo);
+        locViewController.locMarker = marker
+        present(locViewController, animated: true)
+    }
 }
 
 //MARK:- TableView Data Source functions
@@ -273,6 +323,5 @@ extension SearchViewController : UITableViewDataSource{
         
         return cell
     }
-    
     
 }
