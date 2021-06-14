@@ -77,9 +77,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         
         //sets the data for the heatmap
         loadHeatmap();
-        
-        //load places data
-        loadPlaces()
+
     }
     
     func alertLocationAccessNeeded(controller:UIViewController) {
