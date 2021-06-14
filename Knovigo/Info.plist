@@ -35,6 +35,10 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSLocationUsageDescription</key>
+	<string>Location access is required for including the landmark pins and heat map. Please allow access and refresh the application for best use!</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location access is required for including the landmark pins and heat map. Please allow access and refresh the application for best use!</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Lato-Regular.ttf</string>
