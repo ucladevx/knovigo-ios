@@ -77,6 +77,9 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         
         //sets the data for the heatmap
         loadHeatmap();
+        
+        //load places data
+        loadPlaces()
     }
     
     func alertLocationAccessNeeded(controller:UIViewController) {
@@ -199,7 +202,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
             marker =  GMSMarker(position: coords)
             marker.title = i.name
             marker.snippet = i.address
-            marker.isFlat = true //make sure the orientation of marker depends on phone
+            marker.isFlat = false //make sure the orientation of marker depends on phone
             //styling the marker
             marker.map = self.mapView
             marker.accessibilityLabel = i.name
@@ -220,16 +223,9 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
     }
     
     //function that manages tapped markers
-    //FIXME: function does not react at all; supposedly would if Google pin/marker is tapped
-    //    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-    //        print("\n\n\ntippity tap\n\n\n")
-    //        print(marker)
-    ////        markerTappedHandler?(marker)
-    //        return true
-    //    }
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         let view = Bundle.main.loadNibNamed("CustomPopUp", owner: self, options: nil)![0] as! CustomPopUp
-        let frame = CGRect(x: 10, y: 10, width: 350, height: 230)
+        let frame = CGRect(x: 0, y: 0, width: 350, height: 230)
         view.frame = frame
         view.layer.cornerRadius = 9.0
         view.locTitle.text = marker.title
@@ -250,24 +246,21 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         view.distanceSlider.value = Float((marker.userData as! data).sDistance)
         setSlider(slider: view.maskSlider)
         view.maskSlider.value = Float((marker.userData as! data).sMask)
+        marker.infoWindowAnchor = CGPoint(x: 0.5, y: 3.2)
         return view
     }
     
     //will transition to location view controller once code is finished for that
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker)
     {
-      //  let viewController = LocationViewController()
+        //  let viewController = LocationViewController()
         let sb = UIStoryboard(name:"Main",bundle: Bundle.main)
         let locViewController = sb.instantiateViewController(withIdentifier: "LocationPage") as! LocationViewController
         locViewController.locMarker = marker
         present(locViewController, animated: true)
     }
     
-    //FIXME: make a working connection from location pg to landing pg
-    //    @IBAction func unwindToLandingPG(unwindSegue: UIStoryboardSegue){
-    //        print("function called")
-    //    }
-    
+    //loads the data for the heatmap
     func loadHeatmap() {
         var list = [GMUWeightedLatLng]()
         
@@ -276,28 +269,28 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             guard let data = data else { return }
             guard let json = try? JSONSerialization.jsonObject(with: data, options: []) else {
-              print("Serialization went wrong")
-              return
+                print("Serialization went wrong")
+                return
             }
             guard let object = json as? [[String: Any]] else {
-              print("Could not read the JSON.")
-              return
+                print("Could not read the JSON.")
+                return
             }
             
             for item in object {
-              let lat = item["lat"] as! CLLocationDegrees
-              let lng = item["lng"] as! CLLocationDegrees
-              let int = (item["intensity"] as! NSNumber).floatValue - 30
-              let coords = GMUWeightedLatLng(
-                coordinate: CLLocationCoordinate2DMake(lat, lng),
-                intensity: int
-              )
-              list.append(coords)
+                let lat = item["lat"] as! CLLocationDegrees
+                let lng = item["lng"] as! CLLocationDegrees
+                let int = 100 - (item["intensity"] as! NSNumber).floatValue
+                let coords = GMUWeightedLatLng(
+                    coordinate: CLLocationCoordinate2DMake(lat, lng),
+                    intensity: int
+                )
+                list.append(coords)
             }
             // Add the latlngs to the heatmap layer.
             self.heatMapLayer.weightedData = list;
         }
-
+        
         task.resume()
         
         let gradientColors: [UIColor] = [UIColorFromRGB(rgbValue: 0x568EC4),
@@ -305,13 +298,13 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
                                          UIColorFromRGB(rgbValue: 0xFFD372),
                                          UIColorFromRGB(rgbValue: 0xE46B6B),
                                          UIColorFromRGB(rgbValue: 0xBA0505)]
-        let gradientStartPoints: [NSNumber] = [0.1, 0.3, 0.5, 0.7, 0.9];
+        let gradientStartPoints: [NSNumber] = [0.001, 0.3, 0.5, 0.7, 0.9];
         heatMapLayer.gradient = GMUGradient(
-          colors: gradientColors,
-          startPoints: gradientStartPoints,
-          colorMapSize: 256
+            colors: gradientColors,
+            startPoints: gradientStartPoints,
+            colorMapSize: 256
         )
-        heatMapLayer.radius = UInt(50)
+        heatMapLayer.radius = UInt(500)
     }
     
     //helper function to convert colors for heatmap
@@ -324,66 +317,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         )
     }
     
-    // Present the Autocomplete view controller when the button is pressed.
-    @objc func autocompleteClicked(_ sender: UIButton) {
-        let autocompleteController = GMSAutocompleteViewController()
-        autocompleteController.delegate = self
-        
-        // Specify the place data types to return.
-        let fields: GMSPlaceField = [.name, .placeID]
-        autocompleteController.placeFields = fields
-        
-        // Specify a filter.
-        let filter = GMSAutocompleteFilter()
-        filter.type = .establishment
-        filter.countries = ["BR"]
-        autocompleteController.autocompleteFilter = filter
-        
-        // Display the autocomplete view controller.
-        present(autocompleteController, animated: true, completion: nil)
-    }
-    
-    func makeBackground() {
-        let screenSize: CGRect = UIScreen.main.bounds
-        let screenWidth = screenSize.width
-        let screenHeight = screenSize.height
-        
-        let xPos = 0
-        let yPos = 470
-        
-        let rectWidth = Int(screenWidth)
-        
-        let rectHeight = Int(screenHeight) - 450
-        
-        let rectFrame: CGRect = CGRect(x:CGFloat(xPos), y:CGFloat(yPos), width:CGFloat(rectWidth), height:CGFloat(rectHeight))
-        
-        let rectView = UIView(frame: rectFrame)
-        
-        rectView.backgroundColor = UIColor.white
-        
-        self.view.addSubview(rectView)
-        
-    }
-    
-    // Set functionality of search button
-    @IBOutlet weak var searchBtn: UIButton!
-    func setSearchButton() {
-        searchBtn.addTarget(self, action: #selector(autocompleteClicked), for: .touchUpInside)
-    }
-    
-    //add user report button
-    @IBOutlet weak var ReportButton: UIButton!
-    func setReportButton() {
-        ReportButton.addTarget(self, action: #selector(userReportButtonPressed), for: .touchUpInside)
-        
-    }
-    
-    @objc func userReportButtonPressed() {
-        self.performSegue(withIdentifier: "Report", sender: self)
-    }
-    
-    
-    @IBOutlet weak var heatMapLegend: UIImageView!
+    @IBOutlet weak var legend: UIImageView!
     @IBOutlet weak var heatMapSwitch: UISwitch!
     var userMoved : Bool!
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool){
@@ -405,7 +339,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         }
     }
     
-    
+    //function connected to the heatmap toggle button
     @IBAction func setState(_ sender: Any) {
         if (heatMapSwitch.isOn){
             turnOnHeatMap()
@@ -416,7 +350,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
     }
     // turns off the heatmap
     func turnOffHeatMap () {
-        heatMapLegend.isHidden = true
+        legend.image = #imageLiteral(resourceName: "densityLegend")
         heatMapLayer.map = nil
     }
     // turns on heatmap
@@ -425,10 +359,52 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         if (zoom > 15.5){
             mapView.animate(toZoom: 15)
         }
-        heatMapLegend.isHidden = false
+        legend.image = #imageLiteral(resourceName: "heatMapLegend")
         heatMapLayer.map = mapView
     }
     
+    
+    //    func makeBackground() {
+    //        let screenSize: CGRect = UIScreen.main.bounds
+    //        let screenWidth = screenSize.width
+    //        let screenHeight = screenSize.height
+    //
+    //        let xPos = 0
+    //        let yPos = 470
+    //
+    //        let rectWidth = Int(screenWidth)
+    //
+    //        let rectHeight = Int(screenHeight) - 450
+    //
+    //        let rectFrame: CGRect = CGRect(x:CGFloat(xPos), y:CGFloat(yPos), width:CGFloat(rectWidth), height:CGFloat(rectHeight))
+    //
+    //        let rectView = UIView(frame: rectFrame)
+    //
+    //        rectView.backgroundColor = UIColor.white
+    //
+    //        self.view.addSubview(rectView)
+    //
+    //    }
+    
+    // Set functionality of search button
+    @IBOutlet weak var searchBtn: UIButton!
+    func setSearchButton() {
+        searchBtn.addTarget(self, action: #selector(userSearchButtonPressed), for: .touchUpInside)
+    }
+    
+    //add user report button
+    @IBOutlet weak var ReportButton: UIButton!
+    func setReportButton() {
+        ReportButton.addTarget(self, action: #selector(userReportButtonPressed), for: .touchUpInside)
+    }
+    
+    @objc func userReportButtonPressed() {
+        self.performSegue(withIdentifier: "Report", sender: self)
+    }
+    
+    @objc func userSearchButtonPressed() {
+        self.performSegue(withIdentifier: "Search", sender: self)
+    }
 }
 
 extension HomeViewController: GMSAutocompleteViewControllerDelegate {
@@ -476,14 +452,14 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         
         tgl.endPoint = CGPoint(x: 1.0, y:  1.0)
         tgl.startPoint = CGPoint(x: 0.0, y:  1.0)
-        
-        UIGraphicsBeginImageContextWithOptions(tgl.frame.size, false, 0.0)
+        UIGraphicsBeginImageContextWithOptions(tgl.frame.size, tgl.isOpaque, 0.0);
         tgl.render(in: UIGraphicsGetCurrentContext()!)
-        let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        slider.setMaximumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
-        slider.setMinimumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+        if let image = UIGraphicsGetImageFromCurrentImageContext() {
+            UIGraphicsEndImageContext()
+            image.resizableImage(withCapInsets: UIEdgeInsets.zero)
+            slider.setMinimumTrackImage(image, for: .normal)
+            slider.setMaximumTrackImage(image, for: .normal)
+        }
         
         let layerFrame = CGRect(x: 0, y: 0, width: 10.0, height: 10.0)
         
@@ -520,14 +496,14 @@ extension HomeViewController: GMSAutocompleteViewControllerDelegate {
         
         tgl.endPoint = CGPoint(x: 1.0, y:  1.0)
         tgl.startPoint = CGPoint(x: 0.0, y:  1.0)
-        
-        UIGraphicsBeginImageContextWithOptions(tgl.frame.size, false, 0.0)
+        UIGraphicsBeginImageContextWithOptions(tgl.frame.size, tgl.isOpaque, 0.0);
         tgl.render(in: UIGraphicsGetCurrentContext()!)
-        let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        slider.setMaximumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
-        slider.setMinimumTrackImage(backgroundImage?.resizableImage(withCapInsets:.zero),  for: .normal)
+        if let image = UIGraphicsGetImageFromCurrentImageContext() {
+            UIGraphicsEndImageContext()
+            image.resizableImage(withCapInsets: UIEdgeInsets.zero)
+            slider.setMinimumTrackImage(image, for: .normal)
+            slider.setMaximumTrackImage(image, for: .normal)
+        }
         
         let layerFrame = CGRect(x: 0, y: 0, width: 10.0, height: 10.0)
         
