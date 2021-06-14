@@ -24,6 +24,13 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
     //view load function
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let locationAuthorizationStatus = CLLocationManager.authorizationStatus()
+        if (locationAuthorizationStatus == .denied || locationAuthorizationStatus == .restricted) {
+            self.dismiss(animated: false, completion: nil)
+            alertLocationAccessNeeded(controller: self);
+        }
+        
         locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
 
@@ -55,6 +62,10 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
             currentLoc = locationManager.location
         }
         if (currentLoc == nil) {
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+//            self.dismiss(animated: false, completion: nil)
+//            alertLocationAccessNeeded();
             currentLoc = CLLocation(latitude: 34.0700, longitude: -118.4398)
         }
         
@@ -66,6 +77,29 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         
         //sets the data for the heatmap
         loadHeatmap();
+    }
+    
+    func alertLocationAccessNeeded(controller:UIViewController) {
+        let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
+     
+         let alert = UIAlertController(
+             title: "Need Location Access",
+             message: "Location access is required for including the landmark pins. Please allow access and refresh the application for best use!",
+            preferredStyle: UIAlertController.Style.alert
+         )
+     
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Allow Location Access",
+                                        style: .cancel,
+                                        handler: {(alert) -> Void in
+                                        UIApplication.shared.open(settingsAppURL,
+                                                                    options: [:],
+                                                                    completionHandler: nil)
+                                        }))
+    
+        DispatchQueue.main.async{
+             self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func loadData(markerGeoCoords: [location], lat: Float, long: Float) {
