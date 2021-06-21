@@ -117,48 +117,48 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
     
     
     func charInit(){
+        let group = DispatchGroup()
+        group.enter()
         //popular times --> monday --> array of 24 indexed 0-23
-        /*
-        let url = URL(string: "http://52.33.183.202:8000/places/place/<id>")!
+        var allDays : [String: [BarChartDataEntry]] = [:]
+        var popularity : [BarChartDataEntry] = []
+        let url = URL(string: "http://13.52.104.196:8000/places/place/ChIJM2_CO4G8woARCvO-wn-MObo")!
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             guard let data = data else { return }
             guard let json = try? JSONSerialization.jsonObject(with: data, options: []) else {
                 print("Serialization went wrong")
                 return
             }
-            guard let object = json as? [[String: Any]] else {
+            guard let object = json as? [String: Any] else {
                 print("Could not read the JSON.")
                 return
             }
-            
-            for item in object {
-                let lat = item["lat"] as! CLLocationDegrees
-                let lng = item["lng"] as! CLLocationDegrees
-                let int = item["intensity"] as! Float
-                let coords = GMUWeightedLatLng(
-                    coordinate: CLLocationCoordinate2DMake(lat, lng),
-                    intensity: int
-                )
-                list.append(coords)
+            guard let times = object["popularTimes"] as? [[String: Any]] else{
+                print("Could not retrieve popular times")
+                return
             }
-            // Add the latlngs to the heatmap layer.
-            self.heatMapLayer.weightedData = list;
+            var days = times[0]
+            days.removeValue(forKey:"place")
+            for (key, value) in days{
+                popularity = []
+                let hours = value as! [Int]
+                for time in 0..<hours.count{
+                    let percent = hours[time]
+                    if (percent == 0){
+                        continue
+                    }
+                    else{
+                        popularity.append(BarChartDataEntry(x: Double(time), y: Double(percent)))
+                    }
+                }
+                allDays[String(key)] = popularity
+            }
+            group.leave()
         }
-         */
+        task.resume()
+        group.wait()
         //TODO: hard coding data for chart
-        let set = BarChartDataSet(entries: [
-            BarChartDataEntry(x: 0, y: 3),
-            BarChartDataEntry(x: 10, y: 5),
-            BarChartDataEntry(x: 20, y: 10),
-            BarChartDataEntry(x: 30, y: 20),
-            BarChartDataEntry(x: 40, y: 40),
-            BarChartDataEntry(x: 50, y: 60),
-            BarChartDataEntry(x: 60, y: 40),
-            BarChartDataEntry(x: 70, y: 20),
-            BarChartDataEntry(x: 80, y: 10),
-            BarChartDataEntry(x: 90, y: 5),
-            BarChartDataEntry(x: 100, y: 3),
-        ])
+        let set = BarChartDataSet(entries: allDays["monday"])
         
         //for formatting purpose
         set.drawValuesEnabled = set.isHighlightEnabled
@@ -173,7 +173,7 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
         data.accessibilityEntryLabelSuffix = "bar chart"
         
         //for formatting purpose
-        data.barWidth = 6
+        data.barWidth = 1
         
         //assign data to barChart
         barChart.data = data
@@ -188,6 +188,7 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
         barChart.legend.enabled = false
         barChart.notifyDataSetChanged()
         barChart.drawValueAboveBarEnabled = true;
+        barChart.doubleTapToZoomEnabled = false;
     }
     
     //    func dropDownInit(){
