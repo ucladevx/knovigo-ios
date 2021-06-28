@@ -33,7 +33,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         
         locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
-
+        
         // set map @UCLA
         let camera = GMSCameraPosition.camera(withLatitude: mapLocation.coordinates.latitude, longitude: mapLocation.coordinates.longitude, zoom: 14.5)
         mapView.camera = camera
@@ -57,15 +57,15 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         locationManager.startUpdatingLocation()
         var currentLoc: CLLocation!
         if(CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
-        CLLocationManager.authorizationStatus() == .authorizedAlways) {
+            CLLocationManager.authorizationStatus() == .authorizedAlways) {
             locationManager.startUpdatingLocation()
             currentLoc = locationManager.location
         }
         if (currentLoc == nil) {
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
-//            self.dismiss(animated: false, completion: nil)
-//            alertLocationAccessNeeded();
+            //            self.dismiss(animated: false, completion: nil)
+            //            alertLocationAccessNeeded();
             currentLoc = CLLocation(latitude: 34.0700, longitude: -118.4398)
         }
         
@@ -77,29 +77,29 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         
         //sets the data for the heatmap
         loadHeatmap();
-
+        
     }
     
     func alertLocationAccessNeeded(controller:UIViewController) {
         let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
-     
-         let alert = UIAlertController(
-             title: "Need Location Access",
-             message: "Location access is required for including the landmark pins. Please allow access and refresh the application for best use!",
+        
+        let alert = UIAlertController(
+            title: "Need Location Access",
+            message: "Location access is required for including the landmark pins. Please allow access and refresh the application for best use!",
             preferredStyle: UIAlertController.Style.alert
-         )
-     
+        )
+        
         alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: "Allow Location Access",
-                                        style: .cancel,
-                                        handler: {(alert) -> Void in
+                                      style: .cancel,
+                                      handler: {(alert) -> Void in
                                         UIApplication.shared.open(settingsAppURL,
-                                                                    options: [:],
-                                                                    completionHandler: nil)
-                                        }))
-    
+                                                                  options: [:],
+                                                                  completionHandler: nil)
+                                      }))
+        
         DispatchQueue.main.async{
-             self.present(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -108,12 +108,12 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
         let task2 = URLSession.shared.dataTask(with: url2!) {(data, response, error) in
             guard let data = data else { return }
             guard let json = try? JSONSerialization.jsonObject(with: data, options: []) else {
-              print("Serialization went wrong")
-              return
+                print("Serialization went wrong")
+                return
             }
             guard let object2 = json as? [[String: Any]] else {
-              print("Could not read the JSON.")
-              return
+                print("Could not read the JSON.")
+                return
             }
             for item in object2 {
                 var locImage = UIImage(named: "tongva.jpg")
@@ -125,15 +125,15 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
                     }
                 }
                 
-            let hour = Calendar.current.component(.hour, from: Date())*100
-            let weekday = Calendar.current.component(.weekday, from: Date())
-            var validHour = false
-            var openHour = -1
-            var closeHour = -1
-            var openString = ""
-            var closeString = ""
-            let arr = item["businessHours"] as! [[String: Any]]
-            let times = arr.first
+                let hour = Calendar.current.component(.hour, from: Date())*100
+                let weekday = Calendar.current.component(.weekday, from: Date())
+                var validHour = false
+                var openHour = -1
+                var closeHour = -1
+                var openString = ""
+                var closeString = ""
+                let arr = item["businessHours"] as! [[String: Any]]
+                let times = arr.first
                 switch(weekday) {
                 case 1:
                     openString = "sunday_open"
@@ -175,7 +175,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
                     validHour = true
                 }
                 
-                let loc = location(name: item["name"] as! String, coordinates: CLLocationCoordinate2D(latitude: 34.0700, longitude: -118.4398), address: item["address"] as! String, image: locImage!, wideImage: locWideImage!, distance: Double(round(1000*(item["distance"] as! Double))/1000), isOpen: validHour, label: "temp", pinLabel: item["agg_density"] as! Double, sliderMask: item["agg_mask"] as! Double, sliderDistance: item["agg_social"] as! Double, sliderDensity: item["agg_density"] as! Double)
+                let loc = location(name: item["name"] as! String, coordinates: CLLocationCoordinate2D(latitude: 34.0700, longitude: -118.4398), address: item["address"] as! String, image: locImage!, wideImage: locWideImage!, distance: Double(round(1000*(item["distance"] as! Double))/1000), isOpen: validHour, label: "temp", pinLabel: item["agg_density"] as! Double, sliderMask: item["agg_mask"] as! Double, sliderDistance: item["agg_social"] as! Double, sliderDensity: item["agg_density"] as! Double, id: item["place_id"] as! String)
                 self.markCoords.append(loc)
             }
             DispatchQueue.main.async {
@@ -189,6 +189,7 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
     func setMarker(markerGeoCoords: [location], tempCoords: [location]){
         var marker: GMSMarker
         for i in markerGeoCoords {
+            var place_id = i.id
             var coords = i.coordinates
             var description = i.label
             for loc in markerCoords {
@@ -204,9 +205,9 @@ class HomeViewController: UIViewController, GMSMapViewDelegate{
             //styling the marker
             marker.map = self.mapView
             marker.accessibilityLabel = i.name
-            marker.userData = data(image: i.image, imageWide: i.wideImage, distance: i.distance, isOpen: i.isOpen, label: description, pin: i.pinLabel, sMask: i.sliderMask, sDistance: i.sliderDistance, sDensity: i.sliderDensity);
-           
-          if (i.pinLabel <= 0.20) {
+            marker.userData = data(image: i.image, imageWide: i.wideImage, distance: i.distance, isOpen: i.isOpen, label: description, pin: i.pinLabel, sMask: i.sliderMask, sDistance: i.sliderDistance, sDensity: i.sliderDensity, id : place_id);
+            
+            if (i.pinLabel <= 0.20) {
                 marker.icon = UIImage(named: "pin-dark-green");
             } else if (i.pinLabel <= 0.40) {
                 marker.icon = UIImage(named: "pin-light-green");
