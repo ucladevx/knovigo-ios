@@ -15,7 +15,6 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         // barChart.delegate = self;
-        charInit()
         //dropDownInit()
         setSliderInvert(slider: estiDensity);
         setSlider(slider: estiDistancing);
@@ -37,6 +36,7 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
         locTitle.text = locMarker.title
         locAddress.text = locMarker.snippet
         let data = locMarker.userData as? data
+        charInit(place_data: data!)
         if (!(data?.isOpen ?? false)) {
             locIsClosed.text = "Closed"
             locIsClosed.textColor = UIColor.red
@@ -76,7 +76,18 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
         title.textAlignment = .center
         
         return title
-        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let set = BarChartDataSet(entries: self.allDays[pickerData[row].lowercased()])
+        set.highlightEnabled = false
+        set.colors = [UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)]
+        let data = BarChartData(dataSet: set)
+        data.setDrawValues(false);
+        data.accessibilityEntryLabelPrefix = "bar chart"
+        data.accessibilityEntryLabelSuffix = "bar chart"
+        data.barWidth = 1
+        barChart.data = data
     }
     var pickerData: [String] = [String]()
     
@@ -115,14 +126,13 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
     let dropDown = DropDown()
     var locMarker = GMSMarker();
     
-    
-    func charInit(){
+    var allDays : [String: [BarChartDataEntry]] = [:]
+    func charInit(place_data : data){
         let group = DispatchGroup()
         group.enter()
         //popular times --> monday --> array of 24 indexed 0-23
-        var allDays : [String: [BarChartDataEntry]] = [:]
         var popularity : [BarChartDataEntry] = []
-        let url = URL(string: "http://13.52.104.196:8000/places/place/ChIJM2_CO4G8woARCvO-wn-MObo")!
+        let url = URL(string: "http://13.52.104.196:8000/places/place/" + place_data.id)!
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             guard let data = data else { return }
             guard let json = try? JSONSerialization.jsonObject(with: data, options: []) else {
@@ -137,6 +147,9 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
                 print("Could not retrieve popular times")
                 return
             }
+            if (times.count == 0){
+                return
+            }
             var days = times[0]
             days.removeValue(forKey:"place")
             for (key, value) in days{
@@ -148,27 +161,22 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
                         continue
                     }
                     else{
-                        popularity.append(BarChartDataEntry(x: Double(time), y: Double(percent)))
+                        popularity.append(BarChartDataEntry(x: Double(time) + 0.5, y: Double(percent)))
                     }
                 }
-                allDays[String(key)] = popularity
+                self.allDays[String(key)] = popularity
             }
             group.leave()
         }
         task.resume()
         group.wait()
-        //TODO: hard coding data for chart
-        let set = BarChartDataSet(entries: allDays["monday"])
-        
-        //for formatting purpose
-        set.drawValuesEnabled = set.isHighlightEnabled
+        let set = BarChartDataSet(entries: self.allDays["monday"])
+        set.highlightEnabled = false
         set.colors = [UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)]
-        set.highlightColor = UIColor(red: 68/255, green: 150/255, blue: 176/255, alpha: 1)
-        set.highlightLineDashLengths = [CGFloat(3)]
         
         //store data in an array
         let data = BarChartData(dataSet: set)
-        data.setDrawValues(true);
+        data.setDrawValues(false);
         data.accessibilityEntryLabelPrefix = "bar chart"
         data.accessibilityEntryLabelSuffix = "bar chart"
         
@@ -180,15 +188,23 @@ class LocationViewController: UIViewController, ChartViewDelegate, UIPickerViewD
         
         barChart.xAxis.drawAxisLineEnabled = false
         barChart.xAxis.drawGridLinesEnabled = false
-        barChart.xAxis.drawLabelsEnabled = false
+        barChart.xAxis.drawLabelsEnabled = true
         barChart.leftAxis.drawLabelsEnabled = false
         barChart.leftAxis.drawAxisLineEnabled = false
         barChart.rightAxis.drawAxisLineEnabled = false
         barChart.rightAxis.drawLabelsEnabled = true
+        barChart.leftAxis.axisMinimum = 0
+        barChart.leftAxis.axisMaximum = 100
+        barChart.rightAxis.axisMinimum = 0
+        barChart.rightAxis.axisMaximum = 100
         barChart.legend.enabled = false
         barChart.notifyDataSetChanged()
         barChart.drawValueAboveBarEnabled = true;
         barChart.doubleTapToZoomEnabled = false;
+        barChart.xAxis.labelPosition = XAxis.LabelPosition.bottom
+        barChart.xAxis.granularityEnabled = true
+        barChart.xAxis.granularity = 1
+        barChart.xAxis.setLabelCount(set.count, force: true)
     }
     
     //    func dropDownInit(){
